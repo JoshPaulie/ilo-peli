@@ -6,6 +6,7 @@ import { Header } from './components/Header'
 import { Modals } from './components/Modals'
 import { VowelKey } from './components/VowelKey'
 import { EmptyState } from './components/EmptyState'
+import { ToastContainer } from './components/ToastContainer'
 import { useCardState } from './hooks/useCardState'
 import { useMasteredCards } from './hooks/useMasteredCards'
 import { useSettings } from './hooks/useSettings'
@@ -210,6 +211,8 @@ function App() {
         excludeKijetesantakalu={settings.excludeKijetesantakalu}
         onExcludeKijetesantakakuChange={settings.setExcludeKijetesantakalu}
       />
+
+      <ToastContainer />
 
       <div className="flex-1 flex flex-col items-center justify-start p-4 sm:p-8 pt-32 sm:pt-28">
         <div className="w-full max-w-6xl flex flex-col items-center gap-6">

@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react'
+import { useToast } from '../contexts/ToastContext'
 import type { Word } from '../types'
 
 interface CardProps {
@@ -23,6 +24,12 @@ export function Card({
   disableAnimations,
 }: CardProps) {
   const backFaceRef = useRef<HTMLDivElement>(null)
+  const { addToast } = useToast()
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text)
+    addToast(`Copied: ${text}`)
+  }
 
   useEffect(() => {
     if (backFaceRef.current) {
@@ -72,7 +79,14 @@ export function Card({
               </svg>
             </button>
           </div>
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tighter text-zinc-50 text-center wrap-break-word px-4">
+          <h1 
+            onClick={(e) => {
+              e.stopPropagation()
+              copyToClipboard(currentWord.word)
+            }}
+            className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tighter text-zinc-50 text-center wrap-break-word px-4 cursor-pointer hover:opacity-70 transition-opacity"
+            title="Click to copy"
+          >
             {currentWord.word}
           </h1>
           <div className="mt-4 flex flex-col items-center gap-2">
@@ -113,7 +127,14 @@ export function Card({
         >
           <div className="mb-4 sm:mb-6">
             <div className="flex items-center justify-between border-b border-zinc-800 pb-2 mb-4">
-              <h2 className="text-2xl sm:text-3xl font-bold text-zinc-50 flex items-center gap-3">
+              <h2 
+                onClick={(e) => {
+                  e.stopPropagation()
+                  copyToClipboard(backWord.word)
+                }}
+                className="text-2xl sm:text-3xl font-bold text-zinc-50 flex items-center gap-3 cursor-pointer hover:opacity-70 transition-opacity"
+                title="Click to copy"
+              >
                 {backWord.word}
                 {backWord.emoji && (
                   <span className="text-xl sm:text-2xl opacity-80" title="Word emoji">
