@@ -89,7 +89,6 @@ function App() {
     cardState.setDrillOnly(prev => !prev)
     cardState.setIndex(0)
     cardState.setIsFlipped(false)
-    cardState.setWords([])
   }, [cardState])
 
   useEffect(() => {
