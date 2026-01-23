@@ -611,7 +611,7 @@
     "word": "apeja",
     "usage_category": "obscure",
     "source_language": "Finnish",
-    "definition_en": "- to single out - expose ; to reveale the guilt or wrongdoing of - to attack non-physically (verbally attack) - to expose to shame blame to fault accuse to cause to feel shame to dishonour, disgrace a painful emotion resulting from an awareness of having done something dishonourable, unworthy, degrading, etc.",
+    "definition_en": "to single out; expose; to reveal the guilt or wrongdoing of; to attack non-physically (verbally attack); to expose; to shame; blame; to fault; accuse; to cause; to feel; shame to dishonour; disgrace; a painful emotion resulting from an awareness of having done something dishonourable, unworthy, degrading, etc.",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -643,7 +643,8 @@
       "ucsur": "U+F19A1",
       "sitelen_emosi": "😢"
     },
-    "commentary_en": "According to jan Sonja, \"apeja\" never appeared in any pre-pu toki pona dictionary made by her and never promoted by her, instead it may have been \"just an experimental idea in a forum post\"."
+    "commentary_en": "According to jan Sonja, \"apeja\" never appeared in any pre-pu toki pona dictionary made by her and never promoted by her, instead it may have been \"just an experimental idea in a forum post\".",
+    "definition": "to single out; expose; to reveal the guilt or wrongdoing of; to attack non-physically (verbally attack); to expose; to shame; blame; to fault; accuse; to cause; to feel; shame to dishonour; disgrace; a painful emotion resulting from an awareness of having done something dishonourable, unworthy, degrading, etc."
   },
   {
     "id": "awen",
@@ -2691,7 +2692,7 @@
     "word": "konwe",
     "usage_category": "obscure",
     "source_language": "multiple",
-    "definition_en": "",
+    "definition_en": "animacy, life, autonomy; autonomous being, living thing, organism; alive, animate, dynamic; to animate, to bring to life",
     "deprecated": true,
     "creator": [
       "jan Emalan"
