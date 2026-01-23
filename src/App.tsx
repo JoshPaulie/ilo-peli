@@ -161,8 +161,9 @@ function App() {
     return Array.from(speakers).sort()
   }, [])
 
+  const categoryOrder = ['core', 'common', 'uncommon', 'obscure']
   const allUsages = Array.from(new Set((wordData as Word[]).map(w => w.usage_category))).filter(Boolean)
-  const specificCategories = allUsages.filter(u => u !== 'obscure').concat(allUsages.filter(u => u === 'obscure'))
+  const specificCategories = categoryOrder.filter(cat => allUsages.includes(cat))
 
   const handleCategoryToggle = useCallback(
     (category: string) => {

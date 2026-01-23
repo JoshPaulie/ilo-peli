@@ -21,10 +21,10 @@ export function useCardState() {
       try {
         return new Set(JSON.parse(saved) as string[])
       } catch {
-        return new Set(['core', 'common', 'uncommon', 'obscure'])
+        return new Set(['core', 'common'])
       }
     }
-    return new Set(['core', 'common', 'uncommon', 'obscure'])
+    return new Set(['core', 'common'])
   })
   
   const [words, setWords] = useState<Word[]>(() => {
