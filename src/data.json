@@ -611,7 +611,7 @@
     "word": "apeja",
     "usage_category": "obscure",
     "source_language": "Finnish",
-    "definition_en": "to single out; expose; to reveal the guilt or wrongdoing of; to attack non-physically (verbally attack); to expose; to shame; blame; to fault; accuse; to cause; to feel; shame to dishonour; disgrace; a painful emotion resulting from an awareness of having done something dishonourable, unworthy, degrading, etc.",
+    "definition_en": "to single out; to reveal the guilt or wrongdoing of; to attack non-physically (verbally attack); to expose; to shame; blame; to fault; accuse; to cause; to feel; shame to dishonour; disgrace; a painful emotion resulting from an awareness of having done something dishonourable, unworthy, degrading, etc.",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -1303,7 +1303,7 @@
     "word": "isipin",
     "usage_category": "obscure",
     "source_language": "Tagalog",
-    "definition_en": "",
+    "definition_en": "to think, brainstorm, rationalize, conclude, ponder",
     "deprecated": false,
     "creator": [
       "jan ko"
@@ -2574,7 +2574,7 @@
     "word": "kokosila",
     "usage_category": "obscure",
     "source_language": "Esperanto",
-    "definition_en": "",
+    "definition_en": "To speak any non-Toki Pona language in a Toki Pona environment",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -4905,7 +4905,7 @@
     "word": "mijomi",
     "usage_category": "obscure",
     "source_language": "toki pona",
-    "definition_en": "",
+    "definition_en": "gay, achillean, MLM",
     "deprecated": false,
     "creator": [
       "jan inwin"
@@ -6313,7 +6313,7 @@
     "word": "oke",
     "usage_category": "obscure",
     "source_language": "English",
-    "definition_en": "",
+    "definition_en": "acknowledgement or acceptance",
     "deprecated": false,
     "creator": [
       "unknown"
@@ -6343,7 +6343,8 @@
         "oke"
       ],
       "sitelen_emosi": "👌"
-    }
+    },
+    "definitions_en": []
   },
   {
     "id": "oko",
@@ -6782,7 +6783,7 @@
     "word": "pake",
     "usage_category": "obscure",
     "source_language": "English",
-    "definition_en": "",
+    "definition_en": "stop, cease, halt; to block the way, to interrupt; to prevent",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -8695,12 +8696,16 @@
     "word": "sina",
     "usage_category": "core",
     "source_language": "Finnish",
-    "definition_en": "NOUN you",
+    "definition_en": "NOUN you, y'all\nPRONOUN you, y'all, your",
     "deprecated": false,
     "definitions_en": [
       {
         "pos": "NOUN",
-        "meaning": "you"
+        "meaning": "you, y'all"
+      },
+      {
+        "pos": "PRONOUN",
+        "meaning": "you, y'all, your"
       }
     ],
     "creator": [
@@ -9036,7 +9041,7 @@
     "word": "soto",
     "usage_category": "obscure",
     "source_language": "Swahili",
-    "definition_en": "",
+    "definition_en": "left, left side, port side",
     "deprecated": false,
     "creator": [
       "jan inwin"
@@ -9548,7 +9553,7 @@
     "word": "taki",
     "usage_category": "obscure",
     "source_language": "Korean",
-    "definition_en": "",
+    "definition_en": "sticky, magnetic; bond, attract, attach, clip",
     "deprecated": false,
     "creator": [
       "jan Kapilu",
@@ -9872,7 +9877,7 @@
     "word": "teje",
     "usage_category": "obscure",
     "source_language": "Welsh",
-    "definition_en": "",
+    "definition_en": "right, right side, starboard",
     "deprecated": false,
     "creator": [
       "jan Olipija",
@@ -10044,7 +10049,7 @@
     "word": "to",
     "usage_category": "obscure",
     "source_language": "Japanese",
-    "definition_en": "",
+    "definition_en": "(particle) [closes a quote]",
     "deprecated": false,
     "creator": [
       "kala kala/jan Salan",
@@ -10675,7 +10680,7 @@
     "word": "wa",
     "usage_category": "obscure",
     "source_language": "onomatopoeia",
-    "definition_en": "",
+    "definition_en": "INTERJECTION indicating awe or amazement",
     "deprecated": false,
     "creator": [
       "mama mama pi jan Lakuse"
@@ -10699,7 +10704,13 @@
         "wa"
       ]
     },
-    "commentary_en": "Sometimes analyzed as a variety of \"a\"."
+    "commentary_en": "Sometimes analyzed as a variety of \"a\".",
+    "definitions_en": [
+      {
+        "pos": "INTERJECTION",
+        "meaning": "indicating awe or amazement"
+      }
+    ]
   },
   {
     "id": "walo",
