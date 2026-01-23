@@ -25,6 +25,14 @@ export function useMasteredCards() {
     })
   }, [])
 
+  const unmasterCard = useCallback((id: string) => {
+    setMasteredIds(prev => {
+      const next = new Set(prev)
+      next.delete(id)
+      return next
+    })
+  }, [])
+
   const undoMastered = useCallback(() => {
     if (lastMasteredId) {
       setMasteredIds(prev => {
@@ -42,5 +50,5 @@ export function useMasteredCards() {
     }
   }, [])
 
-  return { masteredIds, lastMasteredId, toggleMastered, undoMastered, resetMastered, setMasteredIds }
+  return { masteredIds, lastMasteredId, toggleMastered, undoMastered, resetMastered, unmasterCard, setMasteredIds }
 }

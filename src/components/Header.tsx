@@ -1,40 +1,42 @@
 interface HeaderProps {
-  categories: string[]
-  currentFilter: string
-  onFilterChange: (filter: string) => void
+  specificCategories: string[]
+  activeCategories: Set<string>
+  onCategoryToggle: (category: string) => void
+  onToggleAll: () => void
   drillOnly: boolean
   onDrillToggle: () => void
   lastMasteredId: string | null
   onUndo: () => void
-  onReset: () => void
   onShowDrillInfo: () => void
   onShowAbout: () => void
   onShowOptions: () => void
+  onShowMasteredCards: () => void
   masteredCount: number
   filteredWordsCount: number
 }
 
 export function Header({
-  categories,
-  currentFilter,
-  onFilterChange,
+  specificCategories,
+  activeCategories,
+  onCategoryToggle,
+  onToggleAll,
   drillOnly,
   onDrillToggle,
   lastMasteredId,
   onUndo,
-  onReset,
   onShowDrillInfo,
   onShowAbout,
   onShowOptions,
+  onShowMasteredCards,
   masteredCount,
   filteredWordsCount,
 }: HeaderProps) {
   return (
     <header className="fixed top-0 left-0 right-0 bg-zinc-950/80 backdrop-blur-md z-10 border-b border-zinc-800">
       <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-3">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <h1 className="text-xl font-black text-zinc-100 tracking-tighter">ilo Peli</h1>
+        <div className="flex items-center justify-between min-h-8">
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <h1 className="text-xl font-black text-zinc-100 tracking-tighter whitespace-nowrap">ilo Peli</h1>
             <button
               onClick={onShowAbout}
               className="w-8 h-8 flex items-center justify-center rounded-xl bg-zinc-900 text-zinc-500 hover:text-zinc-200 border border-zinc-800"
@@ -79,12 +81,25 @@ export function Header({
                 />
               </svg>
             </button>
+            <button
+              onClick={onShowMasteredCards}
+              className="w-8 h-8 flex items-center justify-center rounded-xl bg-zinc-900 text-zinc-500 hover:text-zinc-200 border border-zinc-800"
+              title="Manage Mastered Cards"
+            >
+              <svg
+                className="w-4 h-4"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
+              </svg>
+            </button>
             <div className="hidden md:flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-zinc-900 text-zinc-500 border border-zinc-800 uppercase tracking-wider">
               {masteredCount} / {filteredWordsCount} mastered
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-shrink-0">
             <button
               onClick={onDrillToggle}
               className={`px-3 py-1.5 rounded-xl text-[10px] font-bold transition-colors ${
@@ -106,12 +121,6 @@ export function Header({
               </button>
             )}
             <button
-              onClick={onReset}
-              className="px-3 py-1.5 rounded-xl text-[10px] font-bold bg-zinc-900 text-red-500/80 hover:text-red-400 border border-zinc-800"
-            >
-              RESET
-            </button>
-            <button
               onClick={onShowDrillInfo}
               className="w-8 h-8 flex items-center justify-center rounded-xl bg-zinc-900 text-zinc-500 hover:text-zinc-200 border border-zinc-800"
               title="What is Drill Mode?"
@@ -122,12 +131,12 @@ export function Header({
         </div>
 
         <div className="flex items-center gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-hide">
-          {categories.map((cat) => (
+          {specificCategories.map((cat) => (
             <button
               key={cat}
-              onClick={() => onFilterChange(cat)}
+              onClick={() => onCategoryToggle(cat)}
               className={`px-4 py-1.5 rounded-xl text-[10px] font-bold whitespace-nowrap transition-colors ${
-                currentFilter === cat
+                activeCategories.has(cat)
                   ? 'bg-zinc-100 text-zinc-950'
                   : 'bg-zinc-900 text-zinc-500 hover:text-zinc-200 border border-zinc-800'
               }`}
@@ -135,6 +144,19 @@ export function Header({
               {cat.toUpperCase()}
             </button>
           ))}
+          
+          <div className="w-px h-6 bg-zinc-700 mx-1" />
+          
+          <button
+            onClick={onToggleAll}
+            className={`px-4 py-1.5 rounded-xl text-[10px] font-bold whitespace-nowrap transition-colors ${
+              activeCategories.size === specificCategories.length
+                ? 'bg-zinc-100 text-zinc-950'
+                : 'bg-zinc-900 text-zinc-500 hover:text-zinc-200 border border-zinc-800'
+            }`}
+          >
+            ALL
+          </button>
         </div>
       </div>
     </header>

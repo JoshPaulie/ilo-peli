@@ -14,7 +14,7 @@ import type { Word } from './types'
 
 function App() {
   const cardState = useCardState()
-  const { masteredIds, lastMasteredId, toggleMastered, undoMastered, resetMastered, setMasteredIds } =
+  const { masteredIds, lastMasteredId, toggleMastered, undoMastered, resetMastered, unmasterCard } =
     useMasteredCards()
   const settings = useSettings()
 
@@ -22,9 +22,14 @@ function App() {
   const [showAbout, setShowAbout] = useState(false)
   const [showDrillInfo, setShowDrillInfo] = useState(false)
   const [showOptions, setShowOptions] = useState(false)
+  const [showMasteredCards, setShowMasteredCards] = useState(false)
 
   const masteredCount = useMemo(() => {
     return cardState.filteredWords.filter(w => masteredIds.has(w.id)).length
+  }, [cardState.filteredWords, masteredIds])
+
+  const masteredWords = useMemo(() => {
+    return cardState.filteredWords.filter(w => masteredIds.has(w.id))
   }, [cardState.filteredWords, masteredIds])
 
   // Apply exclusion filter
@@ -103,15 +108,36 @@ function App() {
       } else if (e.code === 'ArrowLeft' || e.code === 'KeyH') {
         e.preventDefault()
         cardState.prevCard()
+      } else if (e.code === 'ArrowDown' || e.code === 'KeyJ') {
+        e.preventDefault()
+        const backCard = document.querySelector('[data-card-back]') as HTMLElement
+        if (backCard && cardState.isFlipped) {
+          backCard.scrollBy({ top: 50, behavior: 'smooth' })
+        }
+      } else if (e.code === 'ArrowUp' || e.code === 'KeyK') {
+        e.preventDefault()
+        const backCard = document.querySelector('[data-card-back]') as HTMLElement
+        if (backCard && cardState.isFlipped) {
+          backCard.scrollBy({ top: -50, behavior: 'smooth' })
+        }
       } else if (e.code === 'KeyS') {
         cardState.shuffleCard()
       } else if (e.code === 'KeyA') {
         e.preventDefault()
         playAudio(currentWord)
       } else if (e.code === 'KeyM') {
-        toggleMastered(currentWord.id)
         if (cardState.drillOnly) {
           cardState.setIsFlipped(false)
+          // Delay progression until animation completes (600ms)
+          setTimeout(() => {
+            toggleMastered(currentWord.id)
+            cardState.nextCard()
+          }, 600)
+        } else {
+          // In normal mode, delay mastery toggle but don't progress
+          setTimeout(() => {
+            toggleMastered(currentWord.id)
+          }, 600)
         }
       } else if (e.code === 'KeyD') {
         handleDrillToggle()
@@ -135,22 +161,28 @@ function App() {
     return Array.from(speakers).sort()
   }, [])
 
-  const allUsages = Array.from(new Set((wordData as Word[]).map(w => w.usage))).filter(Boolean)
-  const categories = ['all', 'nouns', ...allUsages.filter(u => u !== 'obscure'), ...allUsages.filter(u => u === 'obscure')]
+  const allUsages = Array.from(new Set((wordData as Word[]).map(w => w.usage_category))).filter(Boolean)
+  const specificCategories = allUsages.filter(u => u !== 'obscure').concat(allUsages.filter(u => u === 'obscure'))
 
-  const handleFilterChange = useCallback(
-    (newFilter: string) => {
-      cardState.setFilter(newFilter)
+  const handleCategoryToggle = useCallback(
+    (category: string) => {
+      const newActiveCategories = new Set(cardState.activeCategories)
+      if (newActiveCategories.has(category)) {
+        newActiveCategories.delete(category)
+      } else {
+        newActiveCategories.add(category)
+      }
+      cardState.setActiveCategories(newActiveCategories)
       cardState.setIndex(0)
       cardState.setIsFlipped(false)
-      setMasteredIds(new Set())
 
       if (settings.shuffleOnCategoryChange) {
         let baseWords = wordData as Word[]
-        if (newFilter === 'nouns') {
-          baseWords = baseWords.filter(w => w.pos?.includes('NOUN'))
-        } else if (newFilter !== 'all') {
-          baseWords = baseWords.filter(w => w.usage === newFilter)
+        if (newActiveCategories.size > 0) {
+          baseWords = baseWords.filter(w => newActiveCategories.has(w.usage_category))
+        }
+        if (settings.excludeKijetesantakalu) {
+          baseWords = baseWords.filter(w => w.id !== 'kijetesantakalu')
         }
         const shuffled = [...baseWords].sort(() => Math.random() - 0.5)
         cardState.setWords(shuffled)
@@ -158,16 +190,42 @@ function App() {
         cardState.setWords([])
       }
     },
-    [cardState, settings.shuffleOnCategoryChange, setMasteredIds]
+    [cardState, settings.shuffleOnCategoryChange, settings.excludeKijetesantakalu]
   )
+
+  const handleToggleAll = useCallback(() => {
+    const isAllSelected = cardState.activeCategories.size === specificCategories.length
+    
+    // If all are already selected, do nothing
+    if (isAllSelected) {
+      return
+    }
+    
+    // Otherwise, select all categories
+    const newActiveCategories = new Set(specificCategories)
+    cardState.setActiveCategories(newActiveCategories)
+    cardState.setIndex(0)
+    cardState.setIsFlipped(false)
+
+    if (settings.shuffleOnCategoryChange) {
+      let baseWords = wordData as Word[]
+      if (newActiveCategories.size > 0) {
+        baseWords = baseWords.filter(w => newActiveCategories.has(w.usage_category))
+      }
+      if (settings.excludeKijetesantakalu) {
+        baseWords = baseWords.filter(w => w.id !== 'kijetesantakalu')
+      }
+      const shuffled = [...baseWords].sort(() => Math.random() - 0.5)
+      cardState.setWords(shuffled)
+    } else {
+      cardState.setWords([])
+    }
+  }, [cardState, specificCategories, settings.shuffleOnCategoryChange, settings.excludeKijetesantakalu])
 
   if (displayWords.length === 0 || !currentWord) {
     return (
       <EmptyState
-        onShowAll={() => {
-          cardState.setDrillOnly(false)
-          handleFilterChange('all')
-        }}
+        onShowAll={handleToggleAll}
         onReset={resetMastered}
       />
     )
@@ -176,17 +234,18 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header
-        categories={categories}
-        currentFilter={cardState.filter}
-        onFilterChange={handleFilterChange}
+        specificCategories={specificCategories}
+        activeCategories={cardState.activeCategories}
+        onCategoryToggle={handleCategoryToggle}
+        onToggleAll={handleToggleAll}
         drillOnly={cardState.drillOnly}
         onDrillToggle={handleDrillToggle}
         lastMasteredId={lastMasteredId}
         onUndo={undoMastered}
-        onReset={resetMastered}
         onShowDrillInfo={() => setShowDrillInfo(true)}
         onShowAbout={() => setShowAbout(true)}
         onShowOptions={() => setShowOptions(true)}
+        onShowMasteredCards={() => setShowMasteredCards(true)}
         masteredCount={masteredCount}
         filteredWordsCount={filteredWordsWithExclusion.length}
       />
@@ -198,6 +257,13 @@ function App() {
         onCloseOptions={() => setShowOptions(false)}
         showDrillInfo={showDrillInfo}
         onCloseDrillInfo={() => setShowDrillInfo(false)}
+        showMasteredCards={showMasteredCards}
+        onCloseMasteredCards={() => setShowMasteredCards(false)}
+        masteredWords={masteredWords}
+        masteredCount={masteredCount}
+        filteredWordsCount={filteredWordsWithExclusion.length}
+        onUnmasterCard={unmasterCard}
+        onUnmasterAll={resetMastered}
         speakerMode={settings.speakerMode}
         onSpeakerModeChange={settings.setSpeakerMode}
         specificSpeaker={settings.specificSpeaker}
@@ -205,8 +271,6 @@ function App() {
         uniqueSpeakers={uniqueSpeakers}
         shuffleOnCategoryChange={settings.shuffleOnCategoryChange}
         onShuffleOnCategoryChangeChange={settings.setShuffleOnCategoryChange}
-        disableAnimations={settings.disableAnimations}
-        onDisableAnimationsChange={settings.setDisableAnimations}
         excludeKijetesantakalu={settings.excludeKijetesantakalu}
         onExcludeKijetesantakakuChange={settings.setExcludeKijetesantakalu}
       />
@@ -226,12 +290,10 @@ function App() {
                   masteredIds={masteredIds}
                   onToggleMastered={(id) => {
                     toggleMastered(id)
-                    if (cardState.drillOnly) {
-                      cardState.setIsFlipped(false)
-                    }
                   }}
                   onPlayAudio={playAudio}
-                  disableAnimations={settings.disableAnimations}
+                  drillOnly={cardState.drillOnly}
+                  onProgressCard={cardState.nextCard}
                 />
 
                 <div className="md:hidden flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-zinc-900 text-zinc-500 border border-zinc-800 uppercase tracking-wider">

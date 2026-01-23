@@ -1,19 +1,29 @@
 export interface Word {
   id: string
   word: string
-  usage: string
-  source: string
-  definition: string
-  semantic_space: string
+  usage_category: string
+  source_language?: string
+  definition_en: string
+  definitions_en?: Array<{ pos: string; meaning: string }>
+  semantic_space_en?: string
+  commentary_en?: string
   pos?: string[]
   emoji?: string
   sitelen_sitelen?: string
   creator?: string[]
   audio?: { author: string; link: string }[]
-  etymology?: { word?: string; definition?: string }[]
+  etymology?: { word?: string }[]
   coined_era?: string
   translations?: Record<string, string>
-  usage_percentages?: Record<string, number>
+  usage_data?: Record<string, number>
+  deprecated?: boolean
+  representations?: {
+    ligatures?: string[]
+    ucsur?: string
+    sitelen_emosi?: string
+    sitelen_sitelen?: string
+    sitelen_jelo?: string[]
+  }
 }
 
 export type SpeakerMode = 'random' | 'alternating' | 'specific'

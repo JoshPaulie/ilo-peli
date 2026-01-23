@@ -22,11 +22,6 @@ export function useSettings() {
     return saved ? JSON.parse(saved) : false
   })
   
-  const [disableAnimations, setDisableAnimations] = useState(() => {
-    const saved = localStorage.getItem('disableAnimations')
-    return saved ? JSON.parse(saved) : false
-  })
-  
   const [excludeKijetesantakalu, setExcludeKijetesantakalu] = useState(() => {
     const saved = localStorage.getItem('excludeKijetesantakalu')
     return saved ? JSON.parse(saved) : false
@@ -35,7 +30,6 @@ export function useSettings() {
   usePersistence('speakerMode', speakerMode)
   usePersistence('specificSpeaker', specificSpeaker)
   usePersistence('shuffleOnCategoryChange', shuffleOnCategoryChange)
-  usePersistence('disableAnimations', disableAnimations)
   usePersistence('excludeKijetesantakalu', excludeKijetesantakalu)
 
   return {
@@ -47,8 +41,6 @@ export function useSettings() {
     setLastUsedSpeaker,
     shuffleOnCategoryChange,
     setShuffleOnCategoryChange,
-    disableAnimations,
-    setDisableAnimations,
     excludeKijetesantakalu,
     setExcludeKijetesantakalu,
   }

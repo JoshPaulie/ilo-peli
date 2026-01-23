@@ -1,4 +1,5 @@
-import type { SpeakerMode } from '../types'
+import { MasteredCardsModal } from './MasteredCardsModal'
+import type { Word, SpeakerMode } from '../types'
 
 interface ModalsProps {
   showAbout: boolean
@@ -7,6 +8,13 @@ interface ModalsProps {
   onCloseOptions: () => void
   showDrillInfo: boolean
   onCloseDrillInfo: () => void
+  showMasteredCards: boolean
+  onCloseMasteredCards: () => void
+  masteredWords: Word[]
+  masteredCount: number
+  filteredWordsCount: number
+  onUnmasterCard: (id: string) => void
+  onUnmasterAll: () => void
   speakerMode: SpeakerMode
   onSpeakerModeChange: (mode: SpeakerMode) => void
   specificSpeaker: string
@@ -14,8 +22,6 @@ interface ModalsProps {
   uniqueSpeakers: string[]
   shuffleOnCategoryChange: boolean
   onShuffleOnCategoryChangeChange: (value: boolean) => void
-  disableAnimations: boolean
-  onDisableAnimationsChange: (value: boolean) => void
   excludeKijetesantakalu: boolean
   onExcludeKijetesantakakuChange: (value: boolean) => void
 }
@@ -27,6 +33,13 @@ export function Modals({
   onCloseOptions,
   showDrillInfo,
   onCloseDrillInfo,
+  showMasteredCards,
+  onCloseMasteredCards,
+  masteredWords,
+  masteredCount,
+  filteredWordsCount,
+  onUnmasterCard,
+  onUnmasterAll,
   speakerMode,
   onSpeakerModeChange,
   specificSpeaker,
@@ -34,13 +47,21 @@ export function Modals({
   uniqueSpeakers,
   shuffleOnCategoryChange,
   onShuffleOnCategoryChangeChange,
-  disableAnimations,
-  onDisableAnimationsChange,
   excludeKijetesantakalu,
   onExcludeKijetesantakakuChange,
 }: ModalsProps) {
   return (
     <>
+      <MasteredCardsModal
+        isOpen={showMasteredCards}
+        onClose={onCloseMasteredCards}
+        masteredWords={masteredWords}
+        masteredCount={masteredCount}
+        filteredWordsCount={filteredWordsCount}
+        onUnmasterCard={onUnmasterCard}
+        onUnmasterAll={onUnmasterAll}
+      />
+
       {showDrillInfo && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
           <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 max-w-lg w-full shadow-2xl relative">
@@ -71,7 +92,7 @@ export function Modals({
               <ul className="list-disc list-inside space-y-2">
                 <li>
                   Mark cards as <strong className="text-zinc-100">Mastered (M)</strong> to hide
-                  them.
+                  them and track your progress.
                 </li>
                 <li>
                   The deck <strong className="text-zinc-100">shuffles automatically</strong> when
@@ -81,11 +102,10 @@ export function Modals({
                 <li>
                   Use <strong className="text-zinc-100">Undo (Z)</strong> if you misclick.
                 </li>
+                <li>
+                  Manage all mastered cards using the <strong className="text-zinc-100">checkmark button</strong> in the header.
+                </li>
               </ul>
-              <p className="text-sm italic">
-                Stats are reset automatically when you switch categories to give you a fresh
-                start.
-              </p>
             </div>
             <button
               onClick={onCloseDrillInfo}
@@ -192,24 +212,8 @@ export function Modals({
                 </label>
               </div>
 
-              {/* Disable Animations */}
-              <div className="border-t border-zinc-700 pt-6">
-                <label className="flex items-center gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={disableAnimations}
-                    onChange={(e) => onDisableAnimationsChange(e.target.checked)}
-                    className="w-4 h-4"
-                  />
-                  <div className="flex-1">
-                    <span className="text-sm font-medium text-zinc-100">Instant Flip</span>
-                    <p className="text-xs text-zinc-500 mt-1">Disable card flip animation</p>
-                  </div>
-                </label>
-              </div>
-
               {/* Exclude kijetesantakalu */}
-              <div className="border-t border-zinc-700 pt-6">
+               <div className="border-t border-zinc-700 pt-6">
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input
                     type="checkbox"

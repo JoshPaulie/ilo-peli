@@ -2,17 +2,42 @@
 
 A simple flashcard webapp for drilling Toki Pona vocabulary!
 
-## Data Sources
+## Data Sources & Generation
 
-The following resources were used to compile the word data:
+Word data is dynamically generated from the following upstream sources:
 
-- [lipamanka.gay/essays/dictionary](https://lipamanka.gay/essays/dictionary) for the semantic space.
-- [github.com/lipu-linku/sona](https://github.com/lipu-linku/sona) for the word "definitions" and metadata.
-- [tokipona.org/nimi_pu.txt](https://tokipona.org/nimi_pu.txt) for Ku translations.
+- [lipu-linku/sona](https://github.com/lipu-linku/sona) - word metadata, definitions, etymology, and usage data
+- [lipamanka.gay/essays/dictionary](https://lipamanka.gay/essays/dictionary) - semantic space descriptions (English)
 
-Data is static and would need recompiled for updates. Since the language is unlikely to change drastically while I continue to learn it, this is acceptable for now. Depending on usage from the community, I may set up a more dynamic data pipeline in the future.
+### Updating Data
 
-I've taken some conscious liberties with the definitions, like expanding `sina` to be also pronoun. These changes are rare and determined by consulting usage in the Toki Pona community, as documented by [tokipona.org](https://tokipona.org/nimi_pu.txt).
+To refresh the word database with the latest upstream data:
+
+```bash
+uv run scripts/generate_data.py
+```
+
+This script:
+1. Fetches all word metadata from the sona repository
+2. Scrapes semantic space descriptions from lipamanka essays
+3. Merges with any local overrides (see below)
+4. Generates `src/data.json`
+
+The script requires `uv` (Astral's Python package manager). If not installed, see [uv installation](https://docs.astral.sh/uv/getting-started/installation/).
+
+### Word Overrides
+
+To customize a word (add notes, change definitions, etc.), create a TOML file in `data/overrides/<word>.toml`. The file should follow the same schema as word metadata in sona:
+
+Example: `data/overrides/sina.toml`
+```toml
+definition_en = "pronoun: you"
+# Custom semantic space for sina
+[pu_verbatim]
+en = "PRONOUN you"
+```
+
+Overrides take precedence over upstream data when generating `src/data.json`.
 
 ## Features
 

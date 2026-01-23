@@ -15,8 +15,16 @@ export function useCardState() {
 
   const [isFlipped, setIsFlipped] = useState(false)
   
-  const [filter, setFilter] = useState<string>(() => {
-    return localStorage.getItem('cardFilter') || 'all'
+  const [activeCategories, setActiveCategories] = useState<Set<string>>(() => {
+    const saved = localStorage.getItem('activeCategories')
+    if (saved) {
+      try {
+        return new Set(JSON.parse(saved) as string[])
+      } catch {
+        return new Set(['core', 'common', 'uncommon', 'obscure'])
+      }
+    }
+    return new Set(['core', 'common', 'uncommon', 'obscure'])
   })
   
   const [words, setWords] = useState<Word[]>(() => {
@@ -40,21 +48,17 @@ export function useCardState() {
   })
 
   usePersistence('cardIndex', index)
-  usePersistence('cardFilter', filter)
+  usePersistence('activeCategories', Array.from(activeCategories))
   usePersistence('cardDeckOrder', words.map(w => w.id))
   usePersistence('drillOnly', drillOnly)
 
-  const isNoun = (word: Word) => word.pos?.includes('NOUN')
-
   const filteredWords = useMemo(() => {
     let baseWords = wordData as Word[]
-    if (filter === 'nouns') {
-      baseWords = baseWords.filter(isNoun)
-    } else if (filter !== 'all') {
-      baseWords = baseWords.filter(w => w.usage === filter)
+    if (activeCategories.size > 0) {
+      baseWords = baseWords.filter(w => activeCategories.has(w.usage_category))
     }
     return baseWords
-  }, [filter])
+  }, [activeCategories])
 
   // Use shuffled words if available, otherwise use filtered words
   const baseList = words.length > 0 ? words : filteredWords
@@ -77,8 +81,8 @@ export function useCardState() {
       shuffleCard()
     } else {
       setIndex((prev) => (prev + 1) % displayWords.length)
-      setIsFlipped(false)
     }
+    setIsFlipped(false)
   }, [displayWords.length, index, drillOnly, shuffleCard])
 
   const prevCard = useCallback(() => {
@@ -86,8 +90,8 @@ export function useCardState() {
       shuffleCard()
     } else {
       setIndex((prev) => (prev - 1 + displayWords.length) % displayWords.length)
-      setIsFlipped(false)
     }
+    setIsFlipped(false)
   }, [displayWords.length, index, drillOnly, shuffleCard])
 
   const toggleFlip = () => setIsFlipped(!isFlipped)
@@ -97,8 +101,8 @@ export function useCardState() {
     setIndex,
     isFlipped,
     setIsFlipped,
-    filter,
-    setFilter,
+    activeCategories,
+    setActiveCategories,
     words,
     setWords,
     drillOnly,

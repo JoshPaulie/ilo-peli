@@ -1,9 +1,30 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'nasin nanpa';
+  src: url('./FairfaxPonaHD.ttf') format('truetype');
+}
+
 body {
   @apply bg-zinc-950 text-zinc-100 font-sans antialiased;
 }
 
 :root {
   color-scheme: dark;
+}
+
+@keyframes borderFlash {
+  0% {
+    border-color: rgb(180, 83, 9);
+  }
+  50% {
+    border-color: rgb(217, 119, 6);
+  }
+  100% {
+    border-color: rgb(24, 24, 27);
+  }
+}
+
+.border-flash {
+  animation: borderFlash 0.6s ease-in-out;
 }
