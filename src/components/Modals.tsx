@@ -306,15 +306,15 @@ export function Modals({
                   </li>
                   <li className="flex flex-col">
                     <span className="text-[10px] text-zinc-600 font-bold uppercase tracking-wider mb-1">
-                      Ku Translations
+                      Additional information & inspiration
                     </span>
                     <a
-                      href="https://tokipona.org/nimi_pu.txt"
+                      href="https://nimi.li"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-zinc-300 hover:text-white underline decoration-zinc-700 underline-offset-4 transition-all"
                     >
-                      tokipona.org/nimi_pu.txt
+                      nimi.li
                     </a>
                   </li>
                 </ul>
