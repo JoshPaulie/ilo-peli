@@ -16,6 +16,7 @@ export interface Word {
   coined_era?: string
   translations?: Record<string, string>
   usage_data?: Record<string, number>
+  usage?: Record<string, number>
   deprecated?: boolean
   representations?: {
     ligatures?: string[]

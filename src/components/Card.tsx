@@ -249,7 +249,17 @@ export function Card({
               </div>
               <div className="flex flex-col">
                 <span className="text-zinc-600 uppercase text-[10px] font-bold tracking-wider">Usage</span>
-                <span>{backWord.usage_category}</span>
+                <span>
+                  {backWord.usage_category}
+                  {backWord.usage && (
+                    <>
+                      {' '}
+                      (
+                      {Math.max(...Object.values(backWord.usage))}
+                      %)
+                    </>
+                  )}
+                </span>
               </div>
             </div>
           </div>

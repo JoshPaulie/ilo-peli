@@ -268,6 +268,10 @@ def build_word(word_id: str, word_data: dict, essays: dict, commentary: dict, ov
     if word_id in commentary and commentary[word_id]:
         word_obj["commentary_en"] = commentary[word_id]
     
+    # Usage table (historical usage percentages by date)
+    if "usage" in base and isinstance(base["usage"], dict) and base["usage"]:
+        word_obj["usage"] = base["usage"]
+    
     return word_obj
 
 
