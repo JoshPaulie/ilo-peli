@@ -4,12 +4,12 @@
     "word": "a",
     "usage_category": "core",
     "source_language": "onomatopoeia",
-    "definition_en": "(emphasis, emotion or confirmation)",
+    "definition_en": "(interjection) ah, oh, ha, eh, um, oy; (particle) [placed after something for emphasis or emotion]",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PARTICLE",
-        "meaning": "(emphasis, emotion or confirmation)"
+        "meaning": "emphasis, emotion or confirmation"
       }
     ],
     "creator": [
@@ -77,9 +77,9 @@
     "word": "akesi",
     "usage_category": "core",
     "source_language": "Dutch",
-    "definition_en": "NOUN non-cute animal; reptile, amphibian",
+    "definition_en": "reptile, amphibian, scaly creature, crawling creature",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "non-cute animal; reptile, amphibian"
@@ -142,9 +142,9 @@
     "word": "ala",
     "usage_category": "core",
     "source_language": "Georgian",
-    "definition_en": "ADJECTIVE no, not, zero",
+    "definition_en": "not, nothing, no; (particle) [negates a word or phrase]; (particle) [forms a yes-no question]; (number) zero",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "no, not, zero"
@@ -210,9 +210,9 @@
     "word": "alasa",
     "usage_category": "core",
     "source_language": "Acadian French",
-    "definition_en": "VERB to hunt, forage",
+    "definition_en": "hunt, forage, search, attempt; (preverb) try to",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "VERB",
         "meaning": "to hunt, forage"
@@ -287,9 +287,9 @@
     "word": "ale",
     "usage_category": "core",
     "source_language": "Dutch",
-    "definition_en": "ADJECTIVE all; abundant, countless, bountiful, every, plentiful\nNOUN abundance, everything, life, universe\nNUMBER 100",
+    "definition_en": "all, every, everything, entirety, universe; (number) one hundred",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "all; abundant, countless, bountiful, every, plentiful"
@@ -379,7 +379,7 @@
     "word": "ali",
     "usage_category": "uncommon",
     "source_language": "Dutch",
-    "definition_en": "",
+    "definition_en": "[pronunciation variant of ale]",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -432,9 +432,9 @@
     "word": "anpa",
     "usage_category": "core",
     "source_language": "Acadian French",
-    "definition_en": "ADJECTIVE bowing down, downward, humble, lowly, dependent",
+    "definition_en": "bottom, underside; below, beneath; defeated, humble, lowly",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "bowing down, downward, humble, lowly, dependent"
@@ -503,9 +503,9 @@
     "word": "ante",
     "usage_category": "core",
     "source_language": "Dutch",
-    "definition_en": "ADJECTIVE different, altered, changed, other",
+    "definition_en": "different, altered; modify, change; other; difference",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "different, altered, changed, other"
@@ -600,9 +600,9 @@
     "word": "anu",
     "usage_category": "core",
     "source_language": "Georgian",
-    "definition_en": "PARTICLE or",
+    "definition_en": "(particle) [separates multiple possibilities, replacing another particle], or",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PARTICLE",
         "meaning": "or"
@@ -667,7 +667,7 @@
     "word": "apeja",
     "usage_category": "obscure",
     "source_language": "Finnish",
-    "definition_en": "- to single out - expose ; to reveale the guilt or wrongdoing of - to attack non-physically (verbally attack) - to expose to shame blame to fault accuse to cause to feel shame to dishonour, disgrace a painful emotion resulting from an awareness of having done something dishonourable, unworthy, degrading, etc.",
+    "definition_en": "guilt, shame, shun, stigma, disgrace; to accuse, to single out, to expose, to dishonor, to embarrass",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -714,9 +714,9 @@
     "word": "awen",
     "usage_category": "core",
     "source_language": "Dutch",
-    "definition_en": "ADJECTIVE enduring, kept, protected, safe, waiting, staying\nPRE-VERB to continue to",
+    "definition_en": "stay, remain, wait, pause; protect, keep safe; continue; (preverb) continue to",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "enduring, kept, protected, safe, waiting, staying"
@@ -827,12 +827,12 @@
     "word": "e",
     "usage_category": "core",
     "source_language": "a priori",
-    "definition_en": "(before the direct object)",
+    "definition_en": "(particle) [marks the start of a direct object]",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PARTICLE",
-        "meaning": "(before the direct object)"
+        "meaning": "before the direct object"
       }
     ],
     "creator": [
@@ -878,12 +878,12 @@
     "word": "en",
     "usage_category": "core",
     "source_language": "Dutch",
-    "definition_en": "(between multiple subjects)",
+    "definition_en": "(particle) [separates multiple subjects]",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PARTICLE",
-        "meaning": "(between multiple subjects)"
+        "meaning": "between multiple subjects"
       }
     ],
     "creator": [
@@ -940,7 +940,7 @@
     "word": "epiku",
     "usage_category": "uncommon",
     "source_language": "French",
-    "definition_en": "",
+    "definition_en": "epic, cool, awesome, amazing",
     "deprecated": false,
     "creator": [
       "jan Jan",
@@ -996,9 +996,9 @@
     "word": "esun",
     "usage_category": "core",
     "source_language": "Akan",
-    "definition_en": "NOUN market, shop, fair, bazaar, business transaction",
+    "definition_en": "trade, barter, exchange, swap, buy, sell; market, shop, fair, bazaar, place of business",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "market, shop, fair, bazaar, business transaction"
@@ -1080,9 +1080,9 @@
     "word": "ijo",
     "usage_category": "core",
     "source_language": "Esperanto",
-    "definition_en": "NOUN thing, phenomenon, object, matter",
+    "definition_en": "thing, object, entity, being, matter, phenomenon",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "thing, phenomenon, object, matter"
@@ -1162,9 +1162,9 @@
     "word": "ike",
     "usage_category": "core",
     "source_language": "Finnish",
-    "definition_en": "ADJECTIVE bad, negative; non-essential, irrelevant",
+    "definition_en": "negative quality, e.g. bad, unpleasant, harmful, unneeded",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "bad, negative; non-essential, irrelevant"
@@ -1261,9 +1261,9 @@
     "word": "ilo",
     "usage_category": "core",
     "source_language": "Esperanto",
-    "definition_en": "NOUN tool, implement, machine, device",
+    "definition_en": "tool, implement, machine, device",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "tool, implement, machine, device"
@@ -1343,9 +1343,9 @@
     "word": "insa",
     "usage_category": "core",
     "source_language": "Tok Pisin",
-    "definition_en": "NOUN centre, content, inside, between; internal organ, stomach",
+    "definition_en": "inside, center, between, middle, midpoint, internal",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "centre, content, inside, between; internal organ, stomach"
@@ -1423,7 +1423,7 @@
     "word": "isipin",
     "usage_category": "obscure",
     "source_language": "Tagalog",
-    "definition_en": "",
+    "definition_en": "to think, brainstorm, rationalize, conclude, ponder",
     "deprecated": false,
     "creator": [
       "jan ko"
@@ -1467,9 +1467,9 @@
     "word": "jaki",
     "usage_category": "core",
     "source_language": "English",
-    "definition_en": "ADJECTIVE disgusting, obscene, sickly, toxic, unclean, unsanitary",
+    "definition_en": "disgusting, unclean, unsanitary, toxic, repulsive, rotten",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "disgusting, obscene, sickly, toxic, unclean, unsanitary"
@@ -1547,7 +1547,7 @@
     "word": "jami",
     "usage_category": "obscure",
     "source_language": "English",
-    "definition_en": "also tp needs a specific interjection (i.e. not a or kin) for \"yum\"",
+    "definition_en": "yummy; eliciting or stimulating a positive sensory experience",
     "deprecated": false,
     "creator": [
       "jan inwin"
@@ -1584,9 +1584,9 @@
     "word": "jan",
     "usage_category": "core",
     "source_language": "Cantonese",
-    "definition_en": "NOUN human being, person, somebody",
+    "definition_en": "human being, person, somebody",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "human being, person, somebody"
@@ -1662,7 +1662,7 @@
     "word": "jasima",
     "usage_category": "uncommon",
     "source_language": "Turkish",
-    "definition_en": "",
+    "definition_en": "reflect, echo; mirror, duplicate",
     "deprecated": false,
     "creator": [
       "jan Wesu",
@@ -1719,9 +1719,9 @@
     "word": "jelo",
     "usage_category": "core",
     "source_language": "English",
-    "definition_en": "ADJECTIVE yellow, yellowish",
+    "definition_en": "yellow, amber, golden, lime yellow, yellowish orange",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "yellow, yellowish"
@@ -1782,9 +1782,9 @@
     "word": "jo",
     "usage_category": "core",
     "source_language": "Mandarin",
-    "definition_en": "VERB to have, carry, contain, hold",
+    "definition_en": "hold, carry, possess, contain, own",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "VERB",
         "meaning": "to have, carry, contain, hold"
@@ -1857,9 +1857,9 @@
     "word": "kala",
     "usage_category": "core",
     "source_language": "Finnish",
-    "definition_en": "NOUN fish, marine animal, sea creature",
+    "definition_en": "fish, marine animal, sea creature, swimming creature",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "fish, marine animal, sea creature"
@@ -1921,9 +1921,9 @@
     "word": "kalama",
     "usage_category": "core",
     "source_language": "Serbo-Croatian",
-    "definition_en": "VERB to produce a sound; recite, utter aloud",
+    "definition_en": "to produce sound; sound, e.g. sing, thunder, drum, clap, laugh, beep",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "VERB",
         "meaning": "to produce a sound; recite, utter aloud"
@@ -1985,9 +1985,9 @@
     "word": "kama",
     "usage_category": "core",
     "source_language": "Tok Pisin",
-    "definition_en": "ADJECTIVE arriving, coming, future, summoned\nPRE-VERB to become, manage to, succeed in",
+    "definition_en": "arriving, coming, future, summoned; (preverb) to become, manage to, succeed in",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "arriving, coming, future, summoned"
@@ -2067,7 +2067,7 @@
     "word": "kamalawala",
     "usage_category": "obscure",
     "source_language": "toki pona",
-    "definition_en": "",
+    "definition_en": "anarchy, uprising, revolt, rebellion",
     "deprecated": false,
     "creator": [
       "jan Wesu"
@@ -2111,7 +2111,7 @@
     "word": "kapesi",
     "usage_category": "obscure",
     "source_language": "multiple possibilities",
-    "definition_en": "",
+    "definition_en": "brown, gray, beige",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -2159,9 +2159,9 @@
     "word": "kasi",
     "usage_category": "core",
     "source_language": "Finnish",
-    "definition_en": "NOUN plant, vegetation; herb, leaf",
+    "definition_en": "plant, vegetation; herb, leaf",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "plant, vegetation; herb, leaf"
@@ -2223,9 +2223,9 @@
     "word": "ken",
     "usage_category": "core",
     "source_language": "Tok Pisin",
-    "definition_en": "PRE-VERB to be able to, be allowed to, can, may\nADJECTIVE possible",
+    "definition_en": "can, may, ability, permission; possibility, maybe; allow, enable; (preverb) to be able to",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PRE-VERB",
         "meaning": "to be able to, be allowed to, can, may"
@@ -2322,9 +2322,9 @@
     "word": "kepeken",
     "usage_category": "core",
     "source_language": "Dutch",
-    "definition_en": "PREPOSITION to use, with, by means of",
+    "definition_en": "(preposition) using, by means of",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PREPOSITION",
         "meaning": "to use, with, by means of"
@@ -2391,7 +2391,7 @@
     "word": "kijetesantakalu",
     "usage_category": "common",
     "source_language": "Finnish",
-    "definition_en": "",
+    "definition_en": "raccoon, kinkajou; any procyonid; any musteloid",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -2447,7 +2447,7 @@
     "word": "kiki",
     "usage_category": "obscure",
     "source_language": "a priori",
-    "definition_en": "",
+    "definition_en": "spiky, sharp; angle, point; triangular",
     "deprecated": false,
     "creator": [
       "jan Olipija",
@@ -2488,9 +2488,9 @@
     "word": "kili",
     "usage_category": "core",
     "source_language": "Georgian",
-    "definition_en": "NOUN fruit, vegetable, mushroom",
+    "definition_en": "fruit, vegetable, mushroom",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "fruit, vegetable, mushroom"
@@ -2558,12 +2558,12 @@
     "word": "kin",
     "usage_category": "common",
     "source_language": "Finnish",
-    "definition_en": "(emphasis, emotion or confirmation)",
+    "definition_en": "(particle) [after phrase or at sentence start] too, also, as well, additionally",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PARTICLE",
-        "meaning": "(emphasis, emotion or confirmation)"
+        "meaning": "emphasis, emotion or confirmation"
       }
     ],
     "creator": [
@@ -2625,7 +2625,7 @@
     "word": "kipisi",
     "usage_category": "common",
     "source_language": "Inuktitut",
-    "definition_en": "",
+    "definition_en": "split, cut, slice; piece, part; sharp, pointy",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -2696,9 +2696,9 @@
     "word": "kiwen",
     "usage_category": "core",
     "source_language": "Finnish",
-    "definition_en": "NOUN hard object, metal, rock, stone",
+    "definition_en": "hard object e.g. metal, stone, wood",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "hard object, metal, rock, stone"
@@ -2769,9 +2769,9 @@
     "word": "ko",
     "usage_category": "core",
     "source_language": "Cantonese",
-    "definition_en": "NOUN clay, clinging form, dough, semi-solid, paste, powder",
+    "definition_en": "semi-solid, e.g. paste, powder, goo, sand, soil, clay; squishy, moldable; sticky",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "clay, clinging form, dough, semi-solid, paste, powder"
@@ -2841,7 +2841,7 @@
     "word": "kokosila",
     "usage_category": "obscure",
     "source_language": "Esperanto",
-    "definition_en": "",
+    "definition_en": "to speak a non-Toki Pona language in an environment where Toki Pona is more appropriate",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -2895,9 +2895,9 @@
     "word": "kon",
     "usage_category": "core",
     "source_language": "Mandarin",
-    "definition_en": "NOUN air, breath; essence, spirit, hidden reality, unseen agent",
+    "definition_en": "air, breath, wind; essence, spirit, soul, ghost; unseen agent",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "air, breath; essence, spirit, hidden reality, unseen agent"
@@ -2972,7 +2972,7 @@
     "word": "konwe",
     "usage_category": "obscure",
     "source_language": "multiple",
-    "definition_en": "",
+    "definition_en": "animacy, life, autonomy; autonomous being, living thing, organism; alive, animate, dynamic; to animate, to bring to life",
     "deprecated": true,
     "creator": [
       "jan Emalan"
@@ -3011,7 +3011,7 @@
     "word": "ku",
     "usage_category": "common",
     "source_language": "a priori",
-    "definition_en": "",
+    "definition_en": "interacting with the book Toki Pona Dictionary (2021) by Sonja Lang",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -3050,9 +3050,9 @@
     "word": "kule",
     "usage_category": "core",
     "source_language": "Acadian French",
-    "definition_en": "ADJECTIVE colourful, pigmented, painted",
+    "definition_en": "color, pigment; category, genre, flavor; colorful, diverse",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "colourful, pigmented, painted"
@@ -3118,7 +3118,7 @@
     "word": "kulijo",
     "usage_category": "obscure",
     "source_language": "English",
-    "definition_en": "",
+    "definition_en": "(interjection) [casually express appreciation or acknowledgement]; cool, fine, okay",
     "deprecated": false,
     "creator": [
       "jan pakala",
@@ -3154,9 +3154,9 @@
     "word": "kulupu",
     "usage_category": "core",
     "source_language": "Tongan",
-    "definition_en": "NOUN community, company, group, nation, society, tribe",
+    "definition_en": "group, community, society, company, nation, collection, team, crowd",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "community, company, group, nation, society, tribe"
@@ -3264,9 +3264,9 @@
     "word": "kute",
     "usage_category": "core",
     "source_language": "Acadian French",
-    "definition_en": "NOUN ear\nVERB to hear, listen; pay attention to, obey",
+    "definition_en": "ear, hearing organ; hear, listen, pay attention to, obey",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "ear"
@@ -3332,12 +3332,12 @@
     "word": "la",
     "usage_category": "core",
     "source_language": "multiple possibilities",
-    "definition_en": "(between the context phrase and the main sentence)",
+    "definition_en": "(particle) [mark the previous statement as context to the following statement]",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PARTICLE",
-        "meaning": "(between the context phrase and the main sentence)"
+        "meaning": "between the context phrase and the main sentence"
       }
     ],
     "creator": [
@@ -3403,7 +3403,7 @@
     "word": "lanpan",
     "usage_category": "uncommon",
     "source_language": "Greek",
-    "definition_en": "",
+    "definition_en": "take, seize, steal",
     "deprecated": false,
     "creator": [
       "jan Wesu",
@@ -3460,9 +3460,9 @@
     "word": "lape",
     "usage_category": "core",
     "source_language": "Dutch",
-    "definition_en": "ADJECTIVE sleeping, resting",
+    "definition_en": "sleep, rest, break from an activity or work",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "sleeping, resting"
@@ -3525,9 +3525,9 @@
     "word": "laso",
     "usage_category": "core",
     "source_language": "Welsh",
-    "definition_en": "ADJECTIVE blue, green",
+    "definition_en": "turquoise, blue, green, cyan, indigo, lime green",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "blue, green"
@@ -3591,9 +3591,9 @@
     "word": "lawa",
     "usage_category": "core",
     "source_language": "Serbo-Croatian",
-    "definition_en": "NOUN head, mind\nVERB to control, direct, guide, lead, own, plan, regulate, rule",
+    "definition_en": "head, mind, brain; control, lead, guide; government, leader; rule, law",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "head, mind"
@@ -3697,7 +3697,7 @@
     "word": "leko",
     "usage_category": "common",
     "source_language": "multiple possibilities",
-    "definition_en": "",
+    "definition_en": "square, cube, block, blocky object e.g. bricks, stairs",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -3761,9 +3761,9 @@
     "word": "len",
     "usage_category": "core",
     "source_language": "Acadian French",
-    "definition_en": "NOUN cloth, clothing, fabric, textile; cover, layer of privacy",
+    "definition_en": "cloth, clothing, fabric, textile; covered, hidden, secret, private",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "cloth, clothing, fabric, textile; cover, layer of privacy"
@@ -3846,9 +3846,9 @@
     "word": "lete",
     "usage_category": "core",
     "source_language": "Acadian French",
-    "definition_en": "ADJECTIVE cold, cool; uncooked, raw",
+    "definition_en": "cold, cool, frozen; freeze, chill; raw, uncooked",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "cold, cool; uncooked, raw"
@@ -3914,12 +3914,12 @@
     "word": "li",
     "usage_category": "core",
     "source_language": "Esperanto",
-    "definition_en": "(between any subject except mi alone or sina alone and its verb; also to introduce a new verb for the same subject)",
+    "definition_en": "(particle) [marks the start of an indicative verb (statement)]",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PARTICLE",
-        "meaning": "(between any subject except mi alone or sina alone and its verb; also to introduce a new verb for the same subject)"
+        "meaning": "between any subject except mi alone or sina alone and its verb; also to introduce a new verb for the same subject"
       }
     ],
     "creator": [
@@ -3979,9 +3979,9 @@
     "word": "lili",
     "usage_category": "core",
     "source_language": "Tok Pisin",
-    "definition_en": "ADJECTIVE little, small, short; few; a bit; young",
+    "definition_en": "small, short, young; few; piece, part",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "little, small, short; few; a bit; young"
@@ -4082,9 +4082,9 @@
     "word": "linja",
     "usage_category": "core",
     "source_language": "Finnish",
-    "definition_en": "NOUN long and flexible thing; cord, hair, rope, thread, yarn",
+    "definition_en": "long, flexible thing, e.g. rope, yarn, hair, fur, line, strand",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "long and flexible thing; cord, hair, rope, thread, yarn"
@@ -4163,7 +4163,7 @@
     "word": "linluwi",
     "usage_category": "uncommon",
     "source_language": "Welsh",
-    "definition_en": "",
+    "definition_en": "bonded things which are stronger through their bonds e.g. network, internet, connection; weave, braid, interlace",
     "deprecated": false,
     "creator": [
       "jan inwin"
@@ -4214,9 +4214,9 @@
     "word": "lipu",
     "usage_category": "core",
     "source_language": "Finnish",
-    "definition_en": "NOUN flat object; book, document, card, paper, record, website",
+    "definition_en": "flat and bendable object, e.g. paper, card, leaf; written text or document, e.g. book, website, clay tablet",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "flat object; book, document, card, paper, record, website"
@@ -4302,9 +4302,9 @@
     "word": "loje",
     "usage_category": "core",
     "source_language": "Dutch",
-    "definition_en": "ADJECTIVE red, reddish",
+    "definition_en": "red, magenta, scarlet, pink, rust-colored, reddish orange",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "red, reddish"
@@ -4363,9 +4363,9 @@
     "word": "lon",
     "usage_category": "core",
     "source_language": "Tok Pisin",
-    "definition_en": "PREPOSITION located at, present at, real, true, existing",
+    "definition_en": "present, existing, real, true; (preposition) located at, in, during, in the context of",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PREPOSITION",
         "meaning": "located at, present at, real, true, existing"
@@ -4482,9 +4482,9 @@
     "word": "luka",
     "usage_category": "core",
     "source_language": "Serbo-Croatian",
-    "definition_en": "NOUN arm, hand, tactile organ\nNUMBER five",
+    "definition_en": "hand, arm, tactile limb, grasping limb; to grasp, interact with, feel using touch; (number) five",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "arm, hand, tactile organ"
@@ -4557,9 +4557,9 @@
     "word": "lukin",
     "usage_category": "core",
     "source_language": "Tok Pisin",
-    "definition_en": "NOUN eye\nVERB to look at, see, examine, observe, read, watch\nPRE-VERB to seek, look for, try to",
+    "definition_en": "see, look, view, examine, read, watch; visual; eye, seeing organ; (preverb) try to",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "eye"
@@ -4670,9 +4670,9 @@
     "word": "lupa",
     "usage_category": "core",
     "source_language": "Lojban",
-    "definition_en": "NOUN door, hole, orifice, window",
+    "definition_en": "hole, pit, cave, doorway, window, portal",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "door, hole, orifice, window"
@@ -4752,9 +4752,9 @@
     "word": "ma",
     "usage_category": "core",
     "source_language": "Finnish",
-    "definition_en": "NOUN earth, land; outdoors, world; country, territory; soil",
+    "definition_en": "earth, land, soil; country, territory, world; outdoors",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "earth, land; outdoors, world; country, territory; soil"
@@ -4846,7 +4846,7 @@
     "word": "majuna",
     "usage_category": "uncommon",
     "source_language": "Esperanto",
-    "definition_en": "",
+    "definition_en": "old, aged, ancient",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -4914,9 +4914,9 @@
     "word": "mama",
     "usage_category": "core",
     "source_language": "Georgian",
-    "definition_en": "NOUN parent, ancestor; creator, originator; caretaker, sustainer",
+    "definition_en": "parent, ancestor; creator, originator; caretaker, sustainer, guardian",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "parent, ancestor; creator, originator; caretaker, sustainer"
@@ -4987,9 +4987,9 @@
     "word": "mani",
     "usage_category": "core",
     "source_language": "English",
-    "definition_en": "NOUN money, cash, savings, wealth; large domesticated animal",
+    "definition_en": "money, currency; thing of value e.g. gold, investment, livestock",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "money, cash, savings, wealth; large domesticated animal"
@@ -5089,9 +5089,9 @@
     "word": "meli",
     "usage_category": "common",
     "source_language": "Tok Pisin",
-    "definition_en": "NOUN woman, female, feminine person; wife",
+    "definition_en": "woman, female, feminine person, wife, girlfriend",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "woman, female, feminine person; wife"
@@ -5163,7 +5163,7 @@
     "word": "melome",
     "usage_category": "obscure",
     "source_language": "toki pona",
-    "definition_en": "",
+    "definition_en": "lesbian, sapphic, WLW",
     "deprecated": false,
     "creator": [
       "jan inwin"
@@ -5200,7 +5200,7 @@
     "word": "meso",
     "usage_category": "uncommon",
     "source_language": "Greek",
-    "definition_en": "",
+    "definition_en": "midpoint, medium, mediocre; neither one not the other, neither fully is nor isn't",
     "deprecated": false,
     "creator": [
       "jan Olipija"
@@ -5254,9 +5254,9 @@
     "word": "mi",
     "usage_category": "core",
     "source_language": "Esperanto",
-    "definition_en": "NOUN I, me, we, us",
+    "definition_en": "(pronoun) I, me, we, us",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "I, me, we, us"
@@ -5329,9 +5329,9 @@
     "word": "mije",
     "usage_category": "common",
     "source_language": "Finnish",
-    "definition_en": "NOUN man, male, masculine person; husband",
+    "definition_en": "man, male, masculine person, husband, boyfriend",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "man, male, masculine person; husband"
@@ -5398,7 +5398,7 @@
     "word": "mijomi",
     "usage_category": "obscure",
     "source_language": "toki pona",
-    "definition_en": "",
+    "definition_en": "gay, achillean, MLM",
     "deprecated": false,
     "creator": [
       "jan inwin"
@@ -5435,7 +5435,7 @@
     "word": "misa",
     "usage_category": "obscure",
     "source_language": "Ukranian",
-    "definition_en": "",
+    "definition_en": "Glires or Eulipotyphla; rat, mouse, squirrel, rabbit, rodent; {~ suli} capybara",
     "deprecated": false,
     "creator": [
       "misa Ewis"
@@ -5478,7 +5478,7 @@
     "word": "misikeke",
     "usage_category": "common",
     "source_language": "Ojibwe",
-    "definition_en": "misikeke means medicine",
+    "definition_en": "medical item or practice e.g. prescriptions, meditation, exercise, bandages, therapy",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -5535,9 +5535,9 @@
     "word": "moku",
     "usage_category": "core",
     "source_language": "Japanese",
-    "definition_en": "VERB to eat, drink, consume, swallow, ingest",
+    "definition_en": "eat, drink, consume, swallow, ingest; food, edible thing",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "VERB",
         "meaning": "to eat, drink, consume, swallow, ingest"
@@ -5611,9 +5611,9 @@
     "word": "moli",
     "usage_category": "core",
     "source_language": "Acadian French",
-    "definition_en": "ADJECTIVE dead, dying",
+    "definition_en": "death, dead, die, dying; kill, murder",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "dead, dying"
@@ -5679,9 +5679,9 @@
     "word": "monsi",
     "usage_category": "core",
     "source_language": "Acadian French",
-    "definition_en": "NOUN back, behind, rear",
+    "definition_en": "back, behind, rear",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "back, behind, rear"
@@ -5743,7 +5743,7 @@
     "word": "monsuta",
     "usage_category": "common",
     "source_language": "Japanese",
-    "definition_en": "",
+    "definition_en": "fear, nervousness, dread; scary, frightening; scary thing e.g. predator, threat, danger",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -5807,12 +5807,12 @@
     "word": "mu",
     "usage_category": "core",
     "source_language": "onomatopoeia",
-    "definition_en": "(animal noise or communication)",
+    "definition_en": "(animal noise or communication, onomatopoeia)",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PARTICLE",
-        "meaning": "(animal noise or communication)"
+        "meaning": "animal noise or communication"
       }
     ],
     "creator": [
@@ -5869,9 +5869,9 @@
     "word": "mun",
     "usage_category": "core",
     "source_language": "English",
-    "definition_en": "NOUN moon, night sky object, star",
+    "definition_en": "moon, night sky object, star, celestial body",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "moon, night sky object, star"
@@ -5933,9 +5933,9 @@
     "word": "musi",
     "usage_category": "core",
     "source_language": "Esperanto",
-    "definition_en": "ADJECTIVE artistic, entertaining, frivolous, playful, recreational",
+    "definition_en": "fun, game, entertainment, art, play, amusing, interesting, comical, silly",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "artistic, entertaining, frivolous, playful, recreational"
@@ -6012,9 +6012,9 @@
     "word": "mute",
     "usage_category": "core",
     "source_language": "Esperanto",
-    "definition_en": "ADJECTIVE many, a lot, more, much, several, very\nNOUN quantity",
+    "definition_en": "many, several, very; quantity; (number) twenty",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "many, a lot, more, much, several, very"
@@ -6121,7 +6121,7 @@
     "word": "n",
     "usage_category": "common",
     "source_language": "onomatopoeia",
-    "definition_en": "",
+    "definition_en": "(interjection) hm, uh, mm, er, umm, [indicate thinking or pause]",
     "deprecated": false,
     "creator": [
       "kala kala"
@@ -6168,9 +6168,9 @@
     "word": "namako",
     "usage_category": "common",
     "source_language": "multiple possibilities",
-    "definition_en": "ADJECTIVE new, fresh; additional, another, extra",
+    "definition_en": "spice, ornament, adornment; extra, additional",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "new, fresh; additional, another, extra"
@@ -6244,12 +6244,12 @@
     "word": "nanpa",
     "usage_category": "core",
     "source_language": "Tok Pisin",
-    "definition_en": "PARTICLE -th (ordinal number)\nNOUN numbers",
+    "definition_en": "number; (particle) [ordinal number], -th",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PARTICLE",
-        "meaning": "-th (ordinal number)"
+        "meaning": "-th (ordinal number"
       },
       {
         "pos": "NOUN",
@@ -6327,9 +6327,9 @@
     "word": "nasa",
     "usage_category": "core",
     "source_language": "Tok Pisin",
-    "definition_en": "ADJECTIVE unusual, strange; foolish, crazy; drunk, intoxicated",
+    "definition_en": "strange, unusual, silly, abnormal, unexpected; drunk, intoxicated",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "unusual, strange; foolish, crazy; drunk, intoxicated"
@@ -6399,9 +6399,9 @@
     "word": "nasin",
     "usage_category": "core",
     "source_language": "Serbo-Croatian",
-    "definition_en": "NOUN way, custom, doctrine, method, path, road",
+    "definition_en": "method, doctrine, tradition; path, road, way",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "way, custom, doctrine, method, path, road"
@@ -6503,9 +6503,9 @@
     "word": "nena",
     "usage_category": "core",
     "source_language": "Finnish",
-    "definition_en": "NOUN bump, button, hill, mountain, nose, protuberance",
+    "definition_en": "protuberances e.g. bump, button, hill, nose",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "bump, button, hill, mountain, nose, protuberance"
@@ -6573,9 +6573,9 @@
     "word": "ni",
     "usage_category": "core",
     "source_language": "Cantonese",
-    "definition_en": "ADJECTIVE that, this",
+    "definition_en": "this, that, these, those",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "that, this"
@@ -6651,9 +6651,9 @@
     "word": "nimi",
     "usage_category": "core",
     "source_language": "Finnish",
-    "definition_en": "NOUN name, word",
+    "definition_en": "word, name",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "name, word"
@@ -6719,7 +6719,7 @@
     "word": "nimisin",
     "usage_category": "uncommon",
     "source_language": "toki pona",
-    "definition_en": "",
+    "definition_en": "any non-pu word; any new word; any joke word",
     "deprecated": false,
     "creator": [
       "unknown"
@@ -6754,7 +6754,7 @@
     "word": "nja",
     "usage_category": "obscure",
     "source_language": "Japanese",
-    "definition_en": "",
+    "definition_en": "meow, cat sound",
     "deprecated": false,
     "creator": [
       "jan Kita"
@@ -6788,9 +6788,9 @@
     "word": "noka",
     "usage_category": "core",
     "source_language": "Serbo-Croatian",
-    "definition_en": "NOUN foot, leg, organ of locomotion; bottom, lower part",
+    "definition_en": "foot, leg, organ of locomotion, roots",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "foot, leg, organ of locomotion; bottom, lower part"
@@ -6857,12 +6857,12 @@
     "word": "o",
     "usage_category": "core",
     "source_language": "Georgian",
-    "definition_en": "PARTICLE hey! O! (vocative or imperative)",
+    "definition_en": "(particle) [marks the end of a vocative (who is being spoken to)], [marks the start of an imperative (command, wish, instruction)], should",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PARTICLE",
-        "meaning": "hey! O! (vocative or imperative)"
+        "meaning": "hey! O! (vocative or imperative"
       }
     ],
     "creator": [
@@ -6926,7 +6926,7 @@
     "word": "ojuta",
     "usage_category": "obscure",
     "source_language": "toki pona",
-    "definition_en": "",
+    "definition_en": "adaptation of the English meme \"ligma\", (literally) \"o uta\" (lick)",
     "deprecated": false,
     "creator": [
       "soweli nata"
@@ -6960,7 +6960,7 @@
     "word": "oke",
     "usage_category": "obscure",
     "source_language": "English",
-    "definition_en": "",
+    "definition_en": "(acknowledgement or acceptance)",
     "deprecated": false,
     "creator": [
       "unknown"
@@ -7005,9 +7005,9 @@
     "word": "oko",
     "usage_category": "uncommon",
     "source_language": "Serbo-Croatian",
-    "definition_en": "NOUN eye\nVERB to look at, see, examine, observe, read, watch\nPRE-VERB to seek, look for, try to",
+    "definition_en": "see, look, view, examine, read, watch; visual; eye, seeing organ; (preverb) try to",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "eye"
@@ -7077,9 +7077,9 @@
     "word": "olin",
     "usage_category": "core",
     "source_language": "Serbo-Croatian",
-    "definition_en": "VERB to love, have compassion for, respect, show affection to",
+    "definition_en": "to have a strong emotional bond with, e.g. affection, appreciation, compassion, respect; platonic, romantic, or familial relationships",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "VERB",
         "meaning": "to love, have compassion for, respect, show affection to"
@@ -7160,7 +7160,7 @@
     "word": "omekapo",
     "usage_category": "obscure",
     "source_language": "toki pona",
-    "definition_en": "",
+    "definition_en": "goodbye, farewell, see you later, (literally) \"o moku e kala pona\" (eat a good fish)",
     "deprecated": false,
     "creator": [
       "jan Maliku"
@@ -7196,9 +7196,9 @@
     "word": "ona",
     "usage_category": "core",
     "source_language": "Serbo-Croatian",
-    "definition_en": "NOUN he, she, it, they",
+    "definition_en": "(third-person pronoun) he, she, it, they",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "he, she, it, they"
@@ -7272,9 +7272,9 @@
     "word": "open",
     "usage_category": "core",
     "source_language": "English",
-    "definition_en": "VERB to begin, start; open; turn on",
+    "definition_en": "begin, start, open, turn on; beginning",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "VERB",
         "meaning": "to begin, start; open; turn on"
@@ -7348,7 +7348,7 @@
     "word": "owe",
     "usage_category": "obscure",
     "source_language": "English",
-    "definition_en": "",
+    "definition_en": "totalitarian, Orwellian; of or relating to Big Brother from the book Nineteen Eighty-Four",
     "deprecated": false,
     "creator": [
       "nano"
@@ -7383,9 +7383,9 @@
     "word": "pakala",
     "usage_category": "core",
     "source_language": "Tok Pisin",
-    "definition_en": "ADJECTIVE botched, broken, damaged, harmed, messed up",
+    "definition_en": "damaged, broken, botched, harmed, messed up; mistake",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "botched, broken, damaged, harmed, messed up"
@@ -7483,7 +7483,7 @@
     "word": "pake",
     "usage_category": "obscure",
     "source_language": "English",
-    "definition_en": "",
+    "definition_en": "stop, cease, halt; to block the way, to interrupt; to prevent",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -7541,9 +7541,9 @@
     "word": "pali",
     "usage_category": "core",
     "source_language": "Esperanto",
-    "definition_en": "VERB to do, take action on, work on; build, make, prepare",
+    "definition_en": "work, activity; create, build, design; put effort toward, take action on",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "VERB",
         "meaning": "to do, take action on, work on; build, make, prepare"
@@ -7668,9 +7668,9 @@
     "word": "palisa",
     "usage_category": "core",
     "source_language": "Serbo-Croatian",
-    "definition_en": "NOUN long hard thing; branch, rod, stick",
+    "definition_en": "long and hard thing e.g. branch, pole, rod, stick, spine, mast",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "long hard thing; branch, rod, stick"
@@ -7738,9 +7738,9 @@
     "word": "pan",
     "usage_category": "core",
     "source_language": "multiple",
-    "definition_en": "NOUN cereal, grain; barley, corn, oat, rice, wheat; bread, pasta",
+    "definition_en": "grains, starchy foods, baked goods e.g. rice, sorghum, bread, noodles, masa, porridge, injera",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "cereal, grain; barley, corn, oat, rice, wheat; bread, pasta"
@@ -7811,9 +7811,9 @@
     "word": "pana",
     "usage_category": "core",
     "source_language": "multiple possibilities",
-    "definition_en": "VERB to give, send, emit, provide, put, release",
+    "definition_en": "give, send, emit, provide, put, release",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "VERB",
         "meaning": "to give, send, emit, provide, put, release"
@@ -7933,7 +7933,7 @@
     "word": "penpo",
     "usage_category": "obscure",
     "source_language": "toki pona",
-    "definition_en": "tenpo li penpo a",
+    "definition_en": "(equivalent to \"(pi) toki pona taso\")",
     "deprecated": false,
     "creator": [
       "jan Kita"
@@ -7960,9 +7960,9 @@
     "word": "pi",
     "usage_category": "core",
     "source_language": "Tok Pisin",
-    "definition_en": "PARTICLE of",
+    "definition_en": "(particle) [group the following words into one modifier for the previous word]",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PARTICLE",
         "meaning": "of"
@@ -8025,7 +8025,7 @@
     "word": "pika",
     "usage_category": "obscure",
     "source_language": "Japanese",
-    "definition_en": "MOD. electric, electronic, conductive, mashinical, online\nN. electricity, lightning, thunder, network\nV. struck by electric/lightning",
+    "definition_en": "electric, electronic, conductive, mechanical, online; electricity, lightning, thunder, network",
     "deprecated": false,
     "creator": [
       "Kriskee_"
@@ -8059,16 +8059,16 @@
     "word": "pilin",
     "usage_category": "core",
     "source_language": "Tok Pisin",
-    "definition_en": "NOUN heart (physical or emotional)\nADJECTIVE feeling (an emotion, a direct experience)",
+    "definition_en": "experience e.g. emotion, feeling, touch; heart (physical or emotional)",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
-        "meaning": "heart (physical or emotional)"
+        "meaning": "heart (physical or emotional"
       },
       {
         "pos": "ADJECTIVE",
-        "meaning": "feeling (an emotion, a direct experience)"
+        "meaning": "feeling (an emotion, a direct experience"
       }
     ],
     "creator": [
@@ -8166,9 +8166,9 @@
     "word": "pimeja",
     "usage_category": "core",
     "source_language": "Finnish",
-    "definition_en": "ADJECTIVE black, dark, unlit",
+    "definition_en": "dark, unlit; dark color, e.g. black, purple, brown",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "black, dark, unlit"
@@ -8231,9 +8231,9 @@
     "word": "pini",
     "usage_category": "core",
     "source_language": "multiple possibilities",
-    "definition_en": "ADJECTIVE ago, completed, ended, finished, past",
+    "definition_en": "finish, stop, prevent; close, disable, turn off; ended, past; edge, end, conclusion",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "ago, completed, ended, finished, past"
@@ -8322,9 +8322,9 @@
     "word": "pipi",
     "usage_category": "core",
     "source_language": "Acadian French",
-    "definition_en": "NOUN bug, insect, ant, spider",
+    "definition_en": "insect, bug, spider, tiny crawling creature",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "bug, insect, ant, spider"
@@ -8385,7 +8385,7 @@
     "word": "po",
     "usage_category": "obscure",
     "source_language": "English",
-    "definition_en": "",
+    "definition_en": "(number) four",
     "deprecated": true,
     "creator": [
       "jan Sonja"
@@ -8428,9 +8428,9 @@
     "word": "poka",
     "usage_category": "core",
     "source_language": "Serbo-Croatian",
-    "definition_en": "NOUN hip, side; next to, nearby, vicinity",
+    "definition_en": "hip, side; next to, nearby, vicinity",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "hip, side; next to, nearby, vicinity"
@@ -8496,9 +8496,9 @@
     "word": "poki",
     "usage_category": "core",
     "source_language": "Tok Pisin",
-    "definition_en": "NOUN container, bag, bowl, box, cup, cupboard, drawer, vessel",
+    "definition_en": "container e.g. bag, bowl, box, cup, cupboard, drawer, folder",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "container, bag, bowl, box, cup, cupboard, drawer, vessel"
@@ -8584,9 +8584,9 @@
     "word": "pona",
     "usage_category": "core",
     "source_language": "Esperanto",
-    "definition_en": "ADJECTIVE good, positive, useful; friendly, peaceful; simple",
+    "definition_en": "positive quality, e.g. good, pleasant, helpful, friendly, useful, peaceful",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "good, positive, useful; friendly, peaceful; simple"
@@ -8737,7 +8737,7 @@
     "word": "powe",
     "usage_category": "obscure",
     "source_language": "Acadian French",
-    "definition_en": "",
+    "definition_en": "unreal, false, untrue; pretend; deceive, trick",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -8794,9 +8794,9 @@
     "word": "pu",
     "usage_category": "core",
     "source_language": "multiple possibilities",
-    "definition_en": "ADJECTIVE interacting with the official Toki Pona book",
+    "definition_en": "interacting with the book Toki Pona: The Language of Good by Sonja Lang",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "interacting with the official Toki Pona book"
@@ -8859,7 +8859,7 @@
     "word": "puwa",
     "usage_category": "obscure",
     "source_language": "Japanese",
-    "definition_en": "",
+    "definition_en": "fluffy, soft, squishy (something that can be compressed and will try to go back to its original shape)",
     "deprecated": false,
     "creator": [
       "jan Seli"
@@ -8895,9 +8895,9 @@
     "word": "sama",
     "usage_category": "core",
     "source_language": "multiple",
-    "definition_en": "ADJECTIVE same, similar; each other; sibling, peer, fellow\nPREPOSITION as, like",
+    "definition_en": "same, similar, alike; (adjective) peer, fellow, each other; (preposition) similar to, same as",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "same, similar; each other; sibling, peer, fellow"
@@ -8991,7 +8991,7 @@
     "word": "san",
     "usage_category": "obscure",
     "source_language": "multiple possibilities",
-    "definition_en": "",
+    "definition_en": "(number) three",
     "deprecated": false,
     "creator": [
       "jan Lenoka",
@@ -9041,9 +9041,9 @@
     "word": "seli",
     "usage_category": "core",
     "source_language": "Georgian",
-    "definition_en": "ADJECTIVE fire; cooking element, chemical reaction, heat source",
+    "definition_en": "hot, warm; heat, fire, flame; burn",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "fire; cooking element, chemical reaction, heat source"
@@ -9116,9 +9116,9 @@
     "word": "selo",
     "usage_category": "core",
     "source_language": "Esperanto",
-    "definition_en": "NOUN outer form, outer layer; bark, peel, shell, skin; boundary",
+    "definition_en": "outer layer, e.g. skin, peel, shell, bark; outer shape, outer form, boundary",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "outer form, outer layer; bark, peel, shell, skin; boundary"
@@ -9196,9 +9196,9 @@
     "word": "seme",
     "usage_category": "core",
     "source_language": "Mandarin",
-    "definition_en": "PARTICLE what? which?",
+    "definition_en": "(particle) [indicate a question by marking missing info in a sentence]; what, which, who",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PARTICLE",
         "meaning": "what? which?"
@@ -9259,9 +9259,9 @@
     "word": "sewi",
     "usage_category": "core",
     "source_language": "Georgian",
-    "definition_en": "NOUN area above, highest part, something elevated\nADJECTIVE awe-inspiring, divine, sacred, supernatural",
+    "definition_en": "up, top, above, highest part; divine, sacred, supernatural; awesome, inspiring, excelling",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "area above, highest part, something elevated"
@@ -9347,9 +9347,9 @@
     "word": "sijelo",
     "usage_category": "core",
     "source_language": "Serbo-Croatian",
-    "definition_en": "NOUN body (of person or animal), physical state, torso",
+    "definition_en": "body, shape, physical state, torso, substance, form",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "body (of person or animal), physical state, torso"
@@ -9415,9 +9415,9 @@
     "word": "sike",
     "usage_category": "core",
     "source_language": "English",
-    "definition_en": "NOUN round or circular thing; ball, circle, cycle, sphere, wheel\nADJECTIVE of one year",
+    "definition_en": "circle, sphere, spiral, round thing e.g. ball, wheel; repeating thing e.g. cycle, orbit, loop",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "round or circular thing; ball, circle, cycle, sphere, wheel"
@@ -9498,9 +9498,9 @@
     "word": "sin",
     "usage_category": "core",
     "source_language": "Mandarin",
-    "definition_en": "ADJECTIVE new, fresh; additional, another, extra",
+    "definition_en": "new, fresh, update; repeat, do again",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "new, fresh; additional, another, extra"
@@ -9573,16 +9573,12 @@
     "word": "sina",
     "usage_category": "core",
     "source_language": "Finnish",
-    "definition_en": "NOUN you, y'all\nPRONOUN you, y'all, your",
+    "definition_en": "(pronoun) you, y'all",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
-        "meaning": "you, y'all"
-      },
-      {
-        "pos": "PRONOUN",
-        "meaning": "you, y'all, your"
+        "meaning": "you"
       }
     ],
     "creator": [
@@ -9606,7 +9602,7 @@
     ],
     "translations": {
       "de": "NOMEN du, Sie, ihr",
-      "en": "NOUN you, y'all\nPRONOUN you, y'all, your",
+      "en": "NOUN you",
       "eo": "SUBSTANTIVO vi",
       "fr": "NOM tu, toi, vous",
       "ku": "you, your, yours, yourself"
@@ -9642,9 +9638,9 @@
     "word": "sinpin",
     "usage_category": "core",
     "source_language": "Cantonese",
-    "definition_en": "NOUN face, foremost, front, wall",
+    "definition_en": "vertical surface e.g. wall, board; front of something e.g. face",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "face, foremost, front, wall"
@@ -9708,9 +9704,9 @@
     "word": "sitelen",
     "usage_category": "core",
     "source_language": "Dutch",
-    "definition_en": "NOUN image, picture, representation, symbol, mark, writing",
+    "definition_en": "image, picture, representation, symbol, mark, writing",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "image, picture, representation, symbol, mark, writing"
@@ -9799,7 +9795,7 @@
     "word": "soko",
     "usage_category": "common",
     "source_language": "Georgian",
-    "definition_en": "",
+    "definition_en": "mushroom, fungus, lichen",
     "deprecated": false,
     "creator": [
       "jan inwin",
@@ -9855,9 +9851,9 @@
     "word": "sona",
     "usage_category": "core",
     "source_language": "Georgian",
-    "definition_en": "VERB to know, be skilled in, be wise about, have information on\nPRE-VERB to know how to",
+    "definition_en": "knowledge, information, data; know, be skilled in, be wise about; (preverb) know how to",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "VERB",
         "meaning": "to know, be skilled in, be wise about, have information on"
@@ -9950,7 +9946,7 @@
     "word": "soto",
     "usage_category": "obscure",
     "source_language": "Swahili",
-    "definition_en": "",
+    "definition_en": "left, left side, port side",
     "deprecated": false,
     "creator": [
       "jan inwin"
@@ -9993,9 +9989,9 @@
     "word": "soweli",
     "usage_category": "core",
     "source_language": "Georgian",
-    "definition_en": "NOUN animal, beast, land mammal",
+    "definition_en": "fuzzy creature, land animal, beast",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "animal, beast, land mammal"
@@ -10074,7 +10070,7 @@
     "word": "su",
     "usage_category": "uncommon",
     "source_language": "a priori",
-    "definition_en": "**su**: interacting with a book from the illustrated story book series that began with The Wonderful Wizard of Oz, produced by Sonja Lang",
+    "definition_en": "interacting with a book from the illustrated story book series that began with The Wonderful Wizard of Oz, produced by Sonja Lang",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -10109,9 +10105,9 @@
     "word": "suli",
     "usage_category": "core",
     "source_language": "Finnish",
-    "definition_en": "ADJECTIVE big, heavy, large, long, tall; important; adult",
+    "definition_en": "big, heavy, large, long, tall, wide; important, relevant",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "big, heavy, large, long, tall; important; adult"
@@ -10239,9 +10235,9 @@
     "word": "suno",
     "usage_category": "core",
     "source_language": "Esperanto",
-    "definition_en": "NOUN sun; light brightness, glow, radiance, shine; light source",
+    "definition_en": "light, shine, glow, radiance; sun, light source; brightness",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "sun; light brightness, glow, radiance, shine; light source"
@@ -10305,9 +10301,9 @@
     "word": "supa",
     "usage_category": "core",
     "source_language": "Esperanto",
-    "definition_en": "NOUN horizontal surface, thing to put or rest something on",
+    "definition_en": "flat horizontal surface, especially to put or rest things on e.g. bed, floor, desk, plate, table, platform, stage",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "horizontal surface, thing to put or rest something on"
@@ -10390,14 +10386,8 @@
     "word": "sutopatikuna",
     "usage_category": "obscure",
     "source_language": "Serbo-Croatian",
-    "definition_en": "NOUN platypus",
+    "definition_en": "platypus",
     "deprecated": false,
-    "definitions_en": [
-      {
-        "pos": "NOUN",
-        "meaning": "platypus"
-      }
-    ],
     "creator": [
       "Alexandre Baudry"
     ],
@@ -10413,12 +10403,11 @@
         "word": "čudnovati kljunaš"
       }
     ],
-    "translations": {
-      "en": "NOUN platypus",
-      "ku": "platypus"
-    },
     "usage_data": {
       "platypus": 20
+    },
+    "translations": {
+      "ku": "platypus"
     },
     "representations": {
       "ligatures": [
@@ -10439,9 +10428,9 @@
     "word": "suwi",
     "usage_category": "core",
     "source_language": "Tok Pisin",
-    "definition_en": "ADJECTIVE sweet, fragrant; cute, innocent, adorable",
+    "definition_en": "sweet, fragrant; cute, adorable",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "sweet, fragrant; cute, innocent, adorable"
@@ -10512,7 +10501,7 @@
     "word": "taki",
     "usage_category": "obscure",
     "source_language": "Korean",
-    "definition_en": "",
+    "definition_en": "sticky, magnetic; bond, attract, attach, clip",
     "deprecated": false,
     "creator": [
       "jan Kapilu",
@@ -10558,9 +10547,9 @@
     "word": "tan",
     "usage_category": "core",
     "source_language": "Cantonese",
-    "definition_en": "PREPOSITION by, from, because of",
+    "definition_en": "(preposition) from, because of; cause, origin",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PREPOSITION",
         "meaning": "by, from, because of"
@@ -10633,9 +10622,9 @@
     "word": "taso",
     "usage_category": "core",
     "source_language": "Tok Pisin",
-    "definition_en": "PARTICLE but, however\nADJECTIVE only",
+    "definition_en": "only, exclusively; (particle) [marks a sentence as qualifying or contradictory], but, however",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PARTICLE",
         "meaning": "but, however"
@@ -10722,9 +10711,9 @@
     "word": "tawa",
     "usage_category": "core",
     "source_language": "English",
-    "definition_en": "PREPOSITION going to, toward; for; from the perspective of\nADJECTIVE moving",
+    "definition_en": "motion, e.g. walking, shaking, flight, travel; (preposition) to, for, going to, from the perspective of",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PREPOSITION",
         "meaning": "going to, toward; for; from the perspective of"
@@ -10824,7 +10813,7 @@
     "word": "te",
     "usage_category": "obscure",
     "source_language": "Japanese",
-    "definition_en": "",
+    "definition_en": "(particle) [opens a quote]",
     "deprecated": false,
     "creator": [
       "kala kala/jan Salan",
@@ -10869,7 +10858,7 @@
     "word": "teje",
     "usage_category": "obscure",
     "source_language": "Welsh",
-    "definition_en": "",
+    "definition_en": "right, right side, starboard",
     "deprecated": false,
     "creator": [
       "jan Olipija",
@@ -10911,9 +10900,9 @@
     "word": "telo",
     "usage_category": "core",
     "source_language": "Acadian French",
-    "definition_en": "NOUN water, liquid, fluid, wet substance; beverage",
+    "definition_en": "liquids e.g. water, gasoline, soda, lava, soup, oil, ink",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "water, liquid, fluid, wet substance; beverage"
@@ -10980,9 +10969,9 @@
     "word": "tenpo",
     "usage_category": "core",
     "source_language": "Esperanto",
-    "definition_en": "NOUN time, duration, moment, occasion, period, situation",
+    "definition_en": "time, event, situation, moment, period, duration",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "time, duration, moment, occasion, period, situation"
@@ -11060,7 +11049,7 @@
     "word": "to",
     "usage_category": "obscure",
     "source_language": "Japanese",
-    "definition_en": "",
+    "definition_en": "(particle) [closes a quote]",
     "deprecated": false,
     "creator": [
       "kala kala/jan Salan",
@@ -11103,9 +11092,9 @@
     "word": "toki",
     "usage_category": "core",
     "source_language": "Tok Pisin",
-    "definition_en": "VERB to communicate, say, speak, say, talk, use language, think",
+    "definition_en": "communicate, say, think; conversation, story; language",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "VERB",
         "meaning": "to communicate, say, speak, say, talk, use language, think"
@@ -11230,9 +11219,9 @@
     "word": "tomo",
     "usage_category": "core",
     "source_language": "Esperanto",
-    "definition_en": "NOUN indoor space; building, home, house, room",
+    "definition_en": "indoor space or shelter e.g. room, building, home, tent, shack",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "indoor space; building, home, house, room"
@@ -11322,7 +11311,7 @@
     "word": "tonsi",
     "usage_category": "common",
     "source_language": "Mandarin",
-    "definition_en": "",
+    "definition_en": "nonbinary, gender nonconforming, genderqueer, transgender*",
     "deprecated": false,
     "creator": [
       "jan inwin"
@@ -11379,9 +11368,9 @@
     "word": "tu",
     "usage_category": "core",
     "source_language": "multiple",
-    "definition_en": "NUMBER two",
+    "definition_en": "(number) two; separate, divide, split",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NUMBER",
         "meaning": "two"
@@ -11451,9 +11440,9 @@
     "word": "unpa",
     "usage_category": "core",
     "source_language": "onomatopoeia",
-    "definition_en": "VERB to have sexual or marital relations with",
+    "definition_en": "sex, to have sex with",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "VERB",
         "meaning": "to have sexual or marital relations with"
@@ -11512,7 +11501,7 @@
     "word": "unu",
     "usage_category": "obscure",
     "source_language": "Malay-Indonesian",
-    "definition_en": "",
+    "definition_en": "purple, violet",
     "deprecated": false,
     "creator": [
       "jan Sonja"
@@ -11553,7 +11542,7 @@
     "word": "usawi",
     "usage_category": "obscure",
     "source_language": "Swahili",
-    "definition_en": "",
+    "definition_en": "magic, sorcery; enchant; magical, supernatural, occult, incomprehensible",
     "deprecated": false,
     "creator": [
       "jan Tumu"
@@ -11595,9 +11584,9 @@
     "word": "uta",
     "usage_category": "core",
     "source_language": "Serbo-Croatian",
-    "definition_en": "NOUN mouth,lips, oral cavity, jaw",
+    "definition_en": "mouth, lips, throat, consuming orifice",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "mouth,lips, oral cavity, jaw"
@@ -11663,9 +11652,9 @@
     "word": "utala",
     "usage_category": "core",
     "source_language": "Serbo-Croatian",
-    "definition_en": "VERB to battle, challenge, compete against struggle against",
+    "definition_en": "fight, compete, battle; competition, challenge; struggle, strive",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "VERB",
         "meaning": "to battle, challenge, compete against struggle against"
@@ -11757,14 +11746,8 @@
     "word": "wa",
     "usage_category": "obscure",
     "source_language": "onomatopoeia",
-    "definition_en": "INTERJECTION indicating awe or amazement",
+    "definition_en": "(interjection) [indicating awe or amazement]",
     "deprecated": false,
-    "definitions_en": [
-      {
-        "pos": "INTERJECTION",
-        "meaning": "indicating awe or amazement"
-      }
-    ],
     "creator": [
       "mama mama pi jan Lakuse"
     ],
@@ -11775,13 +11758,12 @@
         "link": "https://raw.githubusercontent.com/lipu-linku/ijo/main/kalama/kalaasi2023/wa.mp3"
       }
     ],
-    "translations": {
-      "en": "INTERJECTION indicating awe or amazement",
-      "ku": "whoa, wow"
-    },
     "usage_data": {
       "whoa": 23,
       "wow": 11
+    },
+    "translations": {
+      "ku": "whoa, wow"
     },
     "representations": {
       "ligatures": [
@@ -11802,9 +11784,9 @@
     "word": "walo",
     "usage_category": "core",
     "source_language": "Finnish",
-    "definition_en": "ADJECTIVE white, whitish; light-coloured, pale",
+    "definition_en": "light-colored, white, pale, light gray, cream",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "white, whitish; light-coloured, pale"
@@ -11864,9 +11846,9 @@
     "word": "wan",
     "usage_category": "core",
     "source_language": "English",
-    "definition_en": "ADJECTIVE unique, united\nNUMBER one",
+    "definition_en": "(number) one; singular; combine, join, mix, fuse",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "unique, united"
@@ -11955,9 +11937,9 @@
     "word": "waso",
     "usage_category": "core",
     "source_language": "Acadian French",
-    "definition_en": "NOUN bird, flying creature, winged animal",
+    "definition_en": "bird, flying creature, winged animal",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "NOUN",
         "meaning": "bird, flying creature, winged animal"
@@ -12021,14 +12003,8 @@
     "word": "wasoweli",
     "usage_category": "obscure",
     "source_language": "toki pona",
-    "definition_en": "NOUN animal with qualities of both waso and soweli",
+    "definition_en": "animal with qualities of both waso and soweli",
     "deprecated": false,
-    "definitions_en": [
-      {
-        "pos": "NOUN",
-        "meaning": "animal with qualities of both waso and soweli"
-      }
-    ],
     "creator": [
       "akesi kon Nalasuni",
       "jan Atenaja"
@@ -12048,9 +12024,6 @@
         "word": "soweli"
       }
     ],
-    "translations": {
-      "en": "NOUN animal with qualities of both waso and soweli"
-    },
     "representations": {
       "ligatures": [
         "wasoweli"
@@ -12070,9 +12043,9 @@
     "word": "wawa",
     "usage_category": "core",
     "source_language": "Finnish",
-    "definition_en": "ADJECTIVE strong, powerful; confident, sure; energetic, intense",
+    "definition_en": "power, energy, strength; confident, intense, forceful; amazing, impressive",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "strong, powerful; confident, sure; energetic, intense"
@@ -12158,9 +12131,9 @@
     "word": "weka",
     "usage_category": "core",
     "source_language": "Dutch",
-    "definition_en": "ADJECTIVE absent, away, ignored",
+    "definition_en": "absent, away, distant; remove, get rid of",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "ADJECTIVE",
         "meaning": "absent, away, ignored"
@@ -12258,7 +12231,7 @@
     "word": "wekama",
     "usage_category": "obscure",
     "source_language": "toki pona",
-    "definition_en": "also, when i meant wekama, i meant weka, then kama",
+    "definition_en": "leave and come back, be temporarily absent with the expectation of returning",
     "deprecated": false,
     "creator": [
       "jan ko"
@@ -12293,9 +12266,9 @@
     "word": "wile",
     "usage_category": "core",
     "source_language": "Dutch",
-    "definition_en": "PRE-VERB must, need, require, should, want, wish",
+    "definition_en": "want, desire, wish, require; (preverb) want to",
     "deprecated": false,
-    "definitions_en": [
+    "pu_verbatim_en": [
       {
         "pos": "PRE-VERB",
         "meaning": "must, need, require, should, want, wish"
@@ -12412,7 +12385,7 @@
     "word": "wuwojiti",
     "usage_category": "obscure",
     "source_language": "toki pona",
-    "definition_en": "",
+    "definition_en": "to use one or more of the \"banned\" syllables wu, wo, ji, or ti; to break toki pona phonotactics",
     "deprecated": false,
     "creator": [
       "unknown"
@@ -12456,7 +12429,7 @@
     "word": "yupekosi",
     "usage_category": "obscure",
     "source_language": "a priori",
-    "definition_en": "",
+    "definition_en": "to behave like George Lucas and revise your old creative works and actually make them worse",
     "deprecated": false,
     "creator": [
       "jan Sonja"

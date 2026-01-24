@@ -5,6 +5,7 @@ export interface Word {
   source_language?: string
   definition_en: string
   definitions_en?: Array<{ pos: string; meaning: string }>
+  pu_verbatim_en?: Array<{ pos: string; meaning: string }>
   semantic_space_en?: string
   commentary_en?: string
   pos?: string[]

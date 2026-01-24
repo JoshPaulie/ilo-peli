@@ -270,22 +270,9 @@ export function Card({
                 Definition
               </h3>
               <div className="text-sm sm:text-base leading-relaxed text-zinc-200 space-y-2">
-                {backWord.definitions_en && backWord.definitions_en.length > 0 ? (
-                  <div className="space-y-2">
-                    {backWord.definitions_en.map((def, i) => (
-                      <div key={i}>
-                        <span className="px-1.5 py-0.5 bg-zinc-800 text-zinc-400 rounded text-[10px] font-bold tracking-wider uppercase mr-2">
-                          {def.pos}
-                        </span>
-                        <span className="text-zinc-200">{def.meaning}</span>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  backWord.definition_en.split('\n').map((line: string, i: number) => (
-                    <p key={i}>{line}</p>
-                  ))
-                )}
+                {backWord.definition_en.split('\n').map((line: string, i: number) => (
+                  <p key={i}>{line}</p>
+                ))}
               </div>
             </section>
 
@@ -309,6 +296,26 @@ export function Card({
                         )}
                       </span>
                     ))}
+                </div>
+              </section>
+            )}
+
+            {backWord.pu_verbatim_en && backWord.pu_verbatim_en.length > 0 && (
+              <section>
+                <h3 className="text-zinc-500 uppercase text-[10px] font-bold tracking-widest mb-1">
+                  pu verbatim
+                </h3>
+                <div className="text-sm sm:text-base leading-relaxed text-zinc-200 space-y-2">
+                  <div className="space-y-2">
+                    {backWord.pu_verbatim_en.map((def, i) => (
+                      <div key={i}>
+                        <span className="px-1.5 py-0.5 bg-zinc-800 text-zinc-400 rounded text-[10px] font-bold tracking-wider uppercase mr-2">
+                          {def.pos}
+                        </span>
+                        <span className="text-zinc-200">{def.meaning}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </section>
             )}
