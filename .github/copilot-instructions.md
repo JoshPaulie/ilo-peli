@@ -37,6 +37,14 @@ The script has inline dependencies and will be installed automatically by `uv`.
 
 This script fetches upstream Toki Pona data, processes it, and outputs a new `src/data.json` file.
 
+After making changes to any python script, run the following for type checking, linting, and formatting:
+
+```bash
+uv run mypy scripts/generate_data.py
+uv run ruff check --fix scripts/generate_data.py
+uv run ruff format scripts/generate_data.py
+```
+
 ## Conventions
 
 - **New settings:** Always add to `useSettings()` and persist via `usePersistence()` – all settings persist across sessions

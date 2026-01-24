@@ -1,11 +1,3 @@
-# /// script
-# requires-python = ">=3.9"
-# dependencies = [
-#     "requests",
-#     "beautifulsoup4",
-#     "tomli"
-# ]
-# ///
 """
 Dynamic data generation script for ilo-peli.
 
@@ -14,19 +6,16 @@ merges with local overrides, and generates src/data.json.
 """
 
 import json
+import re
+import sys
+import tomllib
+from pathlib import Path
+
 import requests
 from bs4 import BeautifulSoup
-from pathlib import Path
-import sys
-import re
-try:
-    import tomllib
-except ModuleNotFoundError:
-    import tomli as tomllib
-
 
 # Constants
-SONA_REPO = "https://api.github.com/repos/lipu-linku/sona"
+SONA_RAW_BASE = "https://raw.githubusercontent.com/lipu-linku/sona/main/words"
 LIPAMANKA_URL = "https://lipamanka.gay/essays/dictionary"
 SCRIPT_DIR = Path(__file__).parent
 PROJECT_ROOT = SCRIPT_DIR.parent
@@ -35,14 +24,16 @@ OUTPUT_FILE = PROJECT_ROOT / "src" / "data.json"
 
 
 def fetch_words_data() -> dict:
-    """Fetch all word metadata from sona via raw GitHub URLs."""
+    """Fetch word metadata from sona via raw GitHub URLs."""
     print("Fetching word list and metadata from sona...")
     words = {}
-    
-    # First, fetch the definitions.toml to get the list of all words
+
     print("  Getting word list...")
     try:
-        resp = requests.get("https://raw.githubusercontent.com/lipu-linku/sona/main/words/source/definitions.toml", timeout=10)
+        resp = requests.get(
+            f"{SONA_RAW_BASE}/source/definitions.toml",
+            timeout=10,
+        )
         resp.raise_for_status()
         definitions = tomllib.loads(resp.text)
         word_ids = list(definitions.keys())
@@ -50,12 +41,11 @@ def fetch_words_data() -> dict:
     except Exception as e:
         print(f"Error fetching definitions.toml: {e}", file=sys.stderr)
         return {}
-    
-    # Now fetch metadata for each word
+
     print("  Fetching metadata files...")
     for idx, word_id in enumerate(word_ids, 1):
-        raw_url = f"https://raw.githubusercontent.com/lipu-linku/sona/main/words/metadata/{word_id}.toml"
-        
+        raw_url = f"{SONA_RAW_BASE}/metadata/{word_id}.toml"
+
         try:
             resp = requests.get(raw_url, timeout=5)
             resp.raise_for_status()
@@ -64,9 +54,11 @@ def fetch_words_data() -> dict:
             if idx % 20 == 0:
                 print(f"    [{idx}/{len(word_ids)}]")
         except Exception as e:
-            print(f"  Warning: Could not fetch metadata for {word_id}: {e}", file=sys.stderr)
-            # Continue anyway - we can use definitions as fallback
-    
+            print(
+                f"  Warning: Could not fetch metadata for {word_id}: {e}",
+                file=sys.stderr,
+            )
+
     print(f"Successfully fetched {len(words)} words with metadata")
     return words
 
@@ -79,17 +71,17 @@ def fetch_essays() -> dict[str, str]:
         resp = requests.get(LIPAMANKA_URL, timeout=10)
         resp.raise_for_status()
         soup = BeautifulSoup(resp.content, "html.parser")
-        
+
         # Find all <details> blocks with word summaries
         for details in soup.find_all("details"):
             summary = details.find("summary")
             if not summary:
                 continue
-            
+
             word_id = summary.get("id")
             if not word_id:
                 continue
-            
+
             # Extract text content from the details block, preserving paragraph structure
             paragraphs = details.find_all("p")
             if paragraphs:
@@ -97,9 +89,14 @@ def fetch_essays() -> dict[str, str]:
                 text = "\n\n".join(p.get_text(strip=True) for p in paragraphs)
                 # Bold the word itself for readability (case-insensitive)
                 # Replace standalone instances of the word with **word**
-                text = re.sub(rf'\b{re.escape(word_id)}\b', f'**{word_id}**', text, flags=re.IGNORECASE)
+                text = re.sub(
+                    rf"\b{re.escape(word_id)}\b",
+                    f"**{word_id}**",
+                    text,
+                    flags=re.IGNORECASE,
+                )
                 essays[word_id] = text
-        
+
         print(f"Found {len(essays)} essays")
         return essays
     except Exception as e:
@@ -110,9 +107,11 @@ def fetch_essays() -> dict[str, str]:
 def fetch_commentary() -> dict[str, str]:
     """Fetch commentary notes from sona repo."""
     print("Fetching commentary from sona...")
-    commentary = {}
     try:
-        resp = requests.get("https://raw.githubusercontent.com/lipu-linku/sona/main/words/source/commentary.toml", timeout=10)
+        resp = requests.get(
+            f"{SONA_RAW_BASE}/source/commentary.toml",
+            timeout=10,
+        )
         resp.raise_for_status()
         data = tomllib.loads(resp.text)
         print(f"Found {len(data)} commentary entries")
@@ -127,7 +126,7 @@ def load_override(word: str) -> dict | None:
     override_file = OVERRIDES_DIR / f"{word}.toml"
     if not override_file.exists():
         return None
-    
+
     try:
         with open(override_file, "rb") as f:
             return tomllib.load(f)
@@ -149,17 +148,13 @@ def deep_merge(base: dict, override: dict) -> dict:
 
 def extract_english_definition(word_data: dict) -> str:
     """Extract English definition from word data."""
-    # Check pu_verbatim for English
     if "pu_verbatim" in word_data and "en" in word_data["pu_verbatim"]:
         text = word_data["pu_verbatim"]["en"]
-        # Remove POS prefix like "NOUN ", "PARTICLE ", etc.
-        text = re.sub(r"^[A-Z]+\s*\(", "(", text)
-        return text.strip()
-    
-    # Fallback to author_verbatim
+        return re.sub(r"^[A-Z]+\s*\(", "(", text).strip()
+
     if "author_verbatim" in word_data and word_data["author_verbatim"]:
         return word_data["author_verbatim"]
-    
+
     return ""
 
 
@@ -167,32 +162,37 @@ def parse_definitions_with_pos(word_data: dict) -> list[dict] | None:
     """Parse English definitions to extract POS and meanings separately."""
     if "pu_verbatim" not in word_data or "en" not in word_data["pu_verbatim"]:
         return None
-    
+
     text = word_data["pu_verbatim"]["en"]
     definitions = []
-    
+
     # Split by newline to handle multiple POS entries
-    lines = text.split('\n')
+    lines = text.split("\n")
     for line in lines:
         line = line.strip()
         if not line:
             continue
-        
+
         # Match pattern: "POS_NAME meaning text"
-        match = re.match(r'^([A-Z\-]+)\s+(.+)$', line)
+        match = re.match(r"^([A-Z\-]+)\s+(.+)$", line)
         if match:
             pos = match.group(1)
             meaning = match.group(2)
             definitions.append({"pos": pos, "meaning": meaning})
-    
+
     return definitions if definitions else None
 
 
-def build_word(word_id: str, word_data: dict, essays: dict, commentary: dict, override: dict | None) -> dict | None:
+def build_word(
+    word_id: str,
+    word_data: dict,
+    essays: dict,
+    commentary: dict,
+    override: dict | None,
+) -> dict:
     """Build a Word object from sona data, essays, commentary, and overrides."""
-    # Merge override into word_data, with override taking priority
     base = deep_merge(word_data, override) if override else word_data.copy()
-    
+
     # Essential fields
     word_obj = {
         "id": word_id,
@@ -202,76 +202,65 @@ def build_word(word_id: str, word_data: dict, essays: dict, commentary: dict, ov
         "definition_en": extract_english_definition(base),
         "deprecated": base.get("deprecated", False),
     }
-    
+
     # Parse definitions with POS badges
     definitions_with_pos = parse_definitions_with_pos(base)
     if definitions_with_pos:
         word_obj["definitions_en"] = definitions_with_pos
-    
-    # Optional fields
+
     if "creator" in base:
         word_obj["creator"] = base["creator"]
     if "coined_era" in base:
         word_obj["coined_era"] = base["coined_era"]
-    
-    # Audio
-    if "audio" in base:
-        audio_list = base["audio"]
-        if isinstance(audio_list, list) and len(audio_list) > 0:
-            word_obj["audio"] = [
-                {"author": a.get("author", ""), "link": a.get("link", "")}
-                for a in audio_list
-                if isinstance(a, dict) and a.get("link")
-            ]
-    
-    # Etymology
-    if "etymology" in base:
-        etym_list = base["etymology"]
-        if isinstance(etym_list, list) and len(etym_list) > 0:
-            filtered_etym = [
-                {"word": e.get("word")} 
-                for e in etym_list 
-                if isinstance(e, dict) and e.get("word")
-            ]
-            if filtered_etym:
-                word_obj["etymology"] = filtered_etym
-    
-    # Translations (all languages)
+
+    if "audio" in base and isinstance(base["audio"], list) and base["audio"]:
+        word_obj["audio"] = [
+            {"author": a.get("author", ""), "link": a.get("link", "")}
+            for a in base["audio"]
+            if isinstance(a, dict) and a.get("link")
+        ]
+
+    if (
+        "etymology" in base
+        and isinstance(base["etymology"], list)
+        and base["etymology"]
+    ):
+        filtered_etym = [
+            {"word": e.get("word")}
+            for e in base["etymology"]
+            if isinstance(e, dict) and e.get("word")
+        ]
+        if filtered_etym:
+            word_obj["etymology"] = filtered_etym
+
     if "pu_verbatim" in base:
         translations = {}
         for lang, text in base["pu_verbatim"].items():
             if lang and text:
-                # Remove POS prefix
-                clean_text = re.sub(r"^[A-Z]+\s*\(", "(", text)
-                translations[lang] = clean_text.strip()
+                clean_text = re.sub(r"^[A-Z]+\s*\(", "(", text).strip()
+                translations[lang] = clean_text
         if translations:
             word_obj["translations"] = translations
-    
-    # Usage data (ku_data) and ku translations
+
     if "ku_data" in base and isinstance(base["ku_data"], dict) and base["ku_data"]:
         word_obj["usage_data"] = base["ku_data"]
-        # Also add ku translations as comma-separated list for display
         ku_translations = ", ".join(base["ku_data"].keys())
         if "translations" not in word_obj:
             word_obj["translations"] = {}
         word_obj["translations"]["ku"] = ku_translations
-    
-    # Representations (full object)
+
     if "representations" in base and isinstance(base["representations"], dict):
         word_obj["representations"] = base["representations"]
-    
-    # Semantic space from essay
+
     if word_id in essays:
         word_obj["semantic_space_en"] = essays[word_id]
-    
-    # Commentary
+
     if word_id in commentary and commentary[word_id]:
         word_obj["commentary_en"] = commentary[word_id]
-    
-    # Usage table (historical usage percentages by date)
+
     if "usage" in base and isinstance(base["usage"], dict) and base["usage"]:
         word_obj["usage"] = base["usage"]
-    
+
     return word_obj
 
 
@@ -280,7 +269,7 @@ def load_existing_data() -> dict:
     if not OUTPUT_FILE.exists():
         print(f"Error: {OUTPUT_FILE} does not exist", file=sys.stderr)
         sys.exit(1)
-    
+
     try:
         with open(OUTPUT_FILE, "r") as f:
             words_list = json.load(f)
@@ -291,77 +280,66 @@ def load_existing_data() -> dict:
         sys.exit(1)
 
 
-def main():
+def main() -> None:
     """Main execution."""
     overrides_only = "--overrides-only" in sys.argv
-    
+
     if overrides_only:
         print("Rebuilding data.json with overrides only...")
-        
-        # Load existing data
+
         words_data = load_existing_data()
         if not words_data:
             print("Error: No words in existing data", file=sys.stderr)
             sys.exit(1)
-        
-        # Create overrides directory if it doesn't exist
+
         OVERRIDES_DIR.mkdir(parents=True, exist_ok=True)
-        
-        # Apply overrides to existing words
+
         words = []
         for word_id, word_obj in words_data.items():
             override = load_override(word_id)
             if override:
-                # Merge override into existing word object and rebuild structured fields
                 merged_data = deep_merge(word_obj, override)
-                # Rebuild definitions_en from the merged data if pu_verbatim was overridden
                 if "pu_verbatim" in override and "en" in override["pu_verbatim"]:
                     definitions_with_pos = parse_definitions_with_pos(merged_data)
                     if definitions_with_pos:
                         word_obj["definitions_en"] = definitions_with_pos
-                        # Also update definition_en (single string)
-                        word_obj["definition_en"] = extract_english_definition(merged_data)
-                # Merge other fields from override
+                        word_obj["definition_en"] = extract_english_definition(
+                            merged_data
+                        )
                 for key in override:
-                    if key not in ["pu_verbatim"]:  # Skip pu_verbatim as we handled it above
+                    if key != "pu_verbatim":
                         word_obj[key] = merged_data[key]
             words.append(word_obj)
-        
+
         print(f"Applied overrides to {len(words)} words")
     else:
         print("Starting data generation...")
-        
-        # Fetch all sources
+
         words_data = fetch_words_data()
         if not words_data:
             print("Error: No words data found", file=sys.stderr)
             sys.exit(1)
-        
+
         essays = fetch_essays()
         commentary = fetch_commentary()
-        
-        # Create overrides directory if it doesn't exist
+
         OVERRIDES_DIR.mkdir(parents=True, exist_ok=True)
-        
-        # Build all words
+
         words = []
         for word_id, word_data in words_data.items():
             if not isinstance(word_data, dict):
                 continue
-            
+
             override = load_override(word_id)
             word_obj = build_word(word_id, word_data, essays, commentary, override)
-            if word_obj:
-                words.append(word_obj)
-    
-    # Sort by word ID for consistency
+            words.append(word_obj)
+
     words.sort(key=lambda w: w["id"])
-    
-    # Write output
+
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_FILE, "w") as f:
         json.dump(words, f, indent=2, ensure_ascii=False)
-    
+
     print(f"Success! Generated {len(words)} words to {OUTPUT_FILE}")
 
 
