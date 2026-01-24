@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-01-24
+
+### Added
+- Display word usage percentage (e.g. "Core (100%)")
+
+### Fixed
+- border-flash animation when mastering cards
+
+### Changed
+- Update reference page
+- Disable uncommon and obscure words by default (on first visit)
+- Refactor data generation script for better maintainability
+  - Simplified
+  - Clone sona repo rather than fetching individual files via API (much faster)
+- Use sona/words/source/definitions.toml rather than pu_verbatim metadata for definitions
+    - pu_verbatim moved to its own section on card
+
+### Removed
+- Override system and related files
+
 ## [2.0.0] - 2026-01-23
 
 ### Added
