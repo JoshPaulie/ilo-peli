@@ -2,7 +2,7 @@
 Dynamic data generation script for ilo-peli.
 
 Fetches word data from lipu-linku GitHub repo and lipamanka essays,
-merges with local overrides, and generates src/data.json.
+and generates src/data.json.
 """
 
 import json
@@ -19,11 +19,9 @@ from bs4 import BeautifulSoup
 
 # Constants
 SONA_REPO_URL = "https://github.com/lipu-linku/sona.git"
-SONA_RAW_BASE = "https://raw.githubusercontent.com/lipu-linku/sona/main/words"
 LIPAMANKA_URL = "https://lipamanka.gay/essays/dictionary"
 SCRIPT_DIR = Path(__file__).parent
 PROJECT_ROOT = SCRIPT_DIR.parent
-OVERRIDES_DIR = PROJECT_ROOT / "data" / "overrides"
 OUTPUT_FILE = PROJECT_ROOT / "src" / "data.json"
 
 
@@ -140,26 +138,6 @@ def fetch_commentary(repo_path: Path) -> dict[str, str]:
     except Exception as e:
         print(f"Error reading commentary: {e}", file=sys.stderr)
         return {}
-
-
-def load_override(word: str) -> dict | None:
-    """Load override data for a word if it exists. [DISABLED]"""
-    return None
-
-
-def deep_merge(base: dict, override: dict) -> dict:
-    """Deep merge override into base, with override values taking priority. [DISABLED]"""
-    return base.copy()
-
-
-def extract_english_definition(word_data: dict) -> str:
-    """Extract English definition from word data. [DISABLED]"""
-    return ""
-
-
-def parse_definitions_with_pos(word_data: dict) -> list[dict] | None:
-    """Parse English definitions to extract POS and meanings separately. [DISABLED]"""
-    return None
 
 
 def build_word(
@@ -288,11 +266,6 @@ def build_word(
         word_obj["usage"] = word_data["usage"]
 
     return word_obj
-
-
-def load_existing_data() -> dict:
-    """Load existing data.json into a dict keyed by word ID. [DISABLED]"""
-    return {}
 
 
 def main() -> None:
