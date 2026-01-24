@@ -1,18 +1,18 @@
-import { useRef, useEffect, useState } from 'react'
-import { useToast } from '../contexts/ToastContext'
-import type { Word } from '../types'
-import nimiLiLogo from '../assets/nimi-li.png'
+import { useRef, useEffect, useState } from 'react';
+import { useToast } from '../contexts/ToastContext';
+import type { Word } from '../types';
+import nimiLiLogo from '../assets/nimi-li.png';
 
 interface CardProps {
-  currentWord: Word | undefined
-  backWord: Word | undefined
-  isFlipped: boolean
-  onFlip: () => void
-  masteredIds: Set<string>
-  onToggleMastered: (id: string) => void
-  onPlayAudio: (word: Word) => void
-  drillOnly?: boolean
-  onProgressCard?: () => void
+  currentWord: Word | undefined;
+  backWord: Word | undefined;
+  isFlipped: boolean;
+  onFlip: () => void;
+  masteredIds: Set<string>;
+  onToggleMastered: (id: string) => void;
+  onPlayAudio: (word: Word) => void;
+  drillOnly?: boolean;
+  onProgressCard?: () => void;
 }
 
 export function Card({
@@ -26,50 +26,50 @@ export function Card({
   drillOnly = false,
   onProgressCard,
 }: CardProps) {
-  const backFaceRef = useRef<HTMLDivElement>(null)
-  const prevWordIdRef = useRef<string | undefined>(undefined)
-  const [showBorderFlash, setShowBorderFlash] = useState(false)
-  const { addToast } = useToast()
+  const backFaceRef = useRef<HTMLDivElement>(null);
+  const prevWordIdRef = useRef<string | undefined>(undefined);
+  const [showBorderFlash, setShowBorderFlash] = useState(false);
+  const { addToast } = useToast();
 
   const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text)
-    addToast(`Copied: ${text}`)
-  }
+    navigator.clipboard.writeText(text);
+    addToast(`Copied: ${text}`);
+  };
 
   useEffect(() => {
     if (backFaceRef.current) {
-      backFaceRef.current.scrollTop = 0
+      backFaceRef.current.scrollTop = 0;
     }
-    prevWordIdRef.current = currentWord?.id
-  }, [currentWord?.id])
+    prevWordIdRef.current = currentWord?.id;
+  }, [currentWord?.id]);
 
   useEffect(() => {
     if (showBorderFlash) {
-      const timer = setTimeout(() => setShowBorderFlash(false), 600)
-      return () => clearTimeout(timer)
+      const timer = setTimeout(() => setShowBorderFlash(false), 600);
+      return () => clearTimeout(timer);
     }
-  }, [showBorderFlash])
+  }, [showBorderFlash]);
 
   const handleToggleMastered = (id: string) => {
-    setShowBorderFlash(true)
-    
+    setShowBorderFlash(true);
+
     // Delay state update and progression until animation completes
     if (drillOnly && onProgressCard) {
       const timer = setTimeout(() => {
-        onToggleMastered(id)
-        onProgressCard()
-      }, 600)
-      return () => clearTimeout(timer)
+        onToggleMastered(id);
+        onProgressCard();
+      }, 600);
+      return () => clearTimeout(timer);
     } else {
       // In normal mode, delay state update but don't progress
       const timer = setTimeout(() => {
-        onToggleMastered(id)
-      }, 600)
-      return () => clearTimeout(timer)
+        onToggleMastered(id);
+      }, 600);
+      return () => clearTimeout(timer);
     }
-  }
+  };
 
-  if (!currentWord || !backWord) return null
+  if (!currentWord || !backWord) return null;
 
   return (
     <div
@@ -80,12 +80,14 @@ export function Card({
         className={`relative w-full h-full transform-style-3d will-change-transform ${isFlipped ? 'rotate-y-180' : ''}`}
       >
         {/* Front */}
-        <div className={`absolute inset-0 backface-hidden bg-zinc-900 border-2 rounded-3xl flex flex-col items-center justify-center p-6 sm:p-8 shadow-2xl overflow-hidden border-zinc-800 ${showBorderFlash ? 'border-flash' : ''}`}>
+        <div
+          className={`absolute inset-0 backface-hidden bg-zinc-900 border-2 rounded-3xl flex flex-col items-center justify-center p-6 sm:p-8 shadow-2xl overflow-hidden border-zinc-800 ${showBorderFlash ? 'border-flash' : ''}`}
+        >
           <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
             <button
               onClick={(e) => {
-                e.stopPropagation()
-                handleToggleMastered(currentWord.id)
+                e.stopPropagation();
+                handleToggleMastered(currentWord.id);
               }}
               className={`p-2.5 sm:p-3 rounded-2xl transition-all ${
                 masteredIds.has(currentWord.id)
@@ -109,10 +111,10 @@ export function Card({
               </svg>
             </button>
           </div>
-          <h1 
+          <h1
             onClick={(e) => {
-              e.stopPropagation()
-              copyToClipboard(currentWord.word)
+              e.stopPropagation();
+              copyToClipboard(currentWord.word);
             }}
             className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tighter text-zinc-50 text-center wrap-break-word px-4 cursor-pointer hover:opacity-70 transition-opacity"
             title="Click to copy"
@@ -126,8 +128,8 @@ export function Card({
             {currentWord.audio && currentWord.audio.length > 0 && (
               <button
                 onClick={(e) => {
-                  e.stopPropagation()
-                  onPlayAudio(currentWord)
+                  e.stopPropagation();
+                  onPlayAudio(currentWord);
                 }}
                 className="p-1.5 rounded-full hover:bg-zinc-800 text-zinc-500 hover:text-zinc-300 transition-colors"
                 title="Play Pronunciation (A)"
@@ -160,17 +162,17 @@ export function Card({
         >
           <div className="mb-4 sm:mb-6">
             <div className="flex items-center justify-between border-b border-zinc-800 pb-2 mb-4">
-              <h2 
+              <h2
                 onClick={(e) => {
-                  e.stopPropagation()
-                  copyToClipboard(backWord.word)
+                  e.stopPropagation();
+                  copyToClipboard(backWord.word);
                 }}
                 className="text-2xl sm:text-3xl font-bold text-zinc-50 flex items-center gap-3 cursor-pointer hover:opacity-70 transition-opacity"
                 title="Click to copy"
               >
                 {backWord.word}
                 {backWord.representations?.ligatures?.[0] && (
-                  <span 
+                  <span
                     className="text-2xl sm:text-3xl opacity-80"
                     style={{ fontFamily: 'nasin nanpa' }}
                     title="Word symbol"
@@ -188,13 +190,17 @@ export function Card({
                   title="View on nimi.li"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <img src={nimiLiLogo} alt="nimi.li" className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <img
+                    src={nimiLiLogo}
+                    alt="nimi.li"
+                    className="w-5 h-5 sm:w-6 sm:h-6"
+                  />
                 </a>
                 {backWord.audio && backWord.audio.length > 0 && (
                   <button
                     onClick={(e) => {
-                      e.stopPropagation()
-                      onPlayAudio(backWord)
+                      e.stopPropagation();
+                      onPlayAudio(backWord);
                     }}
                     className="p-2.5 rounded-lg hover:bg-zinc-800 text-zinc-500 hover:text-zinc-300 transition-colors"
                     title="Play Pronunciation (A)"
@@ -216,8 +222,8 @@ export function Card({
                 )}
                 <button
                   onClick={(e) => {
-                    e.stopPropagation()
-                    handleToggleMastered(backWord.id)
+                    e.stopPropagation();
+                    handleToggleMastered(backWord.id);
                   }}
                   className={`p-2.5 rounded-lg transition-all ${
                     masteredIds.has(backWord.id)
@@ -244,18 +250,21 @@ export function Card({
             </div>
             <div className="flex flex-wrap gap-4 text-xs text-zinc-400 mb-4 tracking-tight">
               <div className="flex flex-col">
-                <span className="text-zinc-600 uppercase text-[10px] font-bold tracking-wider">Source</span>
+                <span className="text-zinc-600 uppercase text-[10px] font-bold tracking-wider">
+                  Source
+                </span>
                 <span>{backWord.source_language || 'Unknown'}</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-zinc-600 uppercase text-[10px] font-bold tracking-wider">Usage</span>
+                <span className="text-zinc-600 uppercase text-[10px] font-bold tracking-wider">
+                  Usage
+                </span>
                 <span>
                   {backWord.usage_category}
                   {backWord.usage && (
                     <>
                       {' '}
-                      (
-                      {Math.max(...Object.values(backWord.usage))}
+                      ({Math.max(...Object.values(backWord.usage))}
                       %)
                     </>
                   )}
@@ -270,9 +279,11 @@ export function Card({
                 Definition
               </h3>
               <div className="text-sm sm:text-base leading-relaxed text-zinc-200 space-y-2">
-                {backWord.definition_en.split('\n').map((line: string, i: number) => (
-                  <p key={i}>{line}</p>
-                ))}
+                {backWord.definition_en
+                  .split('\n')
+                  .map((line: string, i: number) => (
+                    <p key={i}>{line}</p>
+                  ))}
               </div>
             </section>
 
@@ -284,16 +295,21 @@ export function Card({
                 <div className="text-sm text-zinc-400 leading-relaxed italic flex flex-wrap gap-2">
                   {backWord.translations.ku
                     .split(', ')
-                    .sort((a, b) => (backWord.usage_data?.[b] ?? 0) - (backWord.usage_data?.[a] ?? 0))
+                    .sort(
+                      (a, b) =>
+                        (backWord.usage_data?.[b] ?? 0) -
+                        (backWord.usage_data?.[a] ?? 0)
+                    )
                     .slice(0, 10)
                     .map((translation, idx) => (
                       <span key={idx}>
                         {translation}
-                        {backWord.usage_data && backWord.usage_data[translation] && (
-                          <sup className="text-[10px] ml-0.5">
-                            {backWord.usage_data[translation]}
-                          </sup>
-                        )}
+                        {backWord.usage_data &&
+                          backWord.usage_data[translation] && (
+                            <sup className="text-[10px] ml-0.5">
+                              {backWord.usage_data[translation]}
+                            </sup>
+                          )}
                       </span>
                     ))}
                 </div>
@@ -330,7 +346,10 @@ export function Card({
                     <p key={i}>
                       {p.split(/(\*\*[^*]+\*\*)/g).map((part, j) =>
                         part.startsWith('**') && part.endsWith('**') ? (
-                          <strong key={j} className="text-zinc-200 font-semibold">
+                          <strong
+                            key={j}
+                            className="text-zinc-200 font-semibold"
+                          >
                             {part.slice(2, -2)}
                           </strong>
                         ) : (
@@ -348,9 +367,11 @@ export function Card({
                   Commentary
                 </h3>
                 <div className="text-sm sm:text-base leading-relaxed text-zinc-400 space-y-3">
-                  {backWord.commentary_en.split('\n').map((p: string, i: number) => (
-                    <p key={i}>{p}</p>
-                  ))}
+                  {backWord.commentary_en
+                    .split('\n')
+                    .map((p: string, i: number) => (
+                      <p key={i}>{p}</p>
+                    ))}
                 </div>
               </section>
             )}
@@ -358,5 +379,5 @@ export function Card({
         </div>
       </div>
     </div>
-  )
+  );
 }

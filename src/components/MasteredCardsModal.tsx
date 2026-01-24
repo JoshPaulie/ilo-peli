@@ -1,13 +1,13 @@
-import type { Word } from '../types'
+import type { Word } from '../types';
 
 interface MasteredCardsModalProps {
-  isOpen: boolean
-  onClose: () => void
-  masteredWords: Word[]
-  masteredCount: number
-  filteredWordsCount: number
-  onUnmasterCard: (id: string) => void
-  onUnmasterAll: () => void
+  isOpen: boolean;
+  onClose: () => void;
+  masteredWords: Word[];
+  masteredCount: number;
+  filteredWordsCount: number;
+  onUnmasterCard: (id: string) => void;
+  onUnmasterAll: () => void;
 }
 
 export function MasteredCardsModal({
@@ -19,7 +19,7 @@ export function MasteredCardsModal({
   onUnmasterCard,
   onUnmasterAll,
 }: MasteredCardsModalProps) {
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
@@ -43,7 +43,9 @@ export function MasteredCardsModal({
           </svg>
         </button>
 
-        <h2 className="text-2xl font-bold text-zinc-100 mb-2">Mastered Cards</h2>
+        <h2 className="text-2xl font-bold text-zinc-100 mb-2">
+          Mastered Cards
+        </h2>
         <p className="text-sm text-zinc-500 mb-6">
           {masteredCount} / {filteredWordsCount} cards mastered
         </p>
@@ -51,7 +53,9 @@ export function MasteredCardsModal({
         <div className="flex-1 overflow-y-auto mb-6 pr-2">
           {masteredWords.length === 0 ? (
             <div className="flex items-center justify-center py-12">
-              <p className="text-zinc-500">No mastered cards yet. Keep drilling!</p>
+              <p className="text-zinc-500">
+                No mastered cards yet. Keep drilling!
+              </p>
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-3">
@@ -61,8 +65,12 @@ export function MasteredCardsModal({
                   className="flex items-center justify-between bg-zinc-800/50 border border-zinc-700 rounded-lg p-3 hover:bg-zinc-800 transition-colors"
                 >
                   <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-zinc-100 truncate">{word.word}</p>
-                    <p className="text-xs text-zinc-500 truncate">{word.definition_en}</p>
+                    <p className="font-semibold text-zinc-100 truncate">
+                      {word.word}
+                    </p>
+                    <p className="text-xs text-zinc-500 truncate">
+                      {word.definition_en}
+                    </p>
                   </div>
                   <button
                     onClick={() => onUnmasterCard(word.id)}
@@ -94,5 +102,5 @@ export function MasteredCardsModal({
         </div>
       </div>
     </div>
-  )
+  );
 }

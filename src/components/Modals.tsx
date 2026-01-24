@@ -1,29 +1,29 @@
-import { MasteredCardsModal } from './MasteredCardsModal'
-import type { Word, SpeakerMode } from '../types'
+import { MasteredCardsModal } from './MasteredCardsModal';
+import type { Word, SpeakerMode } from '../types';
 
 interface ModalsProps {
-  showAbout: boolean
-  onCloseAbout: () => void
-  showOptions: boolean
-  onCloseOptions: () => void
-  showDrillInfo: boolean
-  onCloseDrillInfo: () => void
-  showMasteredCards: boolean
-  onCloseMasteredCards: () => void
-  masteredWords: Word[]
-  masteredCount: number
-  filteredWordsCount: number
-  onUnmasterCard: (id: string) => void
-  onUnmasterAll: () => void
-  speakerMode: SpeakerMode
-  onSpeakerModeChange: (mode: SpeakerMode) => void
-  specificSpeaker: string
-  onSpecificSpeakerChange: (speaker: string) => void
-  uniqueSpeakers: string[]
-  shuffleOnCategoryChange: boolean
-  onShuffleOnCategoryChangeChange: (value: boolean) => void
-  excludeKijetesantakalu: boolean
-  onExcludeKijetesantakakuChange: (value: boolean) => void
+  showAbout: boolean;
+  onCloseAbout: () => void;
+  showOptions: boolean;
+  onCloseOptions: () => void;
+  showDrillInfo: boolean;
+  onCloseDrillInfo: () => void;
+  showMasteredCards: boolean;
+  onCloseMasteredCards: () => void;
+  masteredWords: Word[];
+  masteredCount: number;
+  filteredWordsCount: number;
+  onUnmasterCard: (id: string) => void;
+  onUnmasterAll: () => void;
+  speakerMode: SpeakerMode;
+  onSpeakerModeChange: (mode: SpeakerMode) => void;
+  specificSpeaker: string;
+  onSpecificSpeakerChange: (speaker: string) => void;
+  uniqueSpeakers: string[];
+  shuffleOnCategoryChange: boolean;
+  onShuffleOnCategoryChangeChange: (value: boolean) => void;
+  excludeKijetesantakalu: boolean;
+  onExcludeKijetesantakakuChange: (value: boolean) => void;
 }
 
 export function Modals({
@@ -83,27 +83,36 @@ export function Modals({
                 />
               </svg>
             </button>
-            <h2 className="text-2xl font-bold text-zinc-100 mb-4">About Drill Mode</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mb-4">
+              About Drill Mode
+            </h2>
             <div className="space-y-4 text-zinc-400 leading-relaxed text-sm sm:text-base">
               <p>
-                <strong className="text-amber-500">Drill Mode</strong> helps you focus on words
-                you haven't mastered yet.
+                <strong className="text-amber-500">Drill Mode</strong> helps you
+                focus on words you haven't mastered yet.
               </p>
               <ul className="list-disc list-inside space-y-2">
                 <li>
-                  Mark cards as <strong className="text-zinc-100">Mastered (M)</strong> to hide
-                  them and track your progress.
+                  Mark cards as{' '}
+                  <strong className="text-zinc-100">Mastered (M)</strong> to
+                  hide them and track your progress.
                 </li>
                 <li>
-                  The deck <strong className="text-zinc-100">shuffles automatically</strong> when
-                  you complete a pass.
+                  The deck{' '}
+                  <strong className="text-zinc-100">
+                    shuffles automatically
+                  </strong>{' '}
+                  when you complete a pass.
                 </li>
                 <li>Track your progress per category in the header.</li>
                 <li>
-                  Use <strong className="text-zinc-100">Undo (Z)</strong> if you misclick.
+                  Use <strong className="text-zinc-100">Undo (Z)</strong> if you
+                  misclick.
                 </li>
                 <li>
-                  Manage all mastered cards using the <strong className="text-zinc-100">checkmark button</strong> in the header.
+                  Manage all mastered cards using the{' '}
+                  <strong className="text-zinc-100">checkmark button</strong> in
+                  the header.
                 </li>
               </ul>
             </div>
@@ -143,7 +152,9 @@ export function Modals({
             <div className="space-y-6">
               {/* Speaker Selection */}
               <div>
-                <h3 className="text-lg font-bold text-zinc-100 mb-3">Audio Speaker</h3>
+                <h3 className="text-lg font-bold text-zinc-100 mb-3">
+                  Audio Speaker
+                </h3>
                 <div className="space-y-2">
                   <label className="flex items-center gap-3 p-3 rounded-xl bg-zinc-800/50 border border-zinc-700/50 hover:border-zinc-600 cursor-pointer transition-colors">
                     <input
@@ -152,7 +163,9 @@ export function Modals({
                       onChange={() => onSpeakerModeChange('random')}
                       className="w-4 h-4"
                     />
-                    <span className="text-sm text-zinc-200">Random - Pick a random speaker each time</span>
+                    <span className="text-sm text-zinc-200">
+                      Random - Pick a random speaker each time
+                    </span>
                   </label>
                   <label className="flex items-center gap-3 p-3 rounded-xl bg-zinc-800/50 border border-zinc-700/50 hover:border-zinc-600 cursor-pointer transition-colors">
                     <input
@@ -172,7 +185,9 @@ export function Modals({
                       onChange={() => onSpeakerModeChange('specific')}
                       className="w-4 h-4"
                     />
-                    <span className="text-sm text-zinc-200">Specific Speaker</span>
+                    <span className="text-sm text-zinc-200">
+                      Specific Speaker
+                    </span>
                   </label>
                 </div>
 
@@ -200,11 +215,15 @@ export function Modals({
                   <input
                     type="checkbox"
                     checked={shuffleOnCategoryChange}
-                    onChange={(e) => onShuffleOnCategoryChangeChange(e.target.checked)}
+                    onChange={(e) =>
+                      onShuffleOnCategoryChangeChange(e.target.checked)
+                    }
                     className="w-4 h-4"
                   />
                   <div className="flex-1">
-                    <span className="text-sm font-medium text-zinc-100">Shuffle on Category Change</span>
+                    <span className="text-sm font-medium text-zinc-100">
+                      Shuffle on Category Change
+                    </span>
                     <p className="text-xs text-zinc-500 mt-1">
                       Automatically shuffle cards when switching categories
                     </p>
@@ -213,17 +232,23 @@ export function Modals({
               </div>
 
               {/* Exclude kijetesantakalu */}
-               <div className="border-t border-zinc-700 pt-6">
+              <div className="border-t border-zinc-700 pt-6">
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={excludeKijetesantakalu}
-                    onChange={(e) => onExcludeKijetesantakakuChange(e.target.checked)}
+                    onChange={(e) =>
+                      onExcludeKijetesantakakuChange(e.target.checked)
+                    }
                     className="w-4 h-4"
                   />
                   <div className="flex-1">
-                    <span className="text-sm font-medium text-zinc-100">Exclude kijetesantakalu</span>
-                    <p className="text-xs text-zinc-500 mt-1">Hide the April Fools word</p>
+                    <span className="text-sm font-medium text-zinc-100">
+                      Exclude kijetesantakalu
+                    </span>
+                    <p className="text-xs text-zinc-500 mt-1">
+                      Hide the April Fools word
+                    </p>
                   </div>
                 </label>
               </div>
@@ -261,7 +286,9 @@ export function Modals({
               </svg>
             </button>
             <div className="mb-6">
-              <h2 className="text-3xl font-black text-zinc-100 tracking-tighter">ilo Peli</h2>
+              <h2 className="text-3xl font-black text-zinc-100 tracking-tighter">
+                ilo Peli
+              </h2>
               <p className="text-zinc-500 text-xs font-bold uppercase tracking-[0.2em] mt-1">
                 Study Tool for Toki Pona
               </p>
@@ -269,8 +296,8 @@ export function Modals({
             <div className="space-y-4 text-zinc-400 leading-relaxed text-sm sm:text-base">
               <p>toki! mi ilo Peli.</p>
               <p>
-                I'm learning Toki Pona and wanted to combine high-quality community resources
-                into a minimal flashcard app.
+                I'm learning Toki Pona and wanted to combine high-quality
+                community resources into a minimal flashcard app.
               </p>
 
               <div className="pt-6 border-t border-zinc-800 mt-6">
@@ -330,5 +357,5 @@ export function Modals({
         </div>
       )}
     </>
-  )
+  );
 }

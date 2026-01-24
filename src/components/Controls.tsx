@@ -1,12 +1,12 @@
 interface ControlsProps {
-  index: number
-  total: number
-  onFlip: () => void
-  onPrev: () => void
-  onNext: () => void
-  onShuffle: () => void
-  showVowelKey: boolean
-  onToggleVowelKey: () => void
+  index: number;
+  total: number;
+  onFlip: () => void;
+  onPrev: () => void;
+  onNext: () => void;
+  onShuffle: () => void;
+  showVowelKey: boolean;
+  onToggleVowelKey: () => void;
 }
 
 export function Controls({
@@ -32,8 +32,8 @@ export function Controls({
         <div className="flex items-center gap-2 sm:gap-4">
           <button
             onClick={(e) => {
-              e.stopPropagation()
-              onPrev()
+              e.stopPropagation();
+              onPrev();
             }}
             className="p-4 rounded-2xl bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 text-zinc-300 transition-all active:scale-95"
             title="Previous (Left Arrow)"
@@ -54,8 +54,8 @@ export function Controls({
           </button>
           <button
             onClick={(e) => {
-              e.stopPropagation()
-              onFlip()
+              e.stopPropagation();
+              onFlip();
             }}
             className="px-8 py-4 rounded-2xl bg-zinc-100 text-zinc-950 font-bold hover:bg-white transition-all active:scale-95 min-w-30"
           >
@@ -63,8 +63,8 @@ export function Controls({
           </button>
           <button
             onClick={(e) => {
-              e.stopPropagation()
-              onNext()
+              e.stopPropagation();
+              onNext();
             }}
             className="p-4 rounded-2xl bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 text-zinc-300 transition-all active:scale-95"
             title="Next (Right Arrow)"
@@ -89,8 +89,8 @@ export function Controls({
         <div className="flex items-center gap-2 sm:gap-4">
           <button
             onClick={(e) => {
-              e.stopPropagation()
-              onShuffle()
+              e.stopPropagation();
+              onShuffle();
             }}
             className="p-4 rounded-2xl bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 text-zinc-300 transition-all active:scale-95"
             title="Shuffle (S)"
@@ -111,8 +111,8 @@ export function Controls({
           </button>
           <button
             onClick={(e) => {
-              e.stopPropagation()
-              onToggleVowelKey()
+              e.stopPropagation();
+              onToggleVowelKey();
             }}
             className={`px-6 py-4 rounded-2xl border transition-all active:scale-95 font-bold text-sm ${
               showVowelKey
@@ -127,9 +127,11 @@ export function Controls({
       </div>
 
       <div className="text-[10px] text-zinc-600 mt-2 tracking-widest uppercase font-mono text-center hidden sm:block space-y-1">
-        <p>Space: Flip • Arrows: Navigate • S: Shuffle • A: Audio • V: Vowels</p>
+        <p>
+          Space: Flip • Arrows: Navigate • S: Shuffle • A: Audio • V: Vowels
+        </p>
         <p>M: Master • D: Drill • Z: Undo</p>
       </div>
     </div>
-  )
+  );
 }

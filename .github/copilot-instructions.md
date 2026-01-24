@@ -23,6 +23,7 @@ Always run **before committing**:
 ```bash
 npm run build  # Type-check + build
 npm run lint   # Lint check
+npm run format # Auto-format code
 ```
 
 ## Python Scripts

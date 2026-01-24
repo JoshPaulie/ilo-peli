@@ -1,18 +1,18 @@
 interface HeaderProps {
-  specificCategories: string[]
-  activeCategories: Set<string>
-  onCategoryToggle: (category: string) => void
-  onToggleAll: () => void
-  drillOnly: boolean
-  onDrillToggle: () => void
-  lastMasteredId: string | null
-  onUndo: () => void
-  onShowDrillInfo: () => void
-  onShowAbout: () => void
-  onShowOptions: () => void
-  onShowMasteredCards: () => void
-  masteredCount: number
-  filteredWordsCount: number
+  specificCategories: string[];
+  activeCategories: Set<string>;
+  onCategoryToggle: (category: string) => void;
+  onToggleAll: () => void;
+  drillOnly: boolean;
+  onDrillToggle: () => void;
+  lastMasteredId: string | null;
+  onUndo: () => void;
+  onShowDrillInfo: () => void;
+  onShowAbout: () => void;
+  onShowOptions: () => void;
+  onShowMasteredCards: () => void;
+  masteredCount: number;
+  filteredWordsCount: number;
 }
 
 export function Header({
@@ -36,7 +36,9 @@ export function Header({
       <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-3">
         <div className="flex items-center justify-between min-h-8">
           <div className="flex items-center gap-3 flex-shrink-0">
-            <h1 className="text-xl font-black text-zinc-100 tracking-tighter whitespace-nowrap">ilo Peli</h1>
+            <h1 className="text-xl font-black text-zinc-100 tracking-tighter whitespace-nowrap">
+              ilo Peli
+            </h1>
             <button
               onClick={onShowAbout}
               className="w-8 h-8 flex items-center justify-center rounded-xl bg-zinc-900 text-zinc-500 hover:text-zinc-200 border border-zinc-800"
@@ -86,11 +88,7 @@ export function Header({
               className="w-8 h-8 flex items-center justify-center rounded-xl bg-zinc-900 text-zinc-500 hover:text-zinc-200 border border-zinc-800"
               title="Manage Mastered Cards"
             >
-              <svg
-                className="w-4 h-4"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
               </svg>
             </button>
@@ -144,9 +142,9 @@ export function Header({
               {cat.toUpperCase()}
             </button>
           ))}
-          
+
           <div className="w-px h-6 bg-zinc-700 mx-1" />
-          
+
           <button
             onClick={onToggleAll}
             className={`px-4 py-1.5 rounded-xl text-[10px] font-bold whitespace-nowrap transition-colors ${
@@ -160,5 +158,5 @@ export function Header({
         </div>
       </div>
     </header>
-  )
+  );
 }

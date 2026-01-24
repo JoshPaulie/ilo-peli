@@ -1,7 +1,7 @@
-import { VOWEL_DATA } from '../types'
+import { VOWEL_DATA } from '../types';
 
 interface VowelKeyProps {
-  onClose: () => void
+  onClose: () => void;
 }
 
 export function VowelKey({ onClose }: VowelKeyProps) {
@@ -9,7 +9,10 @@ export function VowelKey({ onClose }: VowelKeyProps) {
     <aside className="w-full lg:w-72 bg-zinc-900 border border-zinc-800 rounded-3xl p-6 shadow-2xl flex flex-col gap-4 shrink-0 max-h-125 overflow-y-auto">
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-bold text-zinc-50">Vowel Key</h3>
-        <button onClick={onClose} className="lg:hidden p-2 text-zinc-500 hover:text-zinc-300">
+        <button
+          onClick={onClose}
+          className="lg:hidden p-2 text-zinc-500 hover:text-zinc-300"
+        >
           <svg
             className="w-5 h-5"
             fill="none"
@@ -31,10 +34,14 @@ export function VowelKey({ onClose }: VowelKeyProps) {
             key={item.vowel}
             className="flex items-start gap-3 pb-3 border-b border-zinc-800 last:border-0 last:pb-0"
           >
-            <div className="text-3xl font-bold text-zinc-100 min-w-fit w-8">{item.vowel}</div>
+            <div className="text-3xl font-bold text-zinc-100 min-w-fit w-8">
+              {item.vowel}
+            </div>
             <div className="flex-1">
               <div className="text-sm text-zinc-400">
-                <span className="text-zinc-500 font-mono">{item.pronunciation}</span>
+                <span className="text-zinc-500 font-mono">
+                  {item.pronunciation}
+                </span>
               </div>
               <div className="text-sm text-zinc-400 mt-1">{item.examples}</div>
             </div>
@@ -42,5 +49,5 @@ export function VowelKey({ onClose }: VowelKeyProps) {
         ))}
       </div>
     </aside>
-  )
+  );
 }

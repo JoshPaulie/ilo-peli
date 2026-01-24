@@ -1,235 +1,289 @@
-import { useState, useEffect, useMemo, useCallback } from 'react'
-import wordData from './data.json'
-import { Card } from './components/Card'
-import { Controls } from './components/Controls'
-import { Header } from './components/Header'
-import { Modals } from './components/Modals'
-import { VowelKey } from './components/VowelKey'
-import { EmptyState } from './components/EmptyState'
-import { ToastContainer } from './components/ToastContainer'
-import { useCardState } from './hooks/useCardState'
-import { useMasteredCards } from './hooks/useMasteredCards'
-import { useSettings } from './hooks/useSettings'
-import type { Word } from './types'
+import { useState, useEffect, useMemo, useCallback } from 'react';
+import wordData from './data.json';
+import { Card } from './components/Card';
+import { Controls } from './components/Controls';
+import { Header } from './components/Header';
+import { Modals } from './components/Modals';
+import { VowelKey } from './components/VowelKey';
+import { EmptyState } from './components/EmptyState';
+import { ToastContainer } from './components/ToastContainer';
+import { useCardState } from './hooks/useCardState';
+import { useMasteredCards } from './hooks/useMasteredCards';
+import { useSettings } from './hooks/useSettings';
+import type { Word } from './types';
 
 function App() {
-  const cardState = useCardState()
-  const { masteredIds, lastMasteredId, toggleMastered, undoMastered, resetMastered, unmasterCard } =
-    useMasteredCards()
-  const settings = useSettings()
+  const cardState = useCardState();
+  const {
+    masteredIds,
+    lastMasteredId,
+    toggleMastered,
+    undoMastered,
+    resetMastered,
+    unmasterCard,
+  } = useMasteredCards();
+  const settings = useSettings();
 
-  const [showVowelKey, setShowVowelKey] = useState(false)
-  const [showAbout, setShowAbout] = useState(false)
-  const [showDrillInfo, setShowDrillInfo] = useState(false)
-  const [showOptions, setShowOptions] = useState(false)
-  const [showMasteredCards, setShowMasteredCards] = useState(false)
+  const [showVowelKey, setShowVowelKey] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
+  const [showDrillInfo, setShowDrillInfo] = useState(false);
+  const [showOptions, setShowOptions] = useState(false);
+  const [showMasteredCards, setShowMasteredCards] = useState(false);
 
   const masteredCount = useMemo(() => {
-    return cardState.filteredWords.filter(w => masteredIds.has(w.id)).length
-  }, [cardState.filteredWords, masteredIds])
+    return cardState.filteredWords.filter((w) => masteredIds.has(w.id)).length;
+  }, [cardState.filteredWords, masteredIds]);
 
   const masteredWords = useMemo(() => {
-    return cardState.filteredWords.filter(w => masteredIds.has(w.id))
-  }, [cardState.filteredWords, masteredIds])
+    return cardState.filteredWords.filter((w) => masteredIds.has(w.id));
+  }, [cardState.filteredWords, masteredIds]);
 
   // Apply exclusion filter
   const filteredWordsWithExclusion = useMemo(() => {
-    let words = cardState.filteredWords
+    let words = cardState.filteredWords;
     if (settings.excludeKijetesantakalu) {
-      words = words.filter(w => w.id !== 'kijetesantakalu')
+      words = words.filter((w) => w.id !== 'kijetesantakalu');
     }
-    return words
-  }, [cardState.filteredWords, settings.excludeKijetesantakalu])
+    return words;
+  }, [cardState.filteredWords, settings.excludeKijetesantakalu]);
 
   // Recalculate display words with drill and exclusion
   const displayWords = useMemo(() => {
-    let words = cardState.words.length > 0 ? cardState.words : filteredWordsWithExclusion
+    let words =
+      cardState.words.length > 0 ? cardState.words : filteredWordsWithExclusion;
     if (cardState.drillOnly) {
-      words = words.filter(w => !masteredIds.has(w.id))
+      words = words.filter((w) => !masteredIds.has(w.id));
     }
-    return words
-  }, [cardState.words, filteredWordsWithExclusion, cardState.drillOnly, masteredIds])
+    return words;
+  }, [
+    cardState.words,
+    filteredWordsWithExclusion,
+    cardState.drillOnly,
+    masteredIds,
+  ]);
 
   // Ensure index is in bounds for displayWords
-  const safeIndex = displayWords.length > 0 && cardState.index < displayWords.length ? cardState.index : 0
-  const currentWord = displayWords[safeIndex]
+  const safeIndex =
+    displayWords.length > 0 && cardState.index < displayWords.length
+      ? cardState.index
+      : 0;
+  const currentWord = displayWords[safeIndex];
 
   const playAudio = useCallback(
     (word: Word) => {
-      if (!word?.audio || word.audio.length === 0) return
+      if (!word?.audio || word.audio.length === 0) return;
 
-      let audioObj = word.audio[0]
+      let audioObj = word.audio[0];
 
       if (settings.speakerMode === 'random') {
-        audioObj = word.audio[Math.floor(Math.random() * word.audio.length)]
+        audioObj = word.audio[Math.floor(Math.random() * word.audio.length)];
       } else if (settings.speakerMode === 'alternating') {
-        const speakers = Array.from(new Set(word.audio.map(a => a.author)))
+        const speakers = Array.from(new Set(word.audio.map((a) => a.author)));
         if (speakers.length > 1) {
-          const nextSpeaker = speakers.find(s => s !== settings.lastUsedSpeaker)
+          const nextSpeaker = speakers.find(
+            (s) => s !== settings.lastUsedSpeaker
+          );
           if (nextSpeaker) {
-            const optionsFromSpeaker = word.audio.filter(a => a.author === nextSpeaker)
+            const optionsFromSpeaker = word.audio.filter(
+              (a) => a.author === nextSpeaker
+            );
             audioObj =
-              optionsFromSpeaker[Math.floor(Math.random() * optionsFromSpeaker.length)]
-            settings.setLastUsedSpeaker(nextSpeaker)
+              optionsFromSpeaker[
+                Math.floor(Math.random() * optionsFromSpeaker.length)
+              ];
+            settings.setLastUsedSpeaker(nextSpeaker);
           } else {
-            audioObj = word.audio[Math.floor(Math.random() * word.audio.length)]
+            audioObj =
+              word.audio[Math.floor(Math.random() * word.audio.length)];
           }
         }
-      } else if (settings.speakerMode === 'specific' && settings.specificSpeaker) {
-        const optionsFromSpeaker = word.audio.filter(a => a.author === settings.specificSpeaker)
+      } else if (
+        settings.speakerMode === 'specific' &&
+        settings.specificSpeaker
+      ) {
+        const optionsFromSpeaker = word.audio.filter(
+          (a) => a.author === settings.specificSpeaker
+        );
         if (optionsFromSpeaker.length > 0) {
-          audioObj = optionsFromSpeaker[Math.floor(Math.random() * optionsFromSpeaker.length)]
+          audioObj =
+            optionsFromSpeaker[
+              Math.floor(Math.random() * optionsFromSpeaker.length)
+            ];
         } else {
-          audioObj = word.audio[Math.floor(Math.random() * word.audio.length)]
+          audioObj = word.audio[Math.floor(Math.random() * word.audio.length)];
         }
       }
 
-      const audio = new Audio(audioObj.link)
-      audio.play().catch(err => console.error('Audio playback failed:', err))
+      const audio = new Audio(audioObj.link);
+      audio.play().catch((err) => console.error('Audio playback failed:', err));
     },
     [settings]
-  )
+  );
 
   const handleDrillToggle = useCallback(() => {
-    cardState.setDrillOnly(prev => !prev)
-    cardState.setIndex(0)
-    cardState.setIsFlipped(false)
-  }, [cardState])
+    cardState.setDrillOnly((prev) => !prev);
+    cardState.setIndex(0);
+    cardState.setIsFlipped(false);
+  }, [cardState]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!currentWord) return
+      if (!currentWord) return;
       if (e.code === 'Space' || e.code === 'Enter') {
-        e.preventDefault()
-        cardState.toggleFlip()
+        e.preventDefault();
+        cardState.toggleFlip();
       } else if (e.code === 'ArrowRight' || e.code === 'KeyL') {
-        e.preventDefault()
-        cardState.nextCard()
+        e.preventDefault();
+        cardState.nextCard();
       } else if (e.code === 'ArrowLeft' || e.code === 'KeyH') {
-        e.preventDefault()
-        cardState.prevCard()
+        e.preventDefault();
+        cardState.prevCard();
       } else if (e.code === 'ArrowDown' || e.code === 'KeyJ') {
-        e.preventDefault()
-        const backCard = document.querySelector('[data-card-back]') as HTMLElement
+        e.preventDefault();
+        const backCard = document.querySelector(
+          '[data-card-back]'
+        ) as HTMLElement;
         if (backCard && cardState.isFlipped) {
-          backCard.scrollBy({ top: 50, behavior: 'smooth' })
+          backCard.scrollBy({ top: 50, behavior: 'smooth' });
         }
       } else if (e.code === 'ArrowUp' || e.code === 'KeyK') {
-        e.preventDefault()
-        const backCard = document.querySelector('[data-card-back]') as HTMLElement
+        e.preventDefault();
+        const backCard = document.querySelector(
+          '[data-card-back]'
+        ) as HTMLElement;
         if (backCard && cardState.isFlipped) {
-          backCard.scrollBy({ top: -50, behavior: 'smooth' })
+          backCard.scrollBy({ top: -50, behavior: 'smooth' });
         }
       } else if (e.code === 'KeyS') {
-        cardState.shuffleCard()
+        cardState.shuffleCard();
       } else if (e.code === 'KeyA') {
-        e.preventDefault()
-        playAudio(currentWord)
+        e.preventDefault();
+        playAudio(currentWord);
       } else if (e.code === 'KeyM') {
         if (cardState.drillOnly) {
-          cardState.setIsFlipped(false)
+          cardState.setIsFlipped(false);
           // Delay progression until animation completes (600ms)
           setTimeout(() => {
-            toggleMastered(currentWord.id)
-            cardState.nextCard()
-          }, 600)
+            toggleMastered(currentWord.id);
+            cardState.nextCard();
+          }, 600);
         } else {
           // In normal mode, delay mastery toggle but don't progress
           setTimeout(() => {
-            toggleMastered(currentWord.id)
-          }, 600)
+            toggleMastered(currentWord.id);
+          }, 600);
         }
       } else if (e.code === 'KeyD') {
-        handleDrillToggle()
+        handleDrillToggle();
       } else if (e.code === 'KeyV') {
-        setShowVowelKey(prev => !prev)
+        setShowVowelKey((prev) => !prev);
       } else if (e.code === 'KeyZ') {
-        undoMastered()
+        undoMastered();
       }
-    }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [cardState, currentWord, playAudio, toggleMastered, undoMastered, handleDrillToggle])
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [
+    cardState,
+    currentWord,
+    playAudio,
+    toggleMastered,
+    undoMastered,
+    handleDrillToggle,
+  ]);
 
   const uniqueSpeakers = useMemo(() => {
-    const speakers = new Set<string>()
-    ;(wordData as Word[]).forEach(word => {
+    const speakers = new Set<string>();
+    (wordData as Word[]).forEach((word) => {
       if (word.audio) {
-        word.audio.forEach(a => speakers.add(a.author))
+        word.audio.forEach((a) => speakers.add(a.author));
       }
-    })
-    return Array.from(speakers).sort()
-  }, [])
+    });
+    return Array.from(speakers).sort();
+  }, []);
 
-  const categoryOrder = ['core', 'common', 'uncommon', 'obscure']
-  const allUsages = Array.from(new Set((wordData as Word[]).map(w => w.usage_category))).filter(Boolean)
-  const specificCategories = categoryOrder.filter(cat => allUsages.includes(cat))
+  const categoryOrder = ['core', 'common', 'uncommon', 'obscure'];
+  const allUsages = Array.from(
+    new Set((wordData as Word[]).map((w) => w.usage_category))
+  ).filter(Boolean);
+  const specificCategories = categoryOrder.filter((cat) =>
+    allUsages.includes(cat)
+  );
 
   const handleCategoryToggle = useCallback(
     (category: string) => {
-      const newActiveCategories = new Set(cardState.activeCategories)
+      const newActiveCategories = new Set(cardState.activeCategories);
       if (newActiveCategories.has(category)) {
-        newActiveCategories.delete(category)
+        newActiveCategories.delete(category);
       } else {
-        newActiveCategories.add(category)
+        newActiveCategories.add(category);
       }
-      cardState.setActiveCategories(newActiveCategories)
-      cardState.setIndex(0)
-      cardState.setIsFlipped(false)
+      cardState.setActiveCategories(newActiveCategories);
+      cardState.setIndex(0);
+      cardState.setIsFlipped(false);
 
       if (settings.shuffleOnCategoryChange) {
-        let baseWords = wordData as Word[]
+        let baseWords = wordData as Word[];
         if (newActiveCategories.size > 0) {
-          baseWords = baseWords.filter(w => newActiveCategories.has(w.usage_category))
+          baseWords = baseWords.filter((w) =>
+            newActiveCategories.has(w.usage_category)
+          );
         }
         if (settings.excludeKijetesantakalu) {
-          baseWords = baseWords.filter(w => w.id !== 'kijetesantakalu')
+          baseWords = baseWords.filter((w) => w.id !== 'kijetesantakalu');
         }
-        const shuffled = [...baseWords].sort(() => Math.random() - 0.5)
-        cardState.setWords(shuffled)
+        const shuffled = [...baseWords].sort(() => Math.random() - 0.5);
+        cardState.setWords(shuffled);
       } else {
-        cardState.setWords([])
+        cardState.setWords([]);
       }
     },
-    [cardState, settings.shuffleOnCategoryChange, settings.excludeKijetesantakalu]
-  )
+    [
+      cardState,
+      settings.shuffleOnCategoryChange,
+      settings.excludeKijetesantakalu,
+    ]
+  );
 
   const handleToggleAll = useCallback(() => {
-    const isAllSelected = cardState.activeCategories.size === specificCategories.length
-    
+    const isAllSelected =
+      cardState.activeCategories.size === specificCategories.length;
+
     // If all are already selected, do nothing
     if (isAllSelected) {
-      return
+      return;
     }
-    
+
     // Otherwise, select all categories
-    const newActiveCategories = new Set(specificCategories)
-    cardState.setActiveCategories(newActiveCategories)
-    cardState.setIndex(0)
-    cardState.setIsFlipped(false)
+    const newActiveCategories = new Set(specificCategories);
+    cardState.setActiveCategories(newActiveCategories);
+    cardState.setIndex(0);
+    cardState.setIsFlipped(false);
 
     if (settings.shuffleOnCategoryChange) {
-      let baseWords = wordData as Word[]
+      let baseWords = wordData as Word[];
       if (newActiveCategories.size > 0) {
-        baseWords = baseWords.filter(w => newActiveCategories.has(w.usage_category))
+        baseWords = baseWords.filter((w) =>
+          newActiveCategories.has(w.usage_category)
+        );
       }
       if (settings.excludeKijetesantakalu) {
-        baseWords = baseWords.filter(w => w.id !== 'kijetesantakalu')
+        baseWords = baseWords.filter((w) => w.id !== 'kijetesantakalu');
       }
-      const shuffled = [...baseWords].sort(() => Math.random() - 0.5)
-      cardState.setWords(shuffled)
+      const shuffled = [...baseWords].sort(() => Math.random() - 0.5);
+      cardState.setWords(shuffled);
     } else {
-      cardState.setWords([])
+      cardState.setWords([]);
     }
-  }, [cardState, specificCategories, settings.shuffleOnCategoryChange, settings.excludeKijetesantakalu])
+  }, [
+    cardState,
+    specificCategories,
+    settings.shuffleOnCategoryChange,
+    settings.excludeKijetesantakalu,
+  ]);
 
   if (displayWords.length === 0 || !currentWord) {
-    return (
-      <EmptyState
-        onShowAll={handleToggleAll}
-        onReset={resetMastered}
-      />
-    )
+    return <EmptyState onShowAll={handleToggleAll} onReset={resetMastered} />;
   }
 
   return (
@@ -290,7 +344,7 @@ function App() {
                   onFlip={cardState.toggleFlip}
                   masteredIds={masteredIds}
                   onToggleMastered={(id) => {
-                    toggleMastered(id)
+                    toggleMastered(id);
                   }}
                   onPlayAudio={playAudio}
                   drillOnly={cardState.drillOnly}
@@ -314,7 +368,9 @@ function App() {
               </main>
             </div>
 
-            {showVowelKey && <VowelKey onClose={() => setShowVowelKey(false)} />}
+            {showVowelKey && (
+              <VowelKey onClose={() => setShowVowelKey(false)} />
+            )}
           </div>
         </div>
       </div>
@@ -329,7 +385,7 @@ function App() {
         .will-change-transform { will-change: transform; }
       `}</style>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
