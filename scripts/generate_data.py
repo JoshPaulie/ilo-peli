@@ -7,7 +7,10 @@ merges with local overrides, and generates src/data.json.
 
 import json
 import re
+import subprocess
 import sys
+import tempfile
+import time
 import tomllib
 from pathlib import Path
 
@@ -15,6 +18,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # Constants
+SONA_REPO_URL = "https://github.com/lipu-linku/sona.git"
 SONA_RAW_BASE = "https://raw.githubusercontent.com/lipu-linku/sona/main/words"
 LIPAMANKA_URL = "https://lipamanka.gay/essays/dictionary"
 SCRIPT_DIR = Path(__file__).parent
@@ -23,43 +27,44 @@ OVERRIDES_DIR = PROJECT_ROOT / "data" / "overrides"
 OUTPUT_FILE = PROJECT_ROOT / "src" / "data.json"
 
 
-def fetch_words_data() -> dict:
-    """Fetch word metadata from sona via raw GitHub URLs."""
-    print("Fetching word list and metadata from sona...")
+def fetch_words_data(repo_path: Path) -> dict:
+    """Fetch word metadata from local sona repo."""
+    print("Reading word list and metadata from sona...")
     words = {}
 
-    print("  Getting word list...")
+    words_dir = repo_path / "words"
+    metadata_dir = words_dir / "metadata"
+    definitions_file = words_dir / "source" / "definitions.toml"
+
+    # Load word list
+    if not definitions_file.exists():
+        print(f"Error: {definitions_file} not found", file=sys.stderr)
+        return {}
+
     try:
-        resp = requests.get(
-            f"{SONA_RAW_BASE}/source/definitions.toml",
-            timeout=10,
-        )
-        resp.raise_for_status()
-        definitions = tomllib.loads(resp.text)
+        with open(definitions_file, "rb") as f:
+            definitions = tomllib.load(f)
         word_ids = list(definitions.keys())
         print(f"  Found {len(word_ids)} words")
     except Exception as e:
-        print(f"Error fetching definitions.toml: {e}", file=sys.stderr)
+        print(f"Error reading definitions.toml: {e}", file=sys.stderr)
         return {}
 
-    print("  Fetching metadata files...")
+    # Read metadata files from directory
+    print("  Reading metadata files...")
     for idx, word_id in enumerate(word_ids, 1):
-        raw_url = f"{SONA_RAW_BASE}/metadata/{word_id}.toml"
-
+        metadata_file = metadata_dir / f"{word_id}.toml"
         try:
-            resp = requests.get(raw_url, timeout=5)
-            resp.raise_for_status()
-            word_data = tomllib.loads(resp.text)
+            with open(metadata_file, "rb") as f:
+                word_data = tomllib.load(f)
             words[word_id] = word_data
-            if idx % 20 == 0:
-                print(f"    [{idx}/{len(word_ids)}]")
         except Exception as e:
             print(
-                f"  Warning: Could not fetch metadata for {word_id}: {e}",
+                f"  Warning: Could not read metadata for {word_id}: {e}",
                 file=sys.stderr,
             )
 
-    print(f"Successfully fetched {len(words)} words with metadata")
+    print(f"Successfully read {len(words)} words with metadata")
     return words
 
 
@@ -104,20 +109,21 @@ def fetch_essays() -> dict[str, str]:
         return {}
 
 
-def fetch_commentary() -> dict[str, str]:
-    """Fetch commentary notes from sona repo."""
-    print("Fetching commentary from sona...")
+def fetch_commentary(repo_path: Path) -> dict[str, str]:
+    """Fetch commentary notes from local sona repo."""
+    print("Reading commentary from sona...")
     try:
-        resp = requests.get(
-            f"{SONA_RAW_BASE}/source/commentary.toml",
-            timeout=10,
-        )
-        resp.raise_for_status()
-        data = tomllib.loads(resp.text)
+        commentary_file = repo_path / "words" / "source" / "commentary.toml"
+        if not commentary_file.exists():
+            print("  (commentary.toml not found, skipping)")
+            return {}
+
+        with open(commentary_file, "rb") as f:
+            data = tomllib.load(f)
         print(f"Found {len(data)} commentary entries")
         return data
     except Exception as e:
-        print(f"Error fetching commentary: {e}", file=sys.stderr)
+        print(f"Error reading commentary: {e}", file=sys.stderr)
         return {}
 
 
@@ -282,6 +288,7 @@ def load_existing_data() -> dict:
 
 def main() -> None:
     """Main execution."""
+    start_time = time.perf_counter()
     overrides_only = "--overrides-only" in sys.argv
 
     if overrides_only:
@@ -311,28 +318,47 @@ def main() -> None:
                         word_obj[key] = merged_data[key]
             words.append(word_obj)
 
-        print(f"Applied overrides to {len(words)} words")
+        elapsed = time.perf_counter() - start_time
+        print(f"Applied overrides to {len(words)} words ({elapsed:.2f}s)")
     else:
         print("Starting data generation...")
 
-        words_data = fetch_words_data()
-        if not words_data:
-            print("Error: No words data found", file=sys.stderr)
-            sys.exit(1)
+        # Clone sona repo to temp directory
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_path = Path(temp_dir)
+            print("  Cloning sona repository...")
+            clone_start = time.perf_counter()
+            try:
+                subprocess.run(
+                    ["git", "clone", "--depth", "1", SONA_REPO_URL, str(temp_path)],
+                    check=True,
+                    capture_output=True,
+                    timeout=30,
+                )
+            except subprocess.CalledProcessError as e:
+                print(f"Error cloning repository: {e.stderr.decode()}", file=sys.stderr)
+                sys.exit(1)
+            clone_elapsed = time.perf_counter() - clone_start
+            print(f"  Clone completed ({clone_elapsed:.2f}s)")
 
-        essays = fetch_essays()
-        commentary = fetch_commentary()
+            words_data = fetch_words_data(temp_path)
+            if not words_data:
+                print("Error: No words data found", file=sys.stderr)
+                sys.exit(1)
 
-        OVERRIDES_DIR.mkdir(parents=True, exist_ok=True)
+            essays = fetch_essays()
+            commentary = fetch_commentary(temp_path)
 
-        words = []
-        for word_id, word_data in words_data.items():
-            if not isinstance(word_data, dict):
-                continue
+            OVERRIDES_DIR.mkdir(parents=True, exist_ok=True)
 
-            override = load_override(word_id)
-            word_obj = build_word(word_id, word_data, essays, commentary, override)
-            words.append(word_obj)
+            words = []
+            for word_id, word_data in words_data.items():
+                if not isinstance(word_data, dict):
+                    continue
+
+                override = load_override(word_id)
+                word_obj = build_word(word_id, word_data, essays, commentary, override)
+                words.append(word_obj)
 
     words.sort(key=lambda w: w["id"])
 
@@ -340,7 +366,8 @@ def main() -> None:
     with open(OUTPUT_FILE, "w") as f:
         json.dump(words, f, indent=2, ensure_ascii=False)
 
-    print(f"Success! Generated {len(words)} words to {OUTPUT_FILE}")
+    elapsed = time.perf_counter() - start_time
+    print(f"Success! Generated {len(words)} words to {OUTPUT_FILE} ({elapsed:.2f}s)")
 
 
 if __name__ == "__main__":
