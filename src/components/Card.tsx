@@ -80,7 +80,7 @@ export function Card({
         className={`relative w-full h-full transform-style-3d will-change-transform ${isFlipped ? 'rotate-y-180' : ''}`}
       >
         {/* Front */}
-        <div className={`absolute inset-0 backface-hidden bg-zinc-900 border-2 rounded-3xl flex flex-col items-center justify-center p-6 sm:p-8 shadow-2xl overflow-hidden border-zinc-800`}>
+        <div className={`absolute inset-0 backface-hidden bg-zinc-900 border-2 rounded-3xl flex flex-col items-center justify-center p-6 sm:p-8 shadow-2xl overflow-hidden border-zinc-800 ${showBorderFlash ? 'border-flash' : ''}`}>
           <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
             <button
               onClick={(e) => {
