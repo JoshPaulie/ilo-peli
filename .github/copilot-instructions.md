@@ -40,6 +40,6 @@ This script fetches upstream Toki Pona data, processes it, and outputs a new `sr
 ## Conventions
 
 - **New settings:** Always add to `useSettings()` and persist via `usePersistence()` – all settings persist across sessions
-- **Commit messages:** Follow [Conventional Commits](https://www.conventionalcommits.org/) (e.g., `feat: add keyboard shortcut`, `fix: audio playback`, `docs: update README`)
+- **Commit messages:** Follow [Conventional Commits](https://www.conventionalcommits.org/) (e.g., `feat: add keyboard shortcut`, `fix: audio playback`, `docs: update README`). Keep the message short, never add long descriptions in commit messages.
 - **Changelogs:** Follow [Keep a `CHANGELOG.md`](https://keepachangelog.com/en/1.0.0/) to maintain a `CHANGELOG.md` with notable changes for each version. Entries should be categorized under headings like "Added", "Changed", "Fixed", etc., and short descriptions.
-- **Versions:** Follow [Semantic Versioning](https://semver.org/) for version numbers in `package.json` and releases.
+- **Versions:** Follow [Semantic Versioning](https://semver.org/) for version numbers in `package.json` and releases. When asked to bump the version, choose the appropriate increment: MAJOR.MINOR.PATCH. Update `CHANGELOG.md` accordingly.
