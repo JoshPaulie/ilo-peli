@@ -27,10 +27,18 @@ export function useSettings() {
     return saved ? JSON.parse(saved) : false;
   });
 
+  const [autoPlayAudioOnNavigation, setAutoPlayAudioOnNavigation] = useState(
+    () => {
+      const saved = localStorage.getItem('autoPlayAudioOnNavigation');
+      return saved ? JSON.parse(saved) : false;
+    }
+  );
+
   usePersistence('speakerMode', speakerMode);
   usePersistence('specificSpeaker', specificSpeaker);
   usePersistence('shuffleOnCategoryChange', shuffleOnCategoryChange);
   usePersistence('excludeKijetesantakalu', excludeKijetesantakalu);
+  usePersistence('autoPlayAudioOnNavigation', autoPlayAudioOnNavigation);
 
   return {
     speakerMode,
@@ -43,5 +51,7 @@ export function useSettings() {
     setShuffleOnCategoryChange,
     excludeKijetesantakalu,
     setExcludeKijetesantakalu,
+    autoPlayAudioOnNavigation,
+    setAutoPlayAudioOnNavigation,
   };
 }

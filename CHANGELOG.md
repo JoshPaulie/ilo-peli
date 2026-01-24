@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - Persist card side (front/back) between sessions
+- Auto-play audio pronunciation when navigating between cards (respects speaker preference setting)
 
 ## [2.1.0] - 2026-01-24
 

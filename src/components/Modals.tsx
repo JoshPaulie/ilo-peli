@@ -24,6 +24,8 @@ interface ModalsProps {
   onShuffleOnCategoryChangeChange: (value: boolean) => void;
   excludeKijetesantakalu: boolean;
   onExcludeKijetesantakakuChange: (value: boolean) => void;
+  autoPlayAudioOnNavigation: boolean;
+  onAutoPlayAudioOnNavigationChange: (value: boolean) => void;
 }
 
 export function Modals({
@@ -49,6 +51,8 @@ export function Modals({
   onShuffleOnCategoryChangeChange,
   excludeKijetesantakalu,
   onExcludeKijetesantakakuChange,
+  autoPlayAudioOnNavigation,
+  onAutoPlayAudioOnNavigationChange,
 }: ModalsProps) {
   return (
     <>
@@ -207,6 +211,28 @@ export function Modals({
                     </select>
                   </div>
                 )}
+              </div>
+
+              {/* Auto-play Audio on Navigation */}
+              <div className="border-t border-zinc-700 pt-6">
+                <label className="flex items-center gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={autoPlayAudioOnNavigation}
+                    onChange={(e) =>
+                      onAutoPlayAudioOnNavigationChange(e.target.checked)
+                    }
+                    className="w-4 h-4"
+                  />
+                  <div className="flex-1">
+                    <span className="text-sm font-medium text-zinc-100">
+                      Auto-play Audio on Navigation
+                    </span>
+                    <p className="text-xs text-zinc-500 mt-1">
+                      Play pronunciation when moving to next or previous card
+                    </p>
+                  </div>
+                </label>
               </div>
 
               {/* Shuffle on Category Change */}

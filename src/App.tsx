@@ -126,6 +126,36 @@ function App() {
     cardState.setIsFlipped(false);
   }, [cardState]);
 
+  const handleNextCard = useCallback(() => {
+    const nextWord = displayWords[(safeIndex + 1) % displayWords.length];
+    cardState.nextCard();
+    if (settings.autoPlayAudioOnNavigation && nextWord) {
+      setTimeout(() => playAudio(nextWord), 0);
+    }
+  }, [
+    cardState,
+    displayWords,
+    safeIndex,
+    settings.autoPlayAudioOnNavigation,
+    playAudio,
+  ]);
+
+  const handlePrevCard = useCallback(() => {
+    const prevIndex =
+      (safeIndex - 1 + displayWords.length) % displayWords.length;
+    const prevWord = displayWords[prevIndex];
+    cardState.prevCard();
+    if (settings.autoPlayAudioOnNavigation && prevWord) {
+      setTimeout(() => playAudio(prevWord), 0);
+    }
+  }, [
+    cardState,
+    displayWords,
+    safeIndex,
+    settings.autoPlayAudioOnNavigation,
+    playAudio,
+  ]);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!currentWord) return;
@@ -134,10 +164,10 @@ function App() {
         cardState.toggleFlip();
       } else if (e.code === 'ArrowRight' || e.code === 'KeyL') {
         e.preventDefault();
-        cardState.nextCard();
+        handleNextCard();
       } else if (e.code === 'ArrowLeft' || e.code === 'KeyH') {
         e.preventDefault();
-        cardState.prevCard();
+        handlePrevCard();
       } else if (e.code === 'ArrowDown' || e.code === 'KeyJ') {
         e.preventDefault();
         const backCard = document.querySelector(
@@ -190,6 +220,8 @@ function App() {
     toggleMastered,
     undoMastered,
     handleDrillToggle,
+    handleNextCard,
+    handlePrevCard,
   ]);
 
   const uniqueSpeakers = useMemo(() => {
@@ -328,6 +360,10 @@ function App() {
         onShuffleOnCategoryChangeChange={settings.setShuffleOnCategoryChange}
         excludeKijetesantakalu={settings.excludeKijetesantakalu}
         onExcludeKijetesantakakuChange={settings.setExcludeKijetesantakalu}
+        autoPlayAudioOnNavigation={settings.autoPlayAudioOnNavigation}
+        onAutoPlayAudioOnNavigationChange={
+          settings.setAutoPlayAudioOnNavigation
+        }
       />
 
       <ToastContainer />
@@ -359,8 +395,8 @@ function App() {
                   index={safeIndex}
                   total={displayWords.length}
                   onFlip={cardState.toggleFlip}
-                  onPrev={cardState.prevCard}
-                  onNext={cardState.nextCard}
+                  onPrev={handlePrevCard}
+                  onNext={handleNextCard}
                   onShuffle={cardState.shuffleCard}
                   showVowelKey={showVowelKey}
                   onToggleVowelKey={() => setShowVowelKey(!showVowelKey)}
