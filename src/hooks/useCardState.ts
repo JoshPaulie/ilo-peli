@@ -13,7 +13,10 @@ export function useCardState() {
     return 0;
   });
 
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [isFlipped, setIsFlipped] = useState<boolean>(() => {
+    const saved = localStorage.getItem('isFlipped');
+    return saved ? JSON.parse(saved) : false;
+  });
 
   const [activeCategories, setActiveCategories] = useState<Set<string>>(() => {
     const saved = localStorage.getItem('activeCategories');
@@ -54,6 +57,7 @@ export function useCardState() {
     words.map((w) => w.id)
   );
   usePersistence('drillOnly', drillOnly);
+  usePersistence('isFlipped', isFlipped);
 
   const filteredWords = useMemo(() => {
     let baseWords = wordData as Word[];

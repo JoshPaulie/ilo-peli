@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+- Persist card side (front/back) between sessions
+
 ## [2.1.0] - 2026-01-24
 
 ### Added
