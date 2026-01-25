@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { MasteredCardsModal } from './MasteredCardsModal';
 import type { Word, SpeakerMode } from '../types';
 
@@ -54,6 +55,32 @@ export function Modals({
   autoPlayAudioOnNavigation,
   onAutoPlayAudioOnNavigationChange,
 }: ModalsProps) {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.code === 'Escape') {
+        if (showAbout) onCloseAbout();
+        else if (showOptions) onCloseOptions();
+        else if (showDrillInfo) onCloseDrillInfo();
+        else if (showMasteredCards) onCloseMasteredCards();
+      }
+    };
+
+    const anyModalOpen =
+      showAbout || showOptions || showDrillInfo || showMasteredCards;
+    if (anyModalOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+      return () => window.removeEventListener('keydown', handleKeyDown);
+    }
+  }, [
+    showAbout,
+    onCloseAbout,
+    showOptions,
+    onCloseOptions,
+    showDrillInfo,
+    onCloseDrillInfo,
+    showMasteredCards,
+    onCloseMasteredCards,
+  ]);
   return (
     <>
       <MasteredCardsModal
@@ -67,7 +94,12 @@ export function Modals({
       />
 
       {showDrillInfo && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) onCloseDrillInfo();
+          }}
+        >
           <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 max-w-lg w-full shadow-2xl relative">
             <button
               onClick={onCloseDrillInfo}
@@ -131,7 +163,12 @@ export function Modals({
       )}
 
       {showOptions && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) onCloseOptions();
+          }}
+        >
           <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 max-w-lg w-full shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <button
               onClick={onCloseOptions}
@@ -291,7 +328,12 @@ export function Modals({
       )}
 
       {showAbout && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) onCloseAbout();
+          }}
+        >
           <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 max-w-lg w-full shadow-2xl relative">
             <button
               onClick={onCloseAbout}
