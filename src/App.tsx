@@ -7,6 +7,7 @@ import { Modals } from './components/Modals';
 import { VowelKey } from './components/VowelKey';
 import { EmptyState } from './components/EmptyState';
 import { ToastContainer } from './components/ToastContainer';
+import { Footer } from './components/Footer';
 import { useCardState } from './hooks/useCardState';
 import { useMasteredCards } from './hooks/useMasteredCards';
 import { useSettings } from './hooks/useSettings';
@@ -406,6 +407,7 @@ function App() {
         </div>
         {showVowelKey && <VowelKey onClose={() => setShowVowelKey(false)} />}
         <ToastContainer />
+        <Footer />
       </div>
     );
   }
@@ -538,6 +540,8 @@ function App() {
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
         .will-change-transform { will-change: transform; }
       `}</style>
+
+      <Footer />
     </div>
   );
 }
