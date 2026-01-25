@@ -39,12 +39,18 @@ export function useSettings() {
     return saved ? JSON.parse(saved) : false;
   });
 
+  const [audioVolume, setAudioVolume] = useState(() => {
+    const saved = localStorage.getItem('audioVolume');
+    return saved ? parseFloat(saved) : 1.0;
+  });
+
   usePersistence('speakerMode', speakerMode);
   usePersistence('specificSpeaker', specificSpeaker);
   usePersistence('shuffleOnCategoryChange', shuffleOnCategoryChange);
   usePersistence('excludeKijetesantakalu', excludeKijetesantakalu);
   usePersistence('autoPlayAudioOnNavigation', autoPlayAudioOnNavigation);
   usePersistence('useSitelen', useSitelen);
+  usePersistence('audioVolume', audioVolume);
 
   return {
     speakerMode,
@@ -61,5 +67,7 @@ export function useSettings() {
     setAutoPlayAudioOnNavigation,
     useSitelen,
     setUseSitelen,
+    audioVolume,
+    setAudioVolume,
   };
 }

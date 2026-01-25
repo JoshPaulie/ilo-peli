@@ -29,6 +29,8 @@ interface ModalsProps {
   onAutoPlayAudioOnNavigationChange: (value: boolean) => void;
   useSitelen: boolean;
   onUseSitelenChange: (value: boolean) => void;
+  audioVolume: number;
+  onAudioVolumeChange: (volume: number) => void;
 }
 
 export function Modals({
@@ -58,6 +60,8 @@ export function Modals({
   onAutoPlayAudioOnNavigationChange,
   useSitelen,
   onUseSitelenChange,
+  audioVolume,
+  onAudioVolumeChange,
 }: ModalsProps) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -252,6 +256,31 @@ export function Modals({
                     </select>
                   </div>
                 )}
+              </div>
+
+              {/* Audio Volume */}
+              <div className="border-t border-zinc-700 pt-6">
+                <label className="flex flex-col cursor-pointer">
+                  <div className="flex-1">
+                    <span className="text-sm font-medium text-zinc-100">
+                      Audio Volume
+                    </span>
+                    <p className="text-xs text-zinc-500 mt-1">
+                      {Math.round(audioVolume * 100)}%
+                    </p>
+                  </div>
+                </label>
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.05"
+                  value={audioVolume}
+                  onChange={(e) =>
+                    onAudioVolumeChange(parseFloat(e.target.value))
+                  }
+                  className="w-full mt-3 h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-zinc-100"
+                />
               </div>
 
               {/* Auto-play Audio on Navigation */}

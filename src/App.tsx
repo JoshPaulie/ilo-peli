@@ -117,6 +117,7 @@ function App() {
       }
 
       const audio = new Audio(audioObj.link);
+      audio.volume = settings.audioVolume;
       audio.play().catch((err) => console.error('Audio playback failed:', err));
     },
     [settings]
@@ -399,6 +400,8 @@ function App() {
           }
           useSitelen={settings.useSitelen}
           onUseSitelenChange={settings.setUseSitelen}
+          audioVolume={settings.audioVolume}
+          onAudioVolumeChange={settings.setAudioVolume}
         />
         <div className="flex-1 flex items-center justify-center p-8">
           <p className="text-zinc-400 text-lg">
@@ -483,6 +486,8 @@ function App() {
         }
         useSitelen={settings.useSitelen}
         onUseSitelenChange={settings.setUseSitelen}
+        audioVolume={settings.audioVolume}
+        onAudioVolumeChange={settings.setAudioVolume}
       />
 
       <ToastContainer />

@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+- **New setting:** Audio volume control for pronunciation playback
+
 ## [2.2.0] - 2026-01-25
 
 ### Added
