@@ -4,13 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.2.0] - 2026-01-25
+
 ### Added
+- **New setting:** Auto-play audio pronunciation setting when navigating between cards (respects speaker preference setting)
+- **New setting:** Toggle to show sitelen pona glyphs on front of cards
 - Persist card side (front/back) between sessions
-- Auto-play audio pronunciation when navigating between cards (respects speaker preference setting)
 - Make mastered cards badge clickable to open mastered cards modal
-- Clarify that mastered cards modal shows only cards from filtered categories
 - All modals are now dismissible by pressing Escape or clicking outside (on the backdrop)
-- Sitelen Pona display setting: toggle to show sitelen pona glyphs on front of cards
+- Version footer with link to changelog
 
 ### Changed
 - Enhanced undo system: now tracks card position and active categories
@@ -21,6 +23,8 @@ All notable changes to this project will be documented in this file.
   - Cards unmastered from modal are added to end of shuffled deck
   - Smart reinsertion respects current filter (shuffled deck only)
   - Does not interfere with filtered views
+- Increase color contrast for better readability
+- Replaced nimi.li logo with simple text 
 
 ## [2.1.0] - 2026-01-24
 
