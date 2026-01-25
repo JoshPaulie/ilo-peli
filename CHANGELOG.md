@@ -7,6 +7,8 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Persist card side (front/back) between sessions
 - Auto-play audio pronunciation when navigating between cards (respects speaker preference setting)
+- Make mastered cards badge clickable to open mastered cards modal
+- Clarify that mastered cards modal shows only cards from filtered categories
 
 ### Changed
 - Enhanced undo system: now tracks card position and active categories
