@@ -45,7 +45,7 @@ export function Header({
             </h1>
             <button
               onClick={onShowAbout}
-              className="w-8 h-8 flex items-center justify-center rounded-xl bg-zinc-900 text-zinc-500 hover:text-zinc-200 border border-zinc-800"
+              className="w-8 h-8 flex items-center justify-center rounded-xl bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800"
               title="About ilo Peli"
             >
               <svg
@@ -64,7 +64,7 @@ export function Header({
             </button>
             <button
               onClick={onShowOptions}
-              className="w-8 h-8 flex items-center justify-center rounded-xl bg-zinc-900 text-zinc-500 hover:text-zinc-200 border border-zinc-800"
+              className="w-8 h-8 flex items-center justify-center rounded-xl bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800"
               title="Options"
             >
               <svg
@@ -89,7 +89,7 @@ export function Header({
             </button>
             <button
               onClick={onShowMasteredCards}
-              className="w-8 h-8 flex items-center justify-center rounded-xl bg-zinc-900 text-zinc-500 hover:text-zinc-200 border border-zinc-800"
+              className="w-8 h-8 flex items-center justify-center rounded-xl bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800"
               title="Manage Mastered Cards"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -97,7 +97,7 @@ export function Header({
               </svg>
             </button>
             <div
-              className="hidden md:flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-zinc-900 text-zinc-500 border border-zinc-800 uppercase tracking-wider cursor-pointer hover:text-zinc-200 transition-colors"
+              className="hidden md:flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-zinc-900 text-zinc-400 border border-zinc-800 uppercase tracking-wider cursor-pointer hover:text-zinc-200 transition-colors"
               onClick={onShowMasteredCards}
               title="Show mastered cards"
             >
@@ -128,7 +128,7 @@ export function Header({
             )}
             <button
               onClick={onShowDrillInfo}
-              className="w-8 h-8 flex items-center justify-center rounded-xl bg-zinc-900 text-zinc-500 hover:text-zinc-200 border border-zinc-800"
+              className="w-8 h-8 flex items-center justify-center rounded-xl bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800"
               title="What is Drill Mode?"
             >
               ?
@@ -144,7 +144,7 @@ export function Header({
               className={`px-4 py-1.5 rounded-xl text-[10px] font-bold whitespace-nowrap transition-colors ${
                 activeCategories.has(cat)
                   ? 'bg-zinc-100 text-zinc-950'
-                  : 'bg-zinc-900 text-zinc-500 hover:text-zinc-200 border border-zinc-800'
+                  : 'bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800'
               }`}
             >
               {cat.toUpperCase()}
@@ -158,7 +158,7 @@ export function Header({
             className={`px-4 py-1.5 rounded-xl text-[10px] font-bold whitespace-nowrap transition-colors ${
               activeCategories.size === specificCategories.length
                 ? 'bg-zinc-100 text-zinc-950'
-                : 'bg-zinc-900 text-zinc-500 hover:text-zinc-200 border border-zinc-800'
+                : 'bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800'
             }`}
           >
             ALL

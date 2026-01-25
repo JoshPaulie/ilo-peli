@@ -126,7 +126,7 @@ export function Controls({
         </div>
       </div>
 
-      <div className="text-[10px] text-zinc-600 mt-2 tracking-widest uppercase font-mono text-center hidden sm:block space-y-1">
+      <div className="text-[10px] text-zinc-400 mt-2 tracking-widest uppercase font-mono text-center hidden sm:block space-y-1">
         <p>
           Space: Flip • Arrows: Navigate • S: Shuffle • A: Audio • V: Vowels
         </p>

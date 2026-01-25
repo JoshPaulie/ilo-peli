@@ -135,7 +135,7 @@ export function Card({
               : currentWord.word}
           </h1>
           <div className="mt-4 flex flex-col items-center gap-2">
-            <p className="text-zinc-500 font-mono text-[10px] sm:text-xs tracking-[0.2em] uppercase">
+            <p className="text-zinc-400 font-mono text-[10px] sm:text-xs tracking-[0.2em] uppercase">
               {currentWord.usage_category}
             </p>
             {currentWord.audio && currentWord.audio.length > 0 && (
