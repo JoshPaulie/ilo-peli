@@ -22,11 +22,6 @@ export function useSettings() {
     return saved ? JSON.parse(saved) : false;
   });
 
-  const [excludeKijetesantakalu, setExcludeKijetesantakalu] = useState(() => {
-    const saved = localStorage.getItem('excludeKijetesantakalu');
-    return saved ? JSON.parse(saved) : false;
-  });
-
   const [autoPlayAudioOnNavigation, setAutoPlayAudioOnNavigation] = useState(
     () => {
       const saved = localStorage.getItem('autoPlayAudioOnNavigation');
@@ -47,7 +42,6 @@ export function useSettings() {
   usePersistence('speakerMode', speakerMode);
   usePersistence('specificSpeaker', specificSpeaker);
   usePersistence('shuffleOnCategoryChange', shuffleOnCategoryChange);
-  usePersistence('excludeKijetesantakalu', excludeKijetesantakalu);
   usePersistence('autoPlayAudioOnNavigation', autoPlayAudioOnNavigation);
   usePersistence('useSitelen', useSitelen);
   usePersistence('audioVolume', audioVolume);
@@ -61,8 +55,6 @@ export function useSettings() {
     setLastUsedSpeaker,
     shuffleOnCategoryChange,
     setShuffleOnCategoryChange,
-    excludeKijetesantakalu,
-    setExcludeKijetesantakalu,
     autoPlayAudioOnNavigation,
     setAutoPlayAudioOnNavigation,
     useSitelen,

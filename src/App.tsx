@@ -40,26 +40,17 @@ function App() {
     return cardState.filteredWords.filter((w) => masteredIds.has(w.id));
   }, [cardState.filteredWords, masteredIds]);
 
-  // Apply exclusion filter
-  const filteredWordsWithExclusion = useMemo(() => {
-    let words = cardState.filteredWords;
-    if (settings.excludeKijetesantakalu) {
-      words = words.filter((w) => w.id !== 'kijetesantakalu');
-    }
-    return words;
-  }, [cardState.filteredWords, settings.excludeKijetesantakalu]);
-
-  // Recalculate display words with drill and exclusion
+  // Recalculate display words with drill
   const displayWords = useMemo(() => {
     let words =
-      cardState.words.length > 0 ? cardState.words : filteredWordsWithExclusion;
+      cardState.words.length > 0 ? cardState.words : cardState.filteredWords;
     if (cardState.drillOnly) {
       words = words.filter((w) => !masteredIds.has(w.id));
     }
     return words;
   }, [
     cardState.words,
-    filteredWordsWithExclusion,
+    cardState.filteredWords,
     cardState.drillOnly,
     masteredIds,
   ]);
@@ -278,21 +269,13 @@ function App() {
             newActiveCategories.has(w.usage_category)
           );
         }
-        if (settings.excludeKijetesantakalu) {
-          baseWords = baseWords.filter((w) => w.id !== 'kijetesantakalu');
-        }
         const shuffled = [...baseWords].sort(() => Math.random() - 0.5);
         cardState.setWords(shuffled);
       } else {
         cardState.setWords([]);
       }
     },
-    [
-      cardState,
-      settings.shuffleOnCategoryChange,
-      settings.excludeKijetesantakalu,
-      clearLastMastered,
-    ]
+    [cardState, settings.shuffleOnCategoryChange, clearLastMastered]
   );
 
   const handleToggleAll = useCallback(() => {
@@ -318,9 +301,6 @@ function App() {
           newActiveCategories.has(w.usage_category)
         );
       }
-      if (settings.excludeKijetesantakalu) {
-        baseWords = baseWords.filter((w) => w.id !== 'kijetesantakalu');
-      }
       const shuffled = [...baseWords].sort(() => Math.random() - 0.5);
       cardState.setWords(shuffled);
     } else {
@@ -330,7 +310,6 @@ function App() {
     cardState,
     specificCategories,
     settings.shuffleOnCategoryChange,
-    settings.excludeKijetesantakalu,
     clearLastMastered,
   ]);
 
@@ -357,7 +336,7 @@ function App() {
           onShowOptions={() => setShowOptions(true)}
           onShowMasteredCards={() => setShowMasteredCards(true)}
           masteredCount={masteredCount}
-          filteredWordsCount={filteredWordsWithExclusion.length}
+          filteredWordsCount={cardState.filteredWords.length}
         />
         <Modals
           showAbout={showAbout}
@@ -370,7 +349,7 @@ function App() {
           onCloseMasteredCards={() => setShowMasteredCards(false)}
           masteredWords={masteredWords}
           masteredCount={masteredCount}
-          filteredWordsCount={filteredWordsWithExclusion.length}
+          filteredWordsCount={cardState.filteredWords.length}
           onUnmasterCard={(id: string) => {
             const word = (wordData as Word[]).find((w) => w.id === id);
             if (word) {
@@ -392,8 +371,6 @@ function App() {
           uniqueSpeakers={uniqueSpeakers}
           shuffleOnCategoryChange={settings.shuffleOnCategoryChange}
           onShuffleOnCategoryChangeChange={settings.setShuffleOnCategoryChange}
-          excludeKijetesantakalu={settings.excludeKijetesantakalu}
-          onExcludeKijetesantakakuChange={settings.setExcludeKijetesantakalu}
           autoPlayAudioOnNavigation={settings.autoPlayAudioOnNavigation}
           onAutoPlayAudioOnNavigationChange={
             settings.setAutoPlayAudioOnNavigation
@@ -441,7 +418,7 @@ function App() {
         onShowOptions={() => setShowOptions(true)}
         onShowMasteredCards={() => setShowMasteredCards(true)}
         masteredCount={masteredCount}
-        filteredWordsCount={filteredWordsWithExclusion.length}
+        filteredWordsCount={cardState.filteredWords.length}
       />
 
       <Modals
@@ -455,7 +432,7 @@ function App() {
         onCloseMasteredCards={() => setShowMasteredCards(false)}
         masteredWords={masteredWords}
         masteredCount={masteredCount}
-        filteredWordsCount={filteredWordsWithExclusion.length}
+        filteredWordsCount={cardState.filteredWords.length}
         onUnmasterCard={(id: string) => {
           const word = (wordData as Word[]).find((w) => w.id === id);
           if (word) {
@@ -478,8 +455,6 @@ function App() {
         uniqueSpeakers={uniqueSpeakers}
         shuffleOnCategoryChange={settings.shuffleOnCategoryChange}
         onShuffleOnCategoryChangeChange={settings.setShuffleOnCategoryChange}
-        excludeKijetesantakalu={settings.excludeKijetesantakalu}
-        onExcludeKijetesantakakuChange={settings.setExcludeKijetesantakalu}
         autoPlayAudioOnNavigation={settings.autoPlayAudioOnNavigation}
         onAutoPlayAudioOnNavigationChange={
           settings.setAutoPlayAudioOnNavigation
@@ -513,7 +488,7 @@ function App() {
                 />
 
                 <div className="md:hidden flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-zinc-900 text-zinc-500 border border-zinc-800 uppercase tracking-wider">
-                  {masteredCount} / {filteredWordsWithExclusion.length} mastered
+                  {masteredCount} / {cardState.filteredWords.length} mastered
                 </div>
 
                 <Controls

@@ -7,6 +7,9 @@ All notable changes to this project will be documented in this file.
 ### Added
 - **New setting:** Audio volume control for pronunciation playback
 
+### Changed
+- kijetesantakalu (April Fools word) now appears in deck when its category is selected (previously had dedicated exclusion setting)
+
 ### Fixed
 - Safari dropdown styling now uses custom dropdowns for consistency with other browsers
 

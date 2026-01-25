@@ -23,8 +23,6 @@ interface ModalsProps {
   uniqueSpeakers: string[];
   shuffleOnCategoryChange: boolean;
   onShuffleOnCategoryChangeChange: (value: boolean) => void;
-  excludeKijetesantakalu: boolean;
-  onExcludeKijetesantakakuChange: (value: boolean) => void;
   autoPlayAudioOnNavigation: boolean;
   onAutoPlayAudioOnNavigationChange: (value: boolean) => void;
   useSitelen: boolean;
@@ -54,8 +52,6 @@ export function Modals({
   uniqueSpeakers,
   shuffleOnCategoryChange,
   onShuffleOnCategoryChangeChange,
-  excludeKijetesantakalu,
-  onExcludeKijetesantakakuChange,
   autoPlayAudioOnNavigation,
   onAutoPlayAudioOnNavigationChange,
   useSitelen,
@@ -322,28 +318,6 @@ export function Modals({
                     </span>
                     <p className="text-xs text-zinc-500 mt-1">
                       Automatically shuffle cards when switching categories
-                    </p>
-                  </div>
-                </label>
-              </div>
-
-              {/* Exclude kijetesantakalu */}
-              <div className="border-t border-zinc-700 pt-6">
-                <label className="flex items-center gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={excludeKijetesantakalu}
-                    onChange={(e) =>
-                      onExcludeKijetesantakakuChange(e.target.checked)
-                    }
-                    className="w-4 h-4"
-                  />
-                  <div className="flex-1">
-                    <span className="text-sm font-medium text-zinc-100">
-                      Exclude kijetesantakalu
-                    </span>
-                    <p className="text-xs text-zinc-500 mt-1">
-                      Hide the April Fools word
                     </p>
                   </div>
                 </label>
