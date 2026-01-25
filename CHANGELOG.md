@@ -26,16 +26,12 @@ All notable changes to this project will be documented in this file.
 - Version footer with link to changelog
 
 ### Changed
-- Enhanced undo system: now tracks card position and active categories
-  - Undo restores card to exact position before mastery
-  - Undo automatically disabled when category filters change
-  - Bidirectional category change detection
+- Enhanced undo system
+  - 'Undo' restores card to exact position before mastery
+  - 'Undo' automatically disabled when category filters change
 - Improved unmaster behavior
-  - Cards unmastered from modal are added to end of shuffled deck
-  - Smart reinsertion respects current filter (shuffled deck only)
-  - Does not interfere with filtered views
 - Increase color contrast for better readability
-- Replaced nimi.li logo with simple text 
+- Replaced nimi.li logo with text 
 
 ## [2.1.0] - 2026-01-24
 
