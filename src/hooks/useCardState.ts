@@ -87,27 +87,31 @@ export function useCardState() {
   }, [displayWords]);
 
   const nextCard = useCallback(() => {
-    if (
-      drillOnly &&
-      index === displayWords.length - 1 &&
-      displayWords.length > 1
-    ) {
-      shuffleCard();
+    if (drillOnly) {
+      if (index === displayWords.length - 1 && displayWords.length > 1) {
+        shuffleCard();
+      } else if (index < displayWords.length - 1) {
+        setIndex((prev) => prev + 1);
+        setIsFlipped(false);
+      }
     } else {
       setIndex((prev) => (prev + 1) % displayWords.length);
+      setIsFlipped(false);
     }
-    setIsFlipped(false);
   }, [displayWords.length, index, drillOnly, shuffleCard]);
 
   const prevCard = useCallback(() => {
-    if (drillOnly && index === 0 && displayWords.length > 1) {
-      shuffleCard();
+    if (drillOnly) {
+      if (index > 0) {
+        setIndex((prev) => prev - 1);
+        setIsFlipped(false);
+      }
     } else {
       setIndex(
         (prev) => (prev - 1 + displayWords.length) % displayWords.length
       );
+      setIsFlipped(false);
     }
-    setIsFlipped(false);
   }, [displayWords.length, index, drillOnly, shuffleCard]);
 
   const toggleFlip = () => setIsFlipped(!isFlipped);
