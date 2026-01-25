@@ -396,6 +396,8 @@ function App() {
           onAutoPlayAudioOnNavigationChange={
             settings.setAutoPlayAudioOnNavigation
           }
+          useSitelen={settings.useSitelen}
+          onUseSitelenChange={settings.setUseSitelen}
         />
         <div className="flex-1 flex items-center justify-center p-8">
           <p className="text-zinc-400 text-lg">
@@ -477,6 +479,8 @@ function App() {
         onAutoPlayAudioOnNavigationChange={
           settings.setAutoPlayAudioOnNavigation
         }
+        useSitelen={settings.useSitelen}
+        onUseSitelenChange={settings.setUseSitelen}
       />
 
       <ToastContainer />
@@ -498,6 +502,7 @@ function App() {
                   onPlayAudio={playAudio}
                   drillOnly={cardState.drillOnly}
                   onProgressCard={cardState.nextCard}
+                  useSitelen={settings.useSitelen}
                 />
 
                 <div className="md:hidden flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-zinc-900 text-zinc-500 border border-zinc-800 uppercase tracking-wider">

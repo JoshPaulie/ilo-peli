@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 - Make mastered cards badge clickable to open mastered cards modal
 - Clarify that mastered cards modal shows only cards from filtered categories
 - All modals are now dismissible by pressing Escape or clicking outside (on the backdrop)
+- Sitelen Pona display setting: toggle to show sitelen pona glyphs on front of cards
 
 ### Changed
 - Enhanced undo system: now tracks card position and active categories

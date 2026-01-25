@@ -34,11 +34,17 @@ export function useSettings() {
     }
   );
 
+  const [useSitelen, setUseSitelen] = useState(() => {
+    const saved = localStorage.getItem('useSitelen');
+    return saved ? JSON.parse(saved) : false;
+  });
+
   usePersistence('speakerMode', speakerMode);
   usePersistence('specificSpeaker', specificSpeaker);
   usePersistence('shuffleOnCategoryChange', shuffleOnCategoryChange);
   usePersistence('excludeKijetesantakalu', excludeKijetesantakalu);
   usePersistence('autoPlayAudioOnNavigation', autoPlayAudioOnNavigation);
+  usePersistence('useSitelen', useSitelen);
 
   return {
     speakerMode,
@@ -53,5 +59,7 @@ export function useSettings() {
     setExcludeKijetesantakalu,
     autoPlayAudioOnNavigation,
     setAutoPlayAudioOnNavigation,
+    useSitelen,
+    setUseSitelen,
   };
 }

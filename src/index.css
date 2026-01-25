@@ -1,8 +1,10 @@
 @import 'tailwindcss';
 
 @font-face {
-  font-family: 'nasin nanpa';
+  font-family: 'FairfaxPonaHD';
   src: url('./FairfaxPonaHD.ttf') format('truetype');
+  font-weight: normal;
+  font-display: swap;
 }
 
 body {

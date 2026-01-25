@@ -13,6 +13,7 @@ interface CardProps {
   onPlayAudio: (word: Word) => void;
   drillOnly?: boolean;
   onProgressCard?: () => void;
+  useSitelen?: boolean;
 }
 
 export function Card({
@@ -25,6 +26,7 @@ export function Card({
   onPlayAudio,
   drillOnly = false,
   onProgressCard,
+  useSitelen = false,
 }: CardProps) {
   const backFaceRef = useRef<HTMLDivElement>(null);
   const prevWordIdRef = useRef<string | undefined>(undefined);
@@ -117,9 +119,20 @@ export function Card({
               copyToClipboard(currentWord.word);
             }}
             className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tighter text-zinc-50 text-center wrap-break-word px-4 cursor-pointer hover:opacity-70 transition-opacity"
+            style={
+              useSitelen && currentWord.representations?.ligatures?.[0]
+                ? {
+                    fontFamily: 'FairfaxPonaHD',
+                    fontWeight: 'normal',
+                    fontFeatureSettings: '"liga" 1',
+                  }
+                : undefined
+            }
             title="Click to copy"
           >
-            {currentWord.word}
+            {useSitelen && currentWord.representations?.ligatures?.[0]
+              ? currentWord.representations.ligatures[0]
+              : currentWord.word}
           </h1>
           <div className="mt-4 flex flex-col items-center gap-2">
             <p className="text-zinc-500 font-mono text-[10px] sm:text-xs tracking-[0.2em] uppercase">
@@ -174,7 +187,10 @@ export function Card({
                 {backWord.representations?.ligatures?.[0] && (
                   <span
                     className="text-2xl sm:text-3xl opacity-80"
-                    style={{ fontFamily: 'nasin nanpa' }}
+                    style={{
+                      fontFamily: 'FairfaxPonaHD',
+                      fontFeatureSettings: '"liga" 1',
+                    }}
                     title="Word symbol"
                   >
                     {backWord.representations.ligatures[0]}

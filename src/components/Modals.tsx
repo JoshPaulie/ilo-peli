@@ -27,6 +27,8 @@ interface ModalsProps {
   onExcludeKijetesantakakuChange: (value: boolean) => void;
   autoPlayAudioOnNavigation: boolean;
   onAutoPlayAudioOnNavigationChange: (value: boolean) => void;
+  useSitelen: boolean;
+  onUseSitelenChange: (value: boolean) => void;
 }
 
 export function Modals({
@@ -54,6 +56,8 @@ export function Modals({
   onExcludeKijetesantakakuChange,
   autoPlayAudioOnNavigation,
   onAutoPlayAudioOnNavigationChange,
+  useSitelen,
+  onUseSitelenChange,
 }: ModalsProps) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -311,6 +315,26 @@ export function Modals({
                     </span>
                     <p className="text-xs text-zinc-500 mt-1">
                       Hide the April Fools word
+                    </p>
+                  </div>
+                </label>
+              </div>
+
+              {/* Sitelen Pona */}
+              <div className="border-t border-zinc-700 pt-6">
+                <label className="flex items-center gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={useSitelen}
+                    onChange={(e) => onUseSitelenChange(e.target.checked)}
+                    className="w-4 h-4"
+                  />
+                  <div className="flex-1">
+                    <span className="text-sm font-medium text-zinc-100">
+                      sitelen pona
+                    </span>
+                    <p className="text-xs text-zinc-500 mt-1">
+                      Display sitelen pona on front of card
                     </p>
                   </div>
                 </label>
