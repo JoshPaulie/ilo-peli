@@ -96,7 +96,11 @@ export function Header({
                 <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
               </svg>
             </button>
-            <div className="hidden md:flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-zinc-900 text-zinc-500 border border-zinc-800 uppercase tracking-wider">
+            <div
+              className="hidden md:flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-zinc-900 text-zinc-500 border border-zinc-800 uppercase tracking-wider cursor-pointer hover:text-zinc-200 transition-colors"
+              onClick={onShowMasteredCards}
+              title="Show mastered cards"
+            >
               {masteredCount} / {filteredWordsCount} mastered
             </div>
           </div>

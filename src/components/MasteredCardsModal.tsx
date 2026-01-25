@@ -46,8 +46,11 @@ export function MasteredCardsModal({
         <h2 className="text-2xl font-bold text-zinc-100 mb-2">
           Mastered Cards
         </h2>
-        <p className="text-sm text-zinc-500 mb-6">
+        <p className="text-sm text-zinc-500 mb-2">
           {masteredCount} / {filteredWordsCount} cards mastered
+        </p>
+        <p className="text-xs text-zinc-600 mb-6 italic">
+          Showing mastered cards for your filtered categories only
         </p>
 
         <div className="flex-1 overflow-y-auto mb-6 pr-2">
