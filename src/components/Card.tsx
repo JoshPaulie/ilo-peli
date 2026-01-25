@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { useToast } from '../contexts/ToastContext';
+import { useSwipeGesture } from '../hooks/useSwipeGesture';
 import type { Word } from '../types';
 
 interface CardProps {
@@ -13,6 +14,8 @@ interface CardProps {
   drillOnly?: boolean;
   onProgressCard?: () => void;
   useSitelen?: boolean;
+  onNext?: () => void;
+  onPrev?: () => void;
 }
 
 export function Card({
@@ -26,7 +29,10 @@ export function Card({
   drillOnly = false,
   onProgressCard,
   useSitelen = false,
+  onNext,
+  onPrev,
 }: CardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
   const backFaceRef = useRef<HTMLDivElement>(null);
   const prevWordIdRef = useRef<string | undefined>(undefined);
   const [showBorderFlash, setShowBorderFlash] = useState(false);
@@ -51,6 +57,12 @@ export function Card({
     }
   }, [showBorderFlash]);
 
+  useSwipeGesture(cardRef, {
+    onSwipeLeft: onNext,
+    onSwipeRight: onPrev,
+    threshold: 50,
+  });
+
   const handleToggleMastered = (id: string) => {
     setShowBorderFlash(true);
 
@@ -74,6 +86,7 @@ export function Card({
 
   return (
     <div
+      ref={cardRef}
       onClick={onFlip}
       className="relative w-full aspect-4/3 sm:aspect-video perspective-1000 cursor-pointer group"
     >

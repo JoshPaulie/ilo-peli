@@ -485,6 +485,8 @@ function App() {
                   drillOnly={cardState.drillOnly}
                   onProgressCard={cardState.nextCard}
                   useSitelen={settings.useSitelen}
+                  onNext={handleNextCard}
+                  onPrev={handlePrevCard}
                 />
 
                 <div className="md:hidden flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-zinc-900 text-zinc-500 border border-zinc-800 uppercase tracking-wider">

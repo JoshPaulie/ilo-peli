@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+- Horizontal swipe gestures for card navigation on mobile/touch devices (swipe left = next, swipe right = previous)
+
 ## [2.3.0] - 2026-01-25
 
 ### Changed
