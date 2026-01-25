@@ -16,9 +16,10 @@ function App() {
   const cardState = useCardState();
   const {
     masteredIds,
-    lastMasteredId,
+    lastMasteredCard,
     toggleMastered,
     undoMastered,
+    clearLastMastered,
     resetMastered,
     unmasterCard,
   } = useMasteredCards();
@@ -194,13 +195,21 @@ function App() {
           cardState.setIsFlipped(false);
           // Delay progression until animation completes (600ms)
           setTimeout(() => {
-            toggleMastered(currentWord.id);
+            toggleMastered(
+              currentWord.id,
+              safeIndex,
+              cardState.activeCategories
+            );
             cardState.nextCard();
           }, 600);
         } else {
           // In normal mode, delay mastery toggle but don't progress
           setTimeout(() => {
-            toggleMastered(currentWord.id);
+            toggleMastered(
+              currentWord.id,
+              safeIndex,
+              cardState.activeCategories
+            );
           }, 600);
         }
       } else if (e.code === 'KeyD') {
@@ -208,7 +217,11 @@ function App() {
       } else if (e.code === 'KeyV') {
         setShowVowelKey((prev) => !prev);
       } else if (e.code === 'KeyZ') {
-        undoMastered();
+        const result = undoMastered(cardState.activeCategories);
+        if (result.success && result.position !== null) {
+          cardState.setIndex(result.position);
+          cardState.setIsFlipped(false);
+        }
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -222,6 +235,7 @@ function App() {
     handleDrillToggle,
     handleNextCard,
     handlePrevCard,
+    safeIndex,
   ]);
 
   const uniqueSpeakers = useMemo(() => {
@@ -244,6 +258,7 @@ function App() {
 
   const handleCategoryToggle = useCallback(
     (category: string) => {
+      clearLastMastered();
       const newActiveCategories = new Set(cardState.activeCategories);
       if (newActiveCategories.has(category)) {
         newActiveCategories.delete(category);
@@ -274,10 +289,12 @@ function App() {
       cardState,
       settings.shuffleOnCategoryChange,
       settings.excludeKijetesantakalu,
+      clearLastMastered,
     ]
   );
 
   const handleToggleAll = useCallback(() => {
+    clearLastMastered();
     const isAllSelected =
       cardState.activeCategories.size === specificCategories.length;
 
@@ -312,6 +329,7 @@ function App() {
     specificCategories,
     settings.shuffleOnCategoryChange,
     settings.excludeKijetesantakalu,
+    clearLastMastered,
   ]);
 
   if (displayWords.length === 0 || !currentWord) {
@@ -327,8 +345,14 @@ function App() {
         onToggleAll={handleToggleAll}
         drillOnly={cardState.drillOnly}
         onDrillToggle={handleDrillToggle}
-        lastMasteredId={lastMasteredId}
-        onUndo={undoMastered}
+        lastMasteredCard={lastMasteredCard}
+        onUndo={() => {
+          const result = undoMastered(cardState.activeCategories);
+          if (result.success && result.position !== null) {
+            cardState.setIndex(result.position);
+            cardState.setIsFlipped(false);
+          }
+        }}
         onShowDrillInfo={() => setShowDrillInfo(true)}
         onShowAbout={() => setShowAbout(true)}
         onShowOptions={() => setShowOptions(true)}
@@ -349,7 +373,20 @@ function App() {
         masteredWords={masteredWords}
         masteredCount={masteredCount}
         filteredWordsCount={filteredWordsWithExclusion.length}
-        onUnmasterCard={unmasterCard}
+        onUnmasterCard={(id: string) => {
+          const word = (wordData as Word[]).find((w) => w.id === id);
+          if (word) {
+            // Only add back to deck if it matches current filter AND we're using a shuffled deck
+            if (
+              cardState.words.length > 0 &&
+              (cardState.activeCategories.size === 0 ||
+                cardState.activeCategories.has(word.usage_category))
+            ) {
+              cardState.addCardToEndOfDeck(word);
+            }
+          }
+          unmasterCard(id);
+        }}
         onUnmasterAll={resetMastered}
         speakerMode={settings.speakerMode}
         onSpeakerModeChange={settings.setSpeakerMode}
@@ -380,7 +417,7 @@ function App() {
                   onFlip={cardState.toggleFlip}
                   masteredIds={masteredIds}
                   onToggleMastered={(id) => {
-                    toggleMastered(id);
+                    toggleMastered(id, safeIndex, cardState.activeCategories);
                   }}
                   onPlayAudio={playAudio}
                   drillOnly={cardState.drillOnly}

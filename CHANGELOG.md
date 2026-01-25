@@ -8,6 +8,16 @@ All notable changes to this project will be documented in this file.
 - Persist card side (front/back) between sessions
 - Auto-play audio pronunciation when navigating between cards (respects speaker preference setting)
 
+### Changed
+- Enhanced undo system: now tracks card position and active categories
+  - Undo restores card to exact position before mastery
+  - Undo automatically disabled when category filters change
+  - Bidirectional category change detection
+- Improved unmaster behavior
+  - Cards unmastered from modal are added to end of shuffled deck
+  - Smart reinsertion respects current filter (shuffled deck only)
+  - Does not interfere with filtered views
+
 ## [2.1.0] - 2026-01-24
 
 ### Added

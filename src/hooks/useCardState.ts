@@ -112,6 +112,25 @@ export function useCardState() {
 
   const toggleFlip = () => setIsFlipped(!isFlipped);
 
+  const reinsertCardAt = useCallback((card: Word, position: number) => {
+    setWords((prev) => {
+      const newWords = [...prev];
+      // Clamp position to valid range
+      const safePos = Math.min(Math.max(position, 0), newWords.length);
+      newWords.splice(safePos, 0, card);
+      setIndex(safePos);
+      return newWords;
+    });
+  }, []);
+
+  const addCardToEndOfDeck = useCallback((card: Word) => {
+    setWords((prev) => {
+      const newWords = [...prev];
+      newWords.push(card);
+      return newWords;
+    });
+  }, []);
+
   return {
     index: safeIndex,
     setIndex,
@@ -130,5 +149,7 @@ export function useCardState() {
     nextCard,
     prevCard,
     toggleFlip,
+    reinsertCardAt,
+    addCardToEndOfDeck,
   };
 }

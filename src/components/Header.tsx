@@ -5,7 +5,11 @@ interface HeaderProps {
   onToggleAll: () => void;
   drillOnly: boolean;
   onDrillToggle: () => void;
-  lastMasteredId: string | null;
+  lastMasteredCard: {
+    id: string;
+    position: number;
+    activeCategories: Set<string>;
+  } | null;
   onUndo: () => void;
   onShowDrillInfo: () => void;
   onShowAbout: () => void;
@@ -22,7 +26,7 @@ export function Header({
   onToggleAll,
   drillOnly,
   onDrillToggle,
-  lastMasteredId,
+  lastMasteredCard,
   onUndo,
   onShowDrillInfo,
   onShowAbout,
@@ -109,7 +113,7 @@ export function Header({
             >
               {drillOnly ? 'DRILL ON' : 'DRILL OFF'}
             </button>
-            {lastMasteredId && (
+            {lastMasteredCard && (
               <button
                 onClick={onUndo}
                 className="px-3 py-1.5 rounded-xl text-[10px] font-bold bg-zinc-900 text-zinc-300 hover:text-zinc-100 border border-zinc-800"
