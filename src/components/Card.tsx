@@ -1,7 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { useToast } from '../contexts/ToastContext';
 import type { Word } from '../types';
-import nimiLiLogo from '../assets/nimi-li.png';
 
 interface CardProps {
   currentWord: Word | undefined;
@@ -202,15 +201,24 @@ export function Card({
                   href={`https://nimi.li/${backWord.word}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-lg hover:bg-zinc-800 text-zinc-500 hover:text-zinc-300 transition-colors"
+                  className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg hover:bg-zinc-800 text-zinc-500 hover:text-zinc-300 transition-colors"
                   title="View on nimi.li"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <img
-                    src={nimiLiLogo}
-                    alt="nimi.li"
-                    className="w-5 h-5 sm:w-6 sm:h-6"
-                  />
+                  <span className="text-sm font-semibold">nimi.li</span>
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
                 </a>
                 {backWord.audio && backWord.audio.length > 0 && (
                   <button
