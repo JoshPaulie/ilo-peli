@@ -332,6 +332,82 @@ function App() {
     clearLastMastered,
   ]);
 
+  if (cardState.activeCategories.size === 0) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header
+          specificCategories={specificCategories}
+          activeCategories={cardState.activeCategories}
+          onCategoryToggle={handleCategoryToggle}
+          onToggleAll={handleToggleAll}
+          drillOnly={cardState.drillOnly}
+          onDrillToggle={handleDrillToggle}
+          lastMasteredCard={lastMasteredCard}
+          onUndo={() => {
+            const result = undoMastered(cardState.activeCategories);
+            if (result.success && result.position !== null) {
+              cardState.setIndex(result.position);
+              cardState.setIsFlipped(false);
+            }
+          }}
+          onShowDrillInfo={() => setShowDrillInfo(true)}
+          onShowAbout={() => setShowAbout(true)}
+          onShowOptions={() => setShowOptions(true)}
+          onShowMasteredCards={() => setShowMasteredCards(true)}
+          masteredCount={masteredCount}
+          filteredWordsCount={filteredWordsWithExclusion.length}
+        />
+        <Modals
+          showAbout={showAbout}
+          onCloseAbout={() => setShowAbout(false)}
+          showOptions={showOptions}
+          onCloseOptions={() => setShowOptions(false)}
+          showDrillInfo={showDrillInfo}
+          onCloseDrillInfo={() => setShowDrillInfo(false)}
+          showMasteredCards={showMasteredCards}
+          onCloseMasteredCards={() => setShowMasteredCards(false)}
+          masteredWords={masteredWords}
+          masteredCount={masteredCount}
+          filteredWordsCount={filteredWordsWithExclusion.length}
+          onUnmasterCard={(id: string) => {
+            const word = (wordData as Word[]).find((w) => w.id === id);
+            if (word) {
+              if (
+                cardState.words.length > 0 &&
+                (cardState.activeCategories.size === 0 ||
+                  cardState.activeCategories.has(word.usage_category))
+              ) {
+                cardState.addCardToEndOfDeck(word);
+              }
+            }
+            unmasterCard(id);
+          }}
+          onUnmasterAll={resetMastered}
+          speakerMode={settings.speakerMode}
+          onSpeakerModeChange={settings.setSpeakerMode}
+          specificSpeaker={settings.specificSpeaker}
+          onSpecificSpeakerChange={settings.setSpecificSpeaker}
+          uniqueSpeakers={uniqueSpeakers}
+          shuffleOnCategoryChange={settings.shuffleOnCategoryChange}
+          onShuffleOnCategoryChangeChange={settings.setShuffleOnCategoryChange}
+          excludeKijetesantakalu={settings.excludeKijetesantakalu}
+          onExcludeKijetesantakakuChange={settings.setExcludeKijetesantakalu}
+          autoPlayAudioOnNavigation={settings.autoPlayAudioOnNavigation}
+          onAutoPlayAudioOnNavigationChange={
+            settings.setAutoPlayAudioOnNavigation
+          }
+        />
+        <div className="flex-1 flex items-center justify-center p-8">
+          <p className="text-zinc-400 text-lg">
+            Select a category to start studying.
+          </p>
+        </div>
+        {showVowelKey && <VowelKey onClose={() => setShowVowelKey(false)} />}
+        <ToastContainer />
+      </div>
+    );
+  }
+
   if (displayWords.length === 0 || !currentWord) {
     return <EmptyState onShowAll={handleToggleAll} onReset={resetMastered} />;
   }
