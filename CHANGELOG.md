@@ -7,6 +7,9 @@ All notable changes to this project will be documented in this file.
 ### Added
 - **New setting:** Audio volume control for pronunciation playback
 
+### Fixed
+- Safari dropdown styling now uses custom dropdowns for consistency with other browsers
+
 ## [2.2.0] - 2026-01-25
 
 ### Added

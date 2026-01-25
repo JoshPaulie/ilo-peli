@@ -245,7 +245,7 @@ export function Modals({
                     <select
                       value={specificSpeaker}
                       onChange={(e) => onSpecificSpeakerChange(e.target.value)}
-                      className="w-full px-4 py-2 rounded-xl bg-zinc-800 text-zinc-100 border border-zinc-700 focus:outline-none focus:border-zinc-500 text-sm"
+                      className="w-full px-4 py-2 rounded-xl bg-zinc-800 text-zinc-100 border border-zinc-700 focus:outline-none focus:border-zinc-500 text-sm cursor-pointer"
                     >
                       <option value="">Select a speaker...</option>
                       {uniqueSpeakers.map((speaker) => (
