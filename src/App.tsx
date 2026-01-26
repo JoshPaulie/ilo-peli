@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import wordData from './data.json';
 import { Card } from './components/Card';
 import { Controls } from './components/Controls';
@@ -25,6 +25,7 @@ function App() {
     unmasterCard,
   } = useMasteredCards();
   const settings = useSettings();
+  const currentAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const [showVowelKey, setShowVowelKey] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
@@ -65,6 +66,12 @@ function App() {
   const playAudio = useCallback(
     (word: Word) => {
       if (!word?.audio || word.audio.length === 0) return;
+
+      // Stop any currently playing audio
+      if (currentAudioRef.current) {
+        currentAudioRef.current.pause();
+        currentAudioRef.current.currentTime = 0;
+      }
 
       let audioObj = word.audio[0];
 
@@ -109,6 +116,7 @@ function App() {
 
       const audio = new Audio(audioObj.link);
       audio.volume = settings.audioVolume;
+      currentAudioRef.current = audio;
       audio.play().catch((err) => console.error('Audio playback failed:', err));
     },
     [settings]
