@@ -4,13 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.4.0] - 2026-01-26
+
 ### Added
 - Horizontal swipe gestures for card navigation on mobile/touch devices (swipe left = next, swipe right = previous)
 
 ### Fixed
-- Auto-play audio now cuts off previous audio when navigating through cards
 - Mastery animation now plays on back side of card
 - Mastery hotkey (M) now triggers animation without flipping card or disrupting timing
+- Auto-play audio now cuts off previous audio when navigating through cards
 
 ## [2.3.0] - 2026-01-25
 
