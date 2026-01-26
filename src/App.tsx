@@ -25,6 +25,7 @@ function App() {
     unmasterCard,
   } = useMasteredCards();
   const settings = useSettings();
+  const cardRef = useRef<{ triggerMasteryAnimation: () => void }>(null);
   const currentAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const [showVowelKey, setShowVowelKey] = useState(false);
@@ -192,10 +193,11 @@ function App() {
         e.preventDefault();
         playAudio(currentWord);
       } else if (e.code === 'KeyM') {
+        cardRef.current?.triggerMasteryAnimation();
         if (cardState.drillOnly) {
-          cardState.setIsFlipped(false);
           // Delay progression until animation completes (600ms)
           setTimeout(() => {
+            cardState.setIsFlipped(false);
             toggleMastered(
               currentWord.id,
               safeIndex,
@@ -481,6 +483,7 @@ function App() {
             <div className="w-full max-w-2xl flex flex-col items-center">
               <main className="w-full flex flex-col items-center gap-6">
                 <Card
+                  ref={cardRef}
                   currentWord={currentWord}
                   backWord={currentWord}
                   isFlipped={cardState.isFlipped}

@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useImperativeHandle } from 'react';
 import { useToast } from '../contexts/ToastContext';
 import { useSwipeGesture } from '../hooks/useSwipeGesture';
 import type { Word } from '../types';
@@ -16,27 +16,38 @@ interface CardProps {
   useSitelen?: boolean;
   onNext?: () => void;
   onPrev?: () => void;
+  ref?: React.Ref<{ triggerMasteryAnimation: () => void }>;
 }
 
-export function Card({
-  currentWord,
-  backWord,
-  isFlipped,
-  onFlip,
-  masteredIds,
-  onToggleMastered,
-  onPlayAudio,
-  drillOnly = false,
-  onProgressCard,
-  useSitelen = false,
-  onNext,
-  onPrev,
-}: CardProps) {
+export const Card = React.forwardRef<
+  { triggerMasteryAnimation: () => void },
+  CardProps
+>(function Card(
+  {
+    currentWord,
+    backWord,
+    isFlipped,
+    onFlip,
+    masteredIds,
+    onToggleMastered,
+    onPlayAudio,
+    drillOnly = false,
+    onProgressCard,
+    useSitelen = false,
+    onNext,
+    onPrev,
+  },
+  ref
+) {
   const cardRef = useRef<HTMLDivElement>(null);
   const backFaceRef = useRef<HTMLDivElement>(null);
   const prevWordIdRef = useRef<string | undefined>(undefined);
   const [showBorderFlash, setShowBorderFlash] = useState(false);
   const { addToast } = useToast();
+
+  useImperativeHandle(ref, () => ({
+    triggerMasteryAnimation: () => setShowBorderFlash(true),
+  }));
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -183,7 +194,7 @@ export function Card({
           data-card-back
           className={`absolute inset-0 backface-hidden rotate-y-180 bg-zinc-900 border-2 rounded-3xl flex flex-col p-6 sm:p-10 shadow-2xl overflow-y-auto ${
             isFlipped ? 'opacity-100' : 'opacity-0'
-          } border-zinc-800`}
+          } border-zinc-800 ${showBorderFlash ? 'border-flash' : ''}`}
         >
           <div className="mb-4 sm:mb-6">
             <div className="flex items-center justify-between border-b border-zinc-800 pb-2 mb-4">
@@ -417,4 +428,4 @@ export function Card({
       </div>
     </div>
   );
-}
+});

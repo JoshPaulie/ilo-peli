@@ -9,6 +9,8 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 - Auto-play audio now cuts off previous audio when navigating through cards
+- Mastery animation now plays on back side of card
+- Mastery hotkey (M) now triggers animation without flipping card or disrupting timing
 
 ## [2.3.0] - 2026-01-25
 
