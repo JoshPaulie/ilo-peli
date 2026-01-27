@@ -29,6 +29,8 @@ interface ModalsProps {
   onUseSitelenChange: (value: boolean) => void;
   audioVolume: number;
   onAudioVolumeChange: (volume: number) => void;
+  masteryButtonInNav: boolean;
+  onMasteryButtonInNavChange: (value: boolean) => void;
 }
 
 export function Modals({
@@ -58,6 +60,8 @@ export function Modals({
   onUseSitelenChange,
   audioVolume,
   onAudioVolumeChange,
+  masteryButtonInNav,
+  onMasteryButtonInNavChange,
 }: ModalsProps) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -338,6 +342,28 @@ export function Modals({
                     </span>
                     <p className="text-xs text-zinc-500 mt-1">
                       Display sitelen pona on front of card
+                    </p>
+                  </div>
+                </label>
+              </div>
+
+              {/* Mastery Button Position */}
+              <div className="border-t border-zinc-700 pt-6">
+                <label className="flex items-center gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={masteryButtonInNav}
+                    onChange={(e) =>
+                      onMasteryButtonInNavChange(e.target.checked)
+                    }
+                    className="w-4 h-4"
+                  />
+                  <div className="flex-1">
+                    <span className="text-sm font-medium text-zinc-100">
+                      Mastery button in navigation
+                    </span>
+                    <p className="text-xs text-zinc-500 mt-1">
+                      Move mastery button from card to navigation controls
                     </p>
                   </div>
                 </label>

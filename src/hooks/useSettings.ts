@@ -39,12 +39,18 @@ export function useSettings() {
     return saved ? parseFloat(saved) : 1.0;
   });
 
+  const [masteryButtonInNav, setMasteryButtonInNav] = useState(() => {
+    const saved = localStorage.getItem('masteryButtonInNav');
+    return saved ? JSON.parse(saved) : false;
+  });
+
   usePersistence('speakerMode', speakerMode);
   usePersistence('specificSpeaker', specificSpeaker);
   usePersistence('shuffleOnCategoryChange', shuffleOnCategoryChange);
   usePersistence('autoPlayAudioOnNavigation', autoPlayAudioOnNavigation);
   usePersistence('useSitelen', useSitelen);
   usePersistence('audioVolume', audioVolume);
+  usePersistence('masteryButtonInNav', masteryButtonInNav);
 
   return {
     speakerMode,
@@ -61,5 +67,7 @@ export function useSettings() {
     setUseSitelen,
     audioVolume,
     setAudioVolume,
+    masteryButtonInNav,
+    setMasteryButtonInNav,
   };
 }

@@ -7,6 +7,9 @@ interface ControlsProps {
   onShuffle: () => void;
   showVowelKey: boolean;
   onToggleVowelKey: () => void;
+  masteryButtonInNav?: boolean;
+  isMastered?: boolean;
+  onToggleMastered?: () => void;
 }
 
 export function Controls({
@@ -18,6 +21,9 @@ export function Controls({
   onShuffle,
   showVowelKey,
   onToggleVowelKey,
+  masteryButtonInNav = false,
+  isMastered = false,
+  onToggleMastered,
 }: ControlsProps) {
   return (
     <div className="flex flex-col items-center gap-4 w-full px-2">
@@ -109,6 +115,34 @@ export function Controls({
               />
             </svg>
           </button>
+          {masteryButtonInNav && onToggleMastered && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggleMastered();
+              }}
+              className={`p-4 rounded-2xl transition-all ${
+                isMastered
+                  ? 'bg-amber-500/20 text-amber-500 border border-amber-500/50'
+                  : 'bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 text-zinc-300'
+              }`}
+              title="Mark as Mastered (M)"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={isMastered ? 3 : 2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </button>
+          )}
           <button
             onClick={(e) => {
               e.stopPropagation();

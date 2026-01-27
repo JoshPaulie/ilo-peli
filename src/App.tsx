@@ -389,6 +389,8 @@ function App() {
           onUseSitelenChange={settings.setUseSitelen}
           audioVolume={settings.audioVolume}
           onAudioVolumeChange={settings.setAudioVolume}
+          masteryButtonInNav={settings.masteryButtonInNav}
+          onMasteryButtonInNavChange={settings.setMasteryButtonInNav}
         />
         <div className="flex-1 flex items-center justify-center p-8">
           <p className="text-zinc-400 text-lg">
@@ -473,6 +475,8 @@ function App() {
         onUseSitelenChange={settings.setUseSitelen}
         audioVolume={settings.audioVolume}
         onAudioVolumeChange={settings.setAudioVolume}
+        masteryButtonInNav={settings.masteryButtonInNav}
+        onMasteryButtonInNavChange={settings.setMasteryButtonInNav}
       />
 
       <ToastContainer />
@@ -498,6 +502,7 @@ function App() {
                   useSitelen={settings.useSitelen}
                   onNext={handleNextCard}
                   onPrev={handlePrevCard}
+                  masteryButtonInNav={settings.masteryButtonInNav}
                 />
 
                 <div className="md:hidden flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-zinc-900 text-zinc-500 border border-zinc-800 uppercase tracking-wider">
@@ -513,6 +518,33 @@ function App() {
                   onShuffle={cardState.shuffleCard}
                   showVowelKey={showVowelKey}
                   onToggleVowelKey={() => setShowVowelKey(!showVowelKey)}
+                  masteryButtonInNav={settings.masteryButtonInNav}
+                  isMastered={
+                    currentWord ? masteredIds.has(currentWord.id) : false
+                  }
+                  onToggleMastered={() => {
+                    if (!currentWord) return;
+                    cardRef.current?.triggerMasteryAnimation();
+                    if (cardState.drillOnly) {
+                      setTimeout(() => {
+                        cardState.setIsFlipped(false);
+                        toggleMastered(
+                          currentWord.id,
+                          safeIndex,
+                          cardState.activeCategories
+                        );
+                        cardState.nextCard();
+                      }, 600);
+                    } else {
+                      setTimeout(() => {
+                        toggleMastered(
+                          currentWord.id,
+                          safeIndex,
+                          cardState.activeCategories
+                        );
+                      }, 600);
+                    }
+                  }}
                 />
               </main>
             </div>

@@ -16,6 +16,7 @@ interface CardProps {
   useSitelen?: boolean;
   onNext?: () => void;
   onPrev?: () => void;
+  masteryButtonInNav?: boolean;
   ref?: React.Ref<{ triggerMasteryAnimation: () => void }>;
 }
 
@@ -36,6 +37,7 @@ export const Card = React.forwardRef<
     useSitelen = false,
     onNext,
     onPrev,
+    masteryButtonInNav = false,
   },
   ref
 ) {
@@ -109,32 +111,34 @@ export const Card = React.forwardRef<
           className={`absolute inset-0 backface-hidden bg-zinc-900 border-2 rounded-3xl flex flex-col items-center justify-center p-6 sm:p-8 shadow-2xl overflow-hidden border-zinc-800 ${showBorderFlash ? 'border-flash' : ''}`}
         >
           <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                handleToggleMastered(currentWord.id);
-              }}
-              className={`p-2.5 sm:p-3 rounded-2xl transition-all ${
-                masteredIds.has(currentWord.id)
-                  ? 'bg-amber-500/20 text-amber-500 border border-amber-500/50'
-                  : 'bg-zinc-800/50 text-zinc-500 border border-zinc-700/50 hover:border-zinc-500'
-              }`}
-              title="Mark as Mastered (M)"
-            >
-              <svg
-                className="w-5 h-5 sm:w-6 sm:h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            {!masteryButtonInNav && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleToggleMastered(currentWord.id);
+                }}
+                className={`p-2.5 sm:p-3 rounded-2xl transition-all ${
+                  masteredIds.has(currentWord.id)
+                    ? 'bg-amber-500/20 text-amber-500 border border-amber-500/50'
+                    : 'bg-zinc-800/50 text-zinc-500 border border-zinc-700/50 hover:border-zinc-500'
+                }`}
+                title="Mark as Mastered (M)"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={masteredIds.has(currentWord.id) ? 3 : 2}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-            </button>
+                <svg
+                  className="w-5 h-5 sm:w-6 sm:h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={masteredIds.has(currentWord.id) ? 3 : 2}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </button>
+            )}
           </div>
           <h1
             onClick={(e) => {
@@ -268,32 +272,34 @@ export const Card = React.forwardRef<
                     </svg>
                   </button>
                 )}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleToggleMastered(backWord.id);
-                  }}
-                  className={`p-2.5 rounded-lg transition-all ${
-                    masteredIds.has(backWord.id)
-                      ? 'bg-amber-500/20 text-amber-500 border border-amber-500/50'
-                      : 'bg-zinc-800/50 text-zinc-500 border border-zinc-700/50 hover:border-zinc-500'
-                  }`}
-                  title="Mark as Mastered (M)"
-                >
-                  <svg
-                    className="w-5 h-5 sm:w-6 sm:h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                {!masteryButtonInNav && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleToggleMastered(backWord.id);
+                    }}
+                    className={`p-2.5 rounded-lg transition-all ${
+                      masteredIds.has(backWord.id)
+                        ? 'bg-amber-500/20 text-amber-500 border border-amber-500/50'
+                        : 'bg-zinc-800/50 text-zinc-500 border border-zinc-700/50 hover:border-zinc-500'
+                    }`}
+                    title="Mark as Mastered (M)"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={masteredIds.has(backWord.id) ? 3 : 2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </button>
+                    <svg
+                      className="w-5 h-5 sm:w-6 sm:h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={masteredIds.has(backWord.id) ? 3 : 2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </button>
+                )}
               </div>
             </div>
             <div className="flex flex-wrap gap-4 text-xs text-zinc-400 mb-4 tracking-tight">
