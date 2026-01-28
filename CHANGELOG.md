@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.5.0] - 2026-01-28
+
 ### Added
 - **New setting:** Move mastery button from card to navigation controls
 
