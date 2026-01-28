@@ -10,6 +10,9 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - Moved version number to about modal
 
+### Fixed
+- Hide drill info button when undo button appears to prevent awkward mobile spacing
+
 ## [2.6.0] - 2026-01-28
 
 ### Fixed

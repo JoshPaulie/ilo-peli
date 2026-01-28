@@ -38,7 +38,7 @@ export function Header({
   return (
     <header className="fixed top-0 left-0 right-0 bg-zinc-950/80 backdrop-blur-md z-10 border-b border-zinc-800">
       <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-3">
-        <div className="flex items-center justify-between min-h-8">
+        <div className="flex items-center justify-between gap-2 sm:gap-4 min-h-8">
           <div className="flex items-center gap-3 flex-shrink-0">
             <h1 className="text-xl font-black text-zinc-100 tracking-tighter whitespace-nowrap">
               ilo Peli
@@ -105,7 +105,7 @@ export function Header({
             </div>
           </div>
 
-          <div className="flex items-center gap-2 flex-shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <button
               onClick={onDrillToggle}
               className={`px-3 py-1.5 rounded-xl text-[10px] font-bold transition-colors ${
@@ -126,13 +126,15 @@ export function Header({
                 UNDO
               </button>
             )}
-            <button
-              onClick={onShowDrillInfo}
-              className="w-8 h-8 flex items-center justify-center rounded-xl bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800"
-              title="What is Drill Mode?"
-            >
-              ?
-            </button>
+            {!lastMasteredCard && (
+              <button
+                onClick={onShowDrillInfo}
+                className="w-8 h-8 flex items-center justify-center rounded-xl bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800"
+                title="What is Drill Mode?"
+              >
+                ?
+              </button>
+            )}
           </div>
         </div>
 
