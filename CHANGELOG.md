@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+- Repo link in about modal
+
+### Changed
+- Moved version number to about modal
+
 ## [2.6.0] - 2026-01-28
 
 ### Fixed
