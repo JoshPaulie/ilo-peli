@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Added
 - **New setting:** Move mastery button from card to navigation controls
 
+### Fixed
+- Memory leaks in keyboard handler preventing pending timers from cleanup
+- Toast notification timers no longer accumulate on rapid updates
+- Unused dependency in useCardState hook
+- Improved toast ID generation to prevent theoretical collisions
+
 ## [2.4.0] - 2026-01-26
 
 ### Added
