@@ -478,6 +478,20 @@ export function Modals({
                   </li>
                 </ul>
               </div>
+
+              <div className="pt-6 border-t border-zinc-800 mt-6">
+                <h3 className="text-zinc-100 font-bold mb-3 uppercase text-[10px] tracking-[0.2em]">
+                  Repository
+                </h3>
+                <a
+                  href="https://github.com/JoshPaulie/ilo-peli"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-zinc-300 hover:text-white underline decoration-zinc-700 underline-offset-4 transition-all"
+                >
+                  github.com/JoshPaulie/ilo-peli
+                </a>
+              </div>
             </div>
             <button
               onClick={onCloseAbout}
