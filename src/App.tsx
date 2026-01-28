@@ -332,7 +332,7 @@ function App() {
 
   if (cardState.activeCategories.size === 0) {
     return (
-      <div className="min-h-screen flex flex-col">
+      <div className="h-screen flex flex-col">
         <Header
           specificCategories={specificCategories}
           activeCategories={cardState.activeCategories}
@@ -416,7 +416,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="h-screen flex flex-col">
       <Header
         specificCategories={specificCategories}
         activeCategories={cardState.activeCategories}
@@ -488,7 +488,7 @@ function App() {
 
       <ToastContainer />
 
-      <div className="flex-1 flex flex-col items-center justify-start p-4 sm:p-8 pt-32 sm:pt-28">
+      <div className="flex-1 overflow-y-auto overflow-x-hidden flex flex-col items-center justify-start p-4 sm:p-8 pt-32 sm:pt-28">
         <div className="w-full max-w-6xl flex flex-col items-center gap-6">
           <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-6 w-full">
             <div className="w-full max-w-2xl flex flex-col items-center">
