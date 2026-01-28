@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 - **New setting:** Move mastery button from card to navigation controls
 
 ### Fixed
+- Auto-play audio now works when mastering a card in drill mode
 - Drill mode card text freezing when navigating from last mastered card (index out-of-bounds)
 - Memory leaks in keyboard handler preventing pending timers from cleanup
 - Toast notification timers no longer accumulate on rapid updates

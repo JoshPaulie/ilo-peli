@@ -205,7 +205,7 @@ function App() {
               safeIndex,
               cardState.activeCategories
             );
-            cardState.nextCard();
+            handleNextCard();
           }, 600);
           pendingTimers.push(timer);
         } else {
@@ -540,7 +540,7 @@ function App() {
                           safeIndex,
                           cardState.activeCategories
                         );
-                        cardState.nextCard();
+                        handleNextCard();
                       }, 600);
                     } else {
                       setTimeout(() => {
