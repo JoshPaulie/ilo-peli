@@ -88,9 +88,15 @@ export function useCardState() {
 
   const nextCard = useCallback(() => {
     if (drillOnly) {
-      if (index === displayWords.length - 1 && displayWords.length > 1) {
+      if (index >= displayWords.length) {
+        // Index is out of bounds (e.g., last card was just mastered), reset to start
+        setIndex(0);
+        setIsFlipped(false);
+      } else if (index === displayWords.length - 1 && displayWords.length > 1) {
+        // At the last card, shuffle the deck
         shuffleCard();
       } else if (index < displayWords.length - 1) {
+        // Move to next card
         setIndex((prev) => prev + 1);
         setIsFlipped(false);
       }
