@@ -160,6 +160,8 @@ function App() {
   ]);
 
   useEffect(() => {
+    const pendingTimers: ReturnType<typeof setTimeout>[] = [];
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!currentWord) return;
       if (e.code === 'Space' || e.code === 'Enter') {
@@ -196,7 +198,7 @@ function App() {
         cardRef.current?.triggerMasteryAnimation();
         if (cardState.drillOnly) {
           // Delay progression until animation completes (600ms)
-          setTimeout(() => {
+          const timer = setTimeout(() => {
             cardState.setIsFlipped(false);
             toggleMastered(
               currentWord.id,
@@ -205,15 +207,17 @@ function App() {
             );
             cardState.nextCard();
           }, 600);
+          pendingTimers.push(timer);
         } else {
           // In normal mode, delay mastery toggle but don't progress
-          setTimeout(() => {
+          const timer = setTimeout(() => {
             toggleMastered(
               currentWord.id,
               safeIndex,
               cardState.activeCategories
             );
           }, 600);
+          pendingTimers.push(timer);
         }
       } else if (e.code === 'KeyD') {
         handleDrillToggle();
@@ -228,7 +232,10 @@ function App() {
       }
     };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      pendingTimers.forEach(clearTimeout);
+    };
   }, [
     cardState,
     currentWord,

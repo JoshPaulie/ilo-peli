@@ -81,17 +81,15 @@ export const Card = React.forwardRef<
 
     // Delay state update and progression until animation completes
     if (drillOnly && onProgressCard) {
-      const timer = setTimeout(() => {
+      setTimeout(() => {
         onToggleMastered(id);
         onProgressCard();
       }, 600);
-      return () => clearTimeout(timer);
     } else {
       // In normal mode, delay state update but don't progress
-      const timer = setTimeout(() => {
+      setTimeout(() => {
         onToggleMastered(id);
       }, 600);
-      return () => clearTimeout(timer);
     }
   };
 

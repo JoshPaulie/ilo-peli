@@ -112,7 +112,7 @@ export function useCardState() {
       );
       setIsFlipped(false);
     }
-  }, [displayWords.length, index, drillOnly, shuffleCard]);
+  }, [displayWords.length, index, drillOnly]);
 
   const toggleFlip = () => setIsFlipped(!isFlipped);
 
