@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.6.0] - 2026-01-28
+
+### Fixed
+- Fixed PWA viewport jank on card swipe by locking page scrolling and constraining layout to viewport
+
 ## [2.5.0] - 2026-01-28
 
 ### Added
