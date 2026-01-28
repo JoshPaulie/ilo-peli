@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { MasteredCardsModal } from './MasteredCardsModal';
+import { version } from '../../package.json';
 import type { Word, SpeakerMode } from '../types';
 
 interface ModalsProps {
@@ -407,9 +408,19 @@ export function Modals({
               </svg>
             </button>
             <div className="mb-6">
-              <h2 className="text-3xl font-black text-zinc-100 tracking-tighter">
-                ilo Peli
-              </h2>
+              <div className="flex items-baseline justify-between">
+                <h2 className="text-3xl font-black text-zinc-100 tracking-tighter">
+                  ilo Peli
+                </h2>
+                <a
+                  href="https://github.com/JoshPaulie/ilo-peli/blob/main/CHANGELOG.md"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors font-mono tracking-widest"
+                >
+                  v{version}
+                </a>
+              </div>
               <p className="text-zinc-500 text-xs font-bold uppercase tracking-[0.2em] mt-1">
                 Study Tool for Toki Pona
               </p>
