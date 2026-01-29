@@ -99,7 +99,7 @@ export function MasteredCardsModal({
                   </div>
                   <button
                     onClick={() => onUnmasterCard(word.id)}
-                    className="ml-2 px-3 py-1 rounded-lg bg-zinc-700 hover:bg-red-600 text-zinc-100 text-xs font-semibold transition-colors active:scale-95 flex-shrink-0"
+                    className="ml-2 px-3 py-1 rounded-lg bg-zinc-700 hover:bg-red-600 text-zinc-100 text-xs font-semibold transition-colors active:scale-95 shrink-0"
                     title="Unmaster this card"
                   >
                     ✕

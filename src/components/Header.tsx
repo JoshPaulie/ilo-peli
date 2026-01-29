@@ -39,7 +39,7 @@ export function Header({
     <header className="fixed top-0 left-0 right-0 bg-zinc-950/80 backdrop-blur-md z-10 border-b border-zinc-800">
       <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-3">
         <div className="flex items-center justify-between gap-2 sm:gap-4 min-h-8">
-          <div className="flex items-center gap-3 flex-shrink-0">
+          <div className="flex items-center gap-3 shrink-0">
             <h1 className="text-xl font-black text-zinc-100 tracking-tighter whitespace-nowrap">
               ilo Peli
             </h1>
