@@ -396,18 +396,39 @@ export const Card = React.forwardRef<
                 <div className="text-sm sm:text-base leading-relaxed text-zinc-400 space-y-3">
                   {backWord.semantic_space_en.split('\n\n').map((p, i) => (
                     <p key={i}>
-                      {p.split(/(\*\*[^*]+\*\*)/g).map((part, j) =>
-                        part.startsWith('**') && part.endsWith('**') ? (
-                          <strong
-                            key={j}
-                            className="text-zinc-200 font-semibold"
-                          >
-                            {part.slice(2, -2)}
-                          </strong>
-                        ) : (
-                          part
-                        )
-                      )}
+                      {p
+                        .split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g)
+                        .map((part, j) => {
+                          if (part.startsWith('**') && part.endsWith('**')) {
+                            return (
+                              <strong
+                                key={j}
+                                className="text-zinc-200 font-semibold"
+                              >
+                                {part.slice(2, -2)}
+                              </strong>
+                            );
+                          }
+                          const linkMatch = part.match(
+                            /^\[([^\]]+)\]\(([^)]+)\)$/
+                          );
+                          if (linkMatch) {
+                            const [, text, href] = linkMatch;
+                            return (
+                              <a
+                                key={j}
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-zinc-300 hover:text-white underline decoration-zinc-700 underline-offset-4 transition-all"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                {text}
+                              </a>
+                            );
+                          }
+                          return part;
+                        })}
                     </p>
                   ))}
                 </div>

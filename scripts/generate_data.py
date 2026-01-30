@@ -81,6 +81,40 @@ def fetch_definitions(repo_path: Path) -> dict[str, str]:
         return {}
 
 
+def extract_text_with_links(element) -> str:
+    """Extract text from element, converting links to markdown format."""
+    result = []
+    for child in element.children:
+        if isinstance(child, str):
+            text = child.strip()
+            if text:
+                result.append(text)
+        elif hasattr(child, "name"):
+            if child.name == "a":
+                text = child.get_text(strip=True)
+                href = child.get("href", "")
+                if text and href:
+                    result.append(f"[{text}]({href})")
+                elif text:
+                    result.append(text)
+            elif child.name in ("br", "img"):
+                continue
+            else:
+                result.append(extract_text_with_links(child))
+    return "".join(result).strip()
+
+
+def linkify_cc_license(text: str) -> str:
+    """Convert plain 'CC BY-NC-SA 4.0' text to markdown links."""
+    cc_url = "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    # Only replace if not already a link (avoid double-linking)
+    return re.sub(
+        r"(?<!\[)CC BY-NC-SA 4\.0(?!\])",
+        f"[CC BY-NC-SA 4.0]({cc_url})",
+        text,
+    )
+
+
 def fetch_essays() -> dict[str, str]:
     """Scrape essays from lipamanka and extract semantic spaces."""
     print("Fetching essays from lipamanka...")
@@ -100,13 +134,45 @@ def fetch_essays() -> dict[str, str]:
             if not word_id:
                 continue
 
-            # Extract text content from the details block, preserving paragraph structure
-            paragraphs = details.find_all("p")
-            if paragraphs:
-                # Join paragraphs with double newlines to preserve structure
-                text = "\n\n".join(p.get_text(strip=True) for p in paragraphs)
+            # Find the hidden content div (where main essay is)
+            hidden_div = details.find("div", class_="content")
+
+            # Collect all content before the hidden div (license info, etc.)
+            prefix_parts = []
+            for child in details.children:
+                if hasattr(child, "name"):
+                    if child.name == "div" and "content" in child.get("class", []):
+                        break
+                    if child.name == "h5":
+                        # Skip disclaimer h5
+                        continue
+                    if child.name == "p":
+                        prefix_parts.append(extract_text_with_links(child))
+                    elif child.name == "a":
+                        text = child.get_text(strip=True)
+                        href = child.get("href", "")
+                        if text and href:
+                            prefix_parts.append(f"[{text}]({href})")
+                    elif child.name == "button":
+                        break
+
+            # Extract main content from hidden div
+            main_paragraphs = []
+            if hidden_div:
+                paragraphs = hidden_div.find_all("p")
+                main_paragraphs = [extract_text_with_links(p) for p in paragraphs]
+
+            # Combine all content - join prefix with spaces (single line), then main with \n\n
+            all_parts = []
+            if prefix_parts:
+                all_parts.append(" ".join(prefix_parts))
+            all_parts.extend(main_paragraphs)
+
+            if all_parts:
+                text = "\n\n".join(all_parts)
+                # Linkify any plain CC license text
+                text = linkify_cc_license(text)
                 # Bold the word itself for readability (case-insensitive)
-                # Replace standalone instances of the word with **word**
                 text = re.sub(
                     rf"\b{re.escape(word_id)}\b",
                     f"**{word_id}**",
