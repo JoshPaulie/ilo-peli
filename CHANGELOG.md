@@ -2,16 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [Unversioned]
+
+## [2.7.0] - 2026-01-29
 
 ### Added
+- Fixed how CC license attributions are displayed on lipamanka essays
 - Repo link in about modal
-
-### Changed
-- Moved version number to about modal
 
 ### Fixed
 - Hide drill info button when undo button appears to prevent awkward mobile spacing
+- Preserve CC license links when scraping lipamanka essays (unpa, jaki, etc.)
+- Collapse license attribution text to single line
+
+### Changed
+- Moved version number to about modal
 
 ## [2.6.0] - 2026-01-28
 
